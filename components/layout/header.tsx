@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from './navigation';
 import MobileMenu from './mobile-menu';
@@ -41,8 +41,7 @@ export default function Header() {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled || !isHomePage
             ? 'bg-white/95 backdrop-blur-md shadow-md'
-            : 'bg-transparent',
-          isMobileMenuOpen && 'bg-white'
+            : 'bg-transparent'
         )}
       >
         <div className="container mx-auto px-4">
@@ -57,7 +56,7 @@ export default function Header() {
                 <span
                   className={cn(
                     'text-2xl md:text-3xl font-serif font-bold transition-colors',
-                    isScrolled || !isHomePage || isMobileMenuOpen
+                    isScrolled || !isHomePage
                       ? 'text-navy-600'
                       : 'text-black'
                   )}
@@ -67,7 +66,7 @@ export default function Header() {
                 <span
                   className={cn(
                     'text-sm font-ethiopic transition-colors',
-                    isScrolled || !isHomePage || isMobileMenuOpen
+                    isScrolled || !isHomePage
                       ? 'text-navy-400'
                       : 'text-black/90'
                   )}
@@ -99,17 +98,14 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
                 'lg:hidden p-2 rounded-md transition-colors',
-                isScrolled || !isHomePage || isMobileMenuOpen
+                isScrolled || !isHomePage
                   ? 'text-navy-600 hover:bg-navy-50'
                   : 'text-white hover:bg-white/10'
               )}
               aria-label="Toggle menu"
+              type="button"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>

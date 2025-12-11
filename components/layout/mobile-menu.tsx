@@ -1,12 +1,17 @@
 'use client';
 
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+} from '@/components/ui/sheet';
 import { mainNavigation } from '@/config/navigation';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/config/site';
+import { Separator } from '@/components/ui/separator';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -16,19 +21,6 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
 
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
   const isActive = (href: string) => {
     if (href === '/') {
       return pathname === '/';
@@ -37,95 +29,77 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-navy-900/50 backdrop-blur-sm z-40 lg:hidden"
-            onClick={onClose}
-          />
-
-          {/* Menu Panel */}
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-20 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-40 lg:hidden overflow-y-auto"
-          >
-            <div className="flex flex-col h-full">
-              {/* Navigation Links */}
-              <nav className="flex-1 px-6 py-8">
-                <ul className="space-y-6">
-                  {mainNavigation.map((link, index) => {
-                    const active = isActive(link.href);
-
-                    return (
-                      <motion.li
-                        key={link.href}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <Link
-                          href={link.href}
-                          onClick={onClose}
-                          className={cn(
-                            'block text-lg font-medium transition-colors duration-200 py-2',
-                            active
-                              ? 'text-gold-500'
-                              : 'text-navy-600 hover:text-gold-500'
-                          )}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span>{link.label}</span>
-                            {link.label_am && (
-                              <span className="text-sm font-ethiopic text-navy-400">
-                                {link.label_am}
-                              </span>
-                            )}
-                          </div>
-                        </Link>
-                      </motion.li>
-                    );
-                  })}
-                </ul>
-              </nav>
-
-              {/* CTA Section */}
-              <div className="px-6 py-6 border-t border-navy-100 bg-warm-white">
-                <Link href="/reservation" onClick={onClose} className="block">
-                  <Button
-                    size="lg"
-                    className="w-full bg-gold-500 hover:bg-gold-600 text-white font-semibold"
-                  >
-                    Book Now
-                  </Button>
-                </Link>
-
-                <Link
-                  href="/contact"
-                  onClick={onClose}
-                  className="block mt-3"
-                >
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full border-navy-300 text-navy-600 hover:bg-navy-50"
-                  >
-                    Contact Us
-                  </Button>
-                </Link>
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent side="right" className="w-full sm:max-w-md p-0 bg-white">
+        <div className="flex flex-col h-full">
+          {/* Header with Logo */}
+          <div className="p-6 pb-4">
+            <div className="flex items-center space-x-3 mb-2">
+              <Image
+                src="/images/Debredamo.webp"
+                alt="Debredamo hotel logo"
+                width={45}
+                height={45}
+              />
+              <div>
+                <h2 className="text-2xl font-serif font-bold text-navy-700">
+                  {siteConfig.name.en}
+                </h2>
               </div>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+            <Separator className="mt-4" />
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex-1 px-6 overflow-y-auto">
+            <ul className="space-y-1">
+              {mainNavigation.map((link) => {
+                const active = isActive(link.href);
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className={cn(
+                        'block px-4 py-4 rounded-lg font-medium text-lg transition-all duration-200',
+                        active
+                          ? 'bg-gold-50 text-gold-600 border-l-4 border-gold-500'
+                          : 'text-navy-600 hover:bg-warm-white hover:text-gold-500 border-l-4 border-transparent'
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <Separator />
+
+          {/* CTA Section */}
+          <div className="p-6 bg-warm-white">
+            <Link href="/reservation" onClick={onClose} className="block mb-3">
+              <Button
+                size="lg"
+                className="w-full bg-gold-500 hover:bg-gold-600 text-white font-semibold h-14 text-base"
+              >
+                Book Now
+              </Button>
+            </Link>
+            <Link href="/contact" onClick={onClose} className="block">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full border-2 border-navy-200 text-navy-600 hover:bg-navy-50 hover:border-navy-300 h-12"
+              >
+                Contact Us
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }
