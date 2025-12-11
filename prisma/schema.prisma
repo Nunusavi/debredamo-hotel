@@ -1,0 +1,215 @@
+// Debredamo Hotel - Prisma Schema
+// PostgreSQL database with Neon
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// =============================================
+// ROOMS
+// =============================================
+model Room {
+  id            String   @id @default(uuid())
+  slug          String   @unique
+  name          String
+  nameAm        String?  @map("name_am")
+  description   String?
+  descriptionAm String?  @map("description_am")
+  roomType      RoomType @map("room_type")
+  sizeM2        Int?     @map("size_sqm")
+  maxGuests     Int      @map("max_guests")
+  basePriceEtb  Decimal  @map("base_price_etb") @db.Decimal(10, 2)
+
+  // JSONB fields for complex data
+  images        Json     @default("[]")
+  amenities     Json     @default("[]")
+
+  isActive      Boolean  @default(true) @map("is_active")
+  displayOrder  Int      @default(0) @map("display_order")
+
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  availability       Availability[]
+  reservationRequests ReservationRequest[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([roomType])
+  @@index([displayOrder])
+  @@map("rooms")
+}
+
+enum RoomType {
+  standard
+  deluxe
+  executive
+  presidential
+}
+
+// =============================================
+// AVAILABILITY
+// =============================================
+model Availability {
+  id               String   @id @default(uuid())
+  roomId           String   @map("room_id")
+  date             DateTime @db.Date
+  availableCount   Int      @default(0) @map("available_count")
+  priceOverrideEtb Decimal? @map("price_override_etb") @db.Decimal(10, 2)
+  minStayNights    Int      @default(1) @map("min_stay_nights")
+
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  // Relations
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  @@unique([roomId, date])
+  @@index([date])
+  @@index([roomId, date])
+  @@map("availability")
+}
+
+// =============================================
+// RESERVATION REQUESTS
+// =============================================
+model ReservationRequest {
+  id                String            @id @default(uuid())
+  requestNumber     String            @unique @map("request_number")
+  roomId            String?           @map("room_id")
+  roomName          String            @map("room_name")
+
+  // Guest details
+  guestName         String            @map("guest_name")
+  guestEmail        String            @map("guest_email")
+  guestPhone        String            @map("guest_phone")
+
+  // Booking details
+  checkIn           DateTime          @db.Date @map("check_in")
+  checkOut          DateTime          @db.Date @map("check_out")
+  numGuests         Int               @map("num_guests")
+  numNights         Int               @map("num_nights")
+
+  // Pricing
+  estimatedPriceEtb Decimal?          @map("estimated_price_etb") @db.Decimal(10, 2)
+
+  // Additional info
+  specialRequests   String?           @map("special_requests")
+  adminNotes        String?           @map("admin_notes")
+
+  // Status management
+  status            ReservationStatus @default(pending)
+
+  createdAt         DateTime          @default(now()) @map("created_at")
+  updatedAt         DateTime          @updatedAt @map("updated_at")
+
+  // Relations
+  room Room? @relation(fields: [roomId], references: [id], onDelete: SetNull)
+
+  @@index([checkIn, checkOut])
+  @@index([status])
+  @@index([guestEmail])
+  @@index([requestNumber])
+  @@index([createdAt(sort: Desc)])
+  @@map("reservation_requests")
+}
+
+enum ReservationStatus {
+  pending
+  contacted
+  confirmed
+  declined
+  cancelled
+}
+
+// =============================================
+// PAGES (CMS)
+// =============================================
+model Page {
+  id              String   @id @default(uuid())
+  slug            String   @unique
+  title           String
+  titleAm         String?  @map("title_am")
+  content         Json?
+  heroImage       String?  @map("hero_image")
+  metaTitle       String?  @map("meta_title")
+  metaDescription String?  @map("meta_description")
+  ogImage         String?  @map("og_image")
+  isPublished     Boolean  @default(false) @map("is_published")
+
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@index([slug])
+  @@index([isPublished])
+  @@map("pages")
+}
+
+// =============================================
+// BLOG POSTS
+// =============================================
+model BlogPost {
+  id              String    @id @default(uuid())
+  slug            String    @unique
+  title           String
+  titleAm         String?   @map("title_am")
+  excerpt         String?
+  content         String?
+  featuredImage   String?   @map("featured_image")
+  author          String?
+  category        String?
+  tags            Json      @default("[]")
+  metaTitle       String?   @map("meta_title")
+  metaDescription String?   @map("meta_description")
+  isPublished     Boolean   @default(false) @map("is_published")
+  publishedAt     DateTime? @map("published_at")
+
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  @@index([isPublished, publishedAt(sort: Desc)])
+  @@index([category])
+  @@index([slug])
+  @@map("blog_posts")
+}
+
+// =============================================
+// SITE SETTINGS
+// =============================================
+model SiteSetting {
+  key         String   @id
+  value       Json
+  description String?
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("site_settings")
+}
+
+// =============================================
+// CONTACT SUBMISSIONS
+// =============================================
+model ContactSubmission {
+  id        String        @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  status    ContactStatus @default(new)
+
+  createdAt DateTime      @default(now()) @map("created_at")
+
+  @@index([status])
+  @@index([createdAt(sort: Desc)])
+  @@map("contact_submissions")
+}
+
+enum ContactStatus {
+  new
+  read
+  replied
+}
