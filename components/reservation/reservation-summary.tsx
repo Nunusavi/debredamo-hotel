@@ -23,10 +23,10 @@ export default function ReservationSummary({
   onBack,
   isSubmitting,
 }: ReservationSummaryProps) {
-  const { checkIn, checkOut, guests, selectedRoom, guestInfo, totalPrice, nights } =
+  const { checkIn, checkOut, guests, selectedRoom, fullName, email, phone, specialRequests, totalPrice, nights } =
     data;
 
-  if (!checkIn || !checkOut || !selectedRoom || !guestInfo || !totalPrice) {
+  if (!checkIn || !checkOut || !selectedRoom || !fullName || !totalPrice) {
     return (
       <Card className="p-6 md:p-8">
         <p className="text-center text-navy-600">
@@ -155,7 +155,7 @@ export default function ReservationSummary({
                 <div className="flex justify-between items-center">
                   <span className="text-navy-600">Name</span>
                   <span className="font-semibold text-navy-700">
-                    {guestInfo.firstName} {guestInfo.lastName}
+                    {fullName}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -164,7 +164,7 @@ export default function ReservationSummary({
                     Email
                   </span>
                   <span className="font-medium text-navy-700">
-                    {guestInfo.email}
+                    {email}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -173,10 +173,10 @@ export default function ReservationSummary({
                     Phone
                   </span>
                   <span className="font-medium text-navy-700">
-                    {guestInfo.phone}
+                    {phone}
                   </span>
                 </div>
-                {guestInfo.specialRequests && (
+                {specialRequests && (
                   <>
                     <Separator className="my-2" />
                     <div>
@@ -184,7 +184,7 @@ export default function ReservationSummary({
                         Special Requests
                       </span>
                       <p className="text-sm text-navy-700 bg-white p-3 rounded border border-navy-200">
-                        {guestInfo.specialRequests}
+                        {specialRequests}
                       </p>
                     </div>
                   </>
@@ -232,7 +232,7 @@ export default function ReservationSummary({
             <li>This is a reservation request, not a confirmed booking</li>
             <li>We will contact you within 24 hours to confirm availability</li>
             <li>Payment will be arranged upon confirmation</li>
-            <li>A confirmation email will be sent to {guestInfo.email}</li>
+            <li>A confirmation email will be sent to {email}</li>
           </ul>
         </div>
 

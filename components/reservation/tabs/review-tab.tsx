@@ -80,9 +80,9 @@ export default function ReviewTab({ data, onBack, onSubmit }: ReviewTabProps) {
               <div className="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                 {data.selectedRoom.images &&
                  Array.isArray(data.selectedRoom.images) &&
-                 data.selectedRoom.images[0] ? (
+                 data.selectedRoom.images[0]?.url ? (
                   <Image
-                    src={data.selectedRoom.images[0].url || data.selectedRoom.images[0]}
+                    src={data.selectedRoom.images[0].url}
                     alt={data.selectedRoom.name}
                     fill
                     className="object-cover"
@@ -101,8 +101,8 @@ export default function ReviewTab({ data, onBack, onSubmit }: ReviewTabProps) {
                     <Users className="w-4 h-4" />
                     <span>{data.guests} {data.guests === 1 ? 'guest' : 'guests'}</span>
                   </div>
-                  {data.selectedRoom.sizeM2 && (
-                    <span>{data.selectedRoom.sizeM2} m²</span>
+                  {data.selectedRoom.size_sqm && (
+                    <span>{data.selectedRoom.size_sqm} m²</span>
                   )}
                 </div>
               </div>

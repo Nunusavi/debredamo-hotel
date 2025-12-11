@@ -55,9 +55,13 @@ export default function RoomSelectionTab({
   }, [data.checkIn, data.checkOut, data.guests]);
 
   const handleSelectRoom = (room: Room) => {
+    // Calculate total price based on nights and base price
+    const nights = data.nights || 1;
+    const totalPrice = room.base_price_etb * nights;
+
     onUpdate({
       selectedRoom: room,
-      totalPrice: room.totalPrice,
+      totalPrice,
     });
   };
 
@@ -121,9 +125,9 @@ export default function RoomSelectionTab({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-3">
               {/* Room Image */}
               <div className="relative h-40 md:h-32 rounded overflow-hidden">
-                {room.images && Array.isArray(room.images) && room.images[0] ? (
+                {room.images && Array.isArray(room.images) && room.images[0]?.url ? (
                   <Image
-                    src={room.images[0].url || room.images[0]}
+                    src={room.images[0].url}
                     alt={room.name}
                     fill
                     className="object-cover"
@@ -150,16 +154,16 @@ export default function RoomSelectionTab({
                 </div>
 
                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                  {room.maxGuests && (
+                  {room.max_guests && (
                     <div className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
-                      <span>Up to {room.maxGuests} guests</span>
+                      <span>Up to {room.max_guests} guests</span>
                     </div>
                   )}
-                  {room.sizeM2 && (
+                  {room.size_sqm && (
                     <div className="flex items-center gap-1">
                       <Maximize className="w-4 h-4" />
-                      <span>{room.sizeM2} m²</span>
+                      <span>{room.size_sqm} m²</span>
                     </div>
                   )}
                 </div>
@@ -188,7 +192,7 @@ export default function RoomSelectionTab({
                   <div>
                     <p className="text-sm text-gray-600">Total for {data.nights} nights</p>
                     <p className="text-2xl font-bold text-navy-600">
-                      ETB {room.totalPrice?.toLocaleString() || 0}
+                      ETB {((room.base_price_etb || 0) * (data.nights || 1)).toLocaleString()}
                     </p>
                   </div>
                   <Button

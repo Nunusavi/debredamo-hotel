@@ -74,6 +74,7 @@ export async function updateReservationStatus(
 ) {
   const { data, error } = await supabaseAdmin
     .from('reservation_requests')
+    // @ts-expect-error - Supabase types not fully configured
     .update({
       status,
       admin_notes: adminNotes,
@@ -112,7 +113,7 @@ export async function getSiteSettings() {
 
   // Convert array to key-value object
   const settings: Record<string, unknown> = {};
-  data?.forEach((setting) => {
+  data?.forEach((setting: { key: string; value: unknown }) => {
     settings[setting.key] = setting.value;
   });
 
@@ -125,6 +126,7 @@ export async function getSiteSettings() {
 export async function updateSiteSetting(key: string, value: unknown) {
   const { data, error } = await supabaseAdmin
     .from('site_settings')
+    // @ts-expect-error - Supabase types not fully configured
     .update({
       value,
       updated_at: new Date().toISOString(),

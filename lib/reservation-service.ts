@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/db/prisma';
 import { checkRoomAvailability, reserveAvailability, releaseAvailability } from '@/lib/availability';
-import type { Prisma, ReservationRequest } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+import type { ReservationRequest } from '@prisma/client';
 
 const MAX_RETRIES = 3;
 
@@ -154,6 +155,7 @@ export async function updateReservationStatus(
 
   // If changing to cancelled, release availability
   if (status === 'cancelled' && reservation.status !== 'cancelled' && reservation.roomId) {
+    const roomId = reservation.roomId; // Store to maintain type narrowing
     await prisma.$transaction(async (tx) => {
       // Update status
       await tx.reservationRequest.update({
@@ -166,7 +168,7 @@ export async function updateReservationStatus(
 
       // Release availability
       await releaseAvailability({
-        roomId: reservation.roomId,
+        roomId,
         checkIn: reservation.checkIn,
         checkOut: reservation.checkOut,
       });
@@ -193,8 +195,8 @@ function isRetryableError(error: unknown): boolean {
   const err = error as { code?: string; message?: string };
   return (
     err.code === 'P2034' || // Transaction conflict
-    err.message?.includes('deadlock') ||
-    err.message?.includes('serialization')
+    !!(err.message?.includes('deadlock')) ||
+    !!(err.message?.includes('serialization'))
   );
 }
 

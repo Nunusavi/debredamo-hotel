@@ -161,7 +161,7 @@ export default function DateGuestTab({ data, onUpdate, onNext }: DateGuestTabPro
               variant="outline"
               size="icon"
               onClick={() => handleGuestsChange((data.guests || 1) + 1)}
-              disabled={data.guests && data.guests >= 10}
+              disabled={!!(data.guests && data.guests >= 10)}
             >
               +
             </Button>

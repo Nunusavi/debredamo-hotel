@@ -11,11 +11,12 @@ const updateReservationSchema = z.object({
 // GET single reservation
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const reservation = await prisma.reservationRequest.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: { room: true },
     });
 
@@ -39,9 +40,10 @@ export async function GET(
 // PATCH update reservation status
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const validatedData = updateReservationSchema.parse(body);
 
@@ -54,20 +56,20 @@ export async function PATCH(
 
     if (validatedData.status) {
       await updateReservationStatus(
-        params.id,
+        id,
         validatedData.status,
         validatedData.adminNotes
       );
     } else if (validatedData.adminNotes) {
       // Just update admin notes
       await prisma.reservationRequest.update({
-        where: { id: params.id },
+        where: { id },
         data: { adminNotes: validatedData.adminNotes },
       });
     }
 
     const updatedReservation = await prisma.reservationRequest.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: { room: true },
     });
 
@@ -83,7 +85,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           error: 'Validation error',
-          details: error.errors,
+          details: error.issues,
         },
         { status: 400 }
       );
@@ -101,10 +103,11 @@ export async function PATCH(
 // DELETE cancel reservation
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await cancelReservation(params.id);
+    const { id } = await params;
+    await cancelReservation(id);
 
     return NextResponse.json({
       success: true,

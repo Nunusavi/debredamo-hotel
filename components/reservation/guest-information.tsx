@@ -22,12 +22,14 @@ export default function GuestInformation({
   onNext,
   onBack,
 }: GuestInformationProps) {
+  // Parse fullName into firstName and lastName if it exists
+  const nameParts = data.fullName?.split(' ') || [];
   const [formData, setFormData] = useState({
-    firstName: data.guestInfo?.firstName || '',
-    lastName: data.guestInfo?.lastName || '',
-    email: data.guestInfo?.email || '',
-    phone: data.guestInfo?.phone || '',
-    specialRequests: data.guestInfo?.specialRequests || '',
+    firstName: nameParts[0] || '',
+    lastName: nameParts.slice(1).join(' ') || '',
+    email: data.email || '',
+    phone: data.phone || '',
+    specialRequests: data.specialRequests || '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -76,7 +78,10 @@ export default function GuestInformation({
     }
 
     onUpdate({
-      guestInfo: formData,
+      fullName: `${formData.firstName} ${formData.lastName}`.trim(),
+      email: formData.email,
+      phone: formData.phone,
+      specialRequests: formData.specialRequests,
     });
     onNext();
   };

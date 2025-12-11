@@ -18,7 +18,7 @@ export default function Confirmation({
   reservationData,
   confirmationId,
 }: ConfirmationProps) {
-  const { checkIn, checkOut, selectedRoom, guestInfo, totalPrice, nights } =
+  const { checkIn, checkOut, selectedRoom, fullName, email, phone, totalPrice, nights } =
     reservationData;
 
   return (
@@ -60,7 +60,7 @@ export default function Confirmation({
               </h3>
               <p className="text-sm text-navy-600">
                 We&apos;ve sent a confirmation email to{" "}
-                <strong>{guestInfo?.email}</strong> with your reservation
+                <strong>{email}</strong> with your reservation
                 details.
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function Confirmation({
           <Separator />
 
           {/* Contact */}
-          {guestInfo && (
+          {fullName && (
             <div className="flex items-start gap-3">
               <Mail className="w-5 h-5 text-gold-500 mt-0.5" />
               <div className="flex-1">
@@ -153,10 +153,10 @@ export default function Confirmation({
                   Contact Information
                 </p>
                 <p className="text-sm text-navy-600">
-                  {guestInfo.firstName} {guestInfo.lastName}
+                  {fullName}
                 </p>
-                <p className="text-sm text-navy-500">{guestInfo.email}</p>
-                <p className="text-sm text-navy-500">{guestInfo.phone}</p>
+                <p className="text-sm text-navy-500">{email}</p>
+                <p className="text-sm text-navy-500">{phone}</p>
               </div>
             </div>
           )}

@@ -113,7 +113,7 @@ export const roomSchema = z.object({
     .max(1000, 'Amharic description must not exceed 1000 characters')
     .optional(),
   room_type: z.enum(['standard', 'deluxe', 'executive', 'presidential'], {
-    errorMap: () => ({ message: 'Please select a valid room type' }),
+    message: 'Please select a valid room type',
   }),
   size_sqm: z
     .number()

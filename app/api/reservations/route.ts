@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { format } from 'date-fns';
+import { prisma } from '@/lib/db/prisma';
+import type { ReservationStatus } from '@prisma/client';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -231,7 +233,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status');
+    const status = searchParams.get('status') as ReservationStatus | null;
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '20');
 
