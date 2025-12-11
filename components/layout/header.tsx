@@ -100,7 +100,7 @@ export default function Header() {
                 'lg:hidden p-2 rounded-md transition-colors',
                 isScrolled || !isHomePage
                   ? 'text-navy-600 hover:bg-navy-50'
-                  : 'text-white hover:bg-white/10'
+                  : 'text-black hover:bg-white/10'
               )}
               aria-label="Toggle menu"
               type="button"
