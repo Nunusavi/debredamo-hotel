@@ -264,6 +264,17 @@ html {
   color: var(--dark-900);
 }
 
+/* Image filters for uniform appearance */
+img {
+  filter: brightness(0.92) contrast(1.08) saturate(1.05);
+  transition: filter 0.3s ease;
+}
+
+/* Preserve original brightness on hover for interactive images */
+img:hover {
+  filter: brightness(0.95) contrast(1.1) saturate(1.08);
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

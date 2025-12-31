@@ -138,14 +138,6 @@ export default function RoomDetailPage({ params }: PageProps) {
                   {room.description}
                 </p>
 
-                {room.description_am && (
-                  <div className="bg-gradient-to-br from-gold-50 to-green-50 rounded-2xl p-6 border-2 border-gold-200 mb-8">
-                    <p className="text-lg font-ethiopic text-gray-800 leading-relaxed">
-                      {room.description_am}
-                    </p>
-                  </div>
-                )}
-
                 <div className="flex flex-wrap items-center gap-6 text-gray-700">
                   {room.size_sqm && (
                     <div className="flex items-center gap-2">

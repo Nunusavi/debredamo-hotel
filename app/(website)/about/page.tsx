@@ -74,7 +74,7 @@ export default function AboutPage() {
           </div>
           <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/images/Outside_2.jpg"
+              src="/images/Outside_3.jpg"
               alt="DEBREDAMO HOTEL Exterior"
               fill
               className="object-cover"
