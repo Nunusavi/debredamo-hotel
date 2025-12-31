@@ -205,8 +205,6 @@ async function main() {
 
   // Clear existing data (development only!)
   console.log("🗑️  Clearing existing data...");
-  await prisma.reservationRequest.deleteMany();
-  await prisma.availability.deleteMany();
   await prisma.room.deleteMany();
   console.log("✅ Cleared existing data\n");
 
@@ -238,29 +236,6 @@ async function main() {
     console.log(`  ✓ Created room: ${room.name}`);
   }
   console.log(`✅ Seeded ${rooms.length} rooms\n`);
-
-  // Seed initial availability (90 days ahead, 1 room of each type per day)
-  console.log("📅 Seeding availability (90 days)...");
-  const startDate = new Date();
-  let availabilityCount = 0;
-
-  for (let i = 0; i < 90; i++) {
-    const date = new Date(startDate);
-    date.setDate(date.getDate() + i);
-
-    for (const room of rooms) {
-      await prisma.availability.create({
-        data: {
-          roomId: room.id,
-          date,
-          availableCount: 1, // 1 of each room type
-          minStayNights: 1,
-        },
-      });
-      availabilityCount++;
-    }
-  }
-  console.log(`✅ Seeded ${availabilityCount} availability records\n`);
 
   console.log("🎉 Seed completed successfully!");
 }

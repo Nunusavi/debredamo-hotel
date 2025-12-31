@@ -1,18 +1,24 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import RoomCard from './room-card';
-import type { Room } from '@/types';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import RoomCard from "./room-card";
+import type { Room } from "@/types";
+import { Button } from "@/components/ui/button";
 
 interface RoomGridProps {
   rooms: Room[];
-  locale?: 'en' | 'am';
+  locale?: "en" | "am";
   initialLimit?: number;
 }
 
-export default function RoomGrid({ rooms, locale = 'en', initialLimit }: RoomGridProps) {
-  const [displayLimit, setDisplayLimit] = useState(initialLimit || rooms.length);
+export default function RoomGrid({
+  rooms,
+  locale = "en",
+  initialLimit,
+}: RoomGridProps) {
+  const [displayLimit, setDisplayLimit] = useState(
+    initialLimit || rooms.length
+  );
 
   const displayedRooms = initialLimit ? rooms.slice(0, displayLimit) : rooms;
   const hasMore = initialLimit && displayLimit < rooms.length;
@@ -24,11 +30,11 @@ export default function RoomGrid({ rooms, locale = 'en', initialLimit }: RoomGri
   if (rooms.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="inline-block p-8 bg-navy-50 rounded-lg">
-          <h3 className="text-xl font-semibold text-navy-600 mb-2">
+        <div className="inline-block p-8 bg-green-50 rounded-lg">
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">
             No rooms found
           </h3>
-          <p className="text-navy-500">
+          <p className="text-gray-600">
             Try adjusting your filters or search criteria
           </p>
         </div>
@@ -40,9 +46,9 @@ export default function RoomGrid({ rooms, locale = 'en', initialLimit }: RoomGri
     <div className="space-y-8">
       {/* Results Count */}
       <div className="flex items-center justify-between">
-        <p className="text-navy-600">
-          Showing <span className="font-semibold">{displayedRooms.length}</span> of{' '}
-          <span className="font-semibold">{rooms.length}</span> rooms
+        <p className="text-gray-800">
+          Showing <span className="font-semibold">{displayedRooms.length}</span>{" "}
+          of <span className="font-semibold">{rooms.length}</span> rooms
         </p>
       </div>
 
@@ -65,7 +71,7 @@ export default function RoomGrid({ rooms, locale = 'en', initialLimit }: RoomGri
             onClick={handleLoadMore}
             variant="outline"
             size="lg"
-            className="border-navy-300 text-navy-600 hover:bg-navy-50"
+            className="border-green-300 text-gray-800 hover:bg-green-50"
           >
             Load More Rooms
           </Button>

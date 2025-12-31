@@ -1,10 +1,10 @@
-// Debredamo Hotel - Type Definitions
+// DEBREDAMO HOTEL - Type Definitions
 
 // =============================================
 // ROOM TYPES
 // =============================================
 
-export type RoomType = 'standard' | 'deluxe' | 'executive' | 'presidential';
+export type RoomType = "standard" | "deluxe" | "executive" | "presidential";
 
 export interface RoomImage {
   url: string;
@@ -28,57 +28,6 @@ export interface Room {
   display_order: number;
   created_at: string;
   updated_at: string;
-}
-
-// =============================================
-// AVAILABILITY TYPES
-// =============================================
-
-export interface Availability {
-  id: string;
-  room_id: string;
-  date: string; // ISO date string (YYYY-MM-DD)
-  available_count: number;
-  price_override_etb?: number;
-  min_stay_nights: number;
-  created_at: string;
-}
-
-// =============================================
-// RESERVATION TYPES
-// =============================================
-
-export type ReservationStatus = 'pending' | 'contacted' | 'confirmed' | 'declined' | 'cancelled';
-
-export interface ReservationRequest {
-  id: string;
-  request_number: string;
-  room_id?: string;
-  room_name: string;
-  guest_name: string;
-  guest_email: string;
-  guest_phone: string;
-  check_in: string; // ISO date string
-  check_out: string; // ISO date string
-  num_guests: number;
-  num_nights: number;
-  estimated_price_etb?: number;
-  special_requests?: string;
-  status: ReservationStatus;
-  admin_notes?: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface ReservationFormData {
-  roomId?: string;
-  guestName: string;
-  guestEmail: string;
-  guestPhone: string;
-  checkIn: string;
-  checkOut: string;
-  numGuests: number;
-  specialRequests?: string;
 }
 
 // =============================================
@@ -127,7 +76,7 @@ export interface BlogPost {
 // CONTACT TYPES
 // =============================================
 
-export type ContactStatus = 'new' | 'read' | 'replied';
+export type ContactStatus = "new" | "read" | "replied";
 
 export interface ContactSubmission {
   id: string;
@@ -223,7 +172,7 @@ export interface PaginatedResponse<T> {
 // LANGUAGE TYPES
 // =============================================
 
-export type Locale = 'en' | 'am';
+export type Locale = "en" | "am";
 
 export interface LocaleContent {
   en: string;

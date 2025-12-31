@@ -1,9 +1,11 @@
-import { Resend } from 'resend';
-import { format } from 'date-fns';
-import { formatCurrency } from './utils';
+import { Resend } from "resend";
+import { format } from "date-fns";
+import { formatCurrency } from "./utils";
 
 // Initialize Resend only if API key is available
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 interface ReservationConfirmationProps {
   guestEmail: string;
@@ -124,14 +126,14 @@ export async function sendReservationConfirmation({
       </head>
       <body>
         <div class="header">
-          <h1 style="margin: 0; font-size: 28px;">Debredamo Hotel</h1>
+          <h1 style="margin: 0; font-size: 28px;">DEBREDAMO HOTEL</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9;">Reservation Confirmation</p>
         </div>
 
         <div class="content">
           <h2 style="color: #1A2332; margin-top: 0;">Dear ${guestName},</h2>
 
-          <p>Thank you for choosing Debredamo Hotel! We have received your reservation request.</p>
+          <p>Thank you for choosing DEBREDAMO HOTEL! We have received your reservation request.</p>
 
           <div class="confirmation-box">
             <p style="margin: 0 0 10px 0; color: #6B7280;">Confirmation ID</p>
@@ -142,11 +144,17 @@ export async function sendReservationConfirmation({
           <div class="details">
             <div class="detail-row">
               <span class="label">Check-in</span>
-              <span class="value">${format(checkInDate, 'EEEE, MMMM dd, yyyy')}</span>
+              <span class="value">${format(
+                checkInDate,
+                "EEEE, MMMM dd, yyyy"
+              )}</span>
             </div>
             <div class="detail-row">
               <span class="label">Check-out</span>
-              <span class="value">${format(checkOutDate, 'EEEE, MMMM dd, yyyy')}</span>
+              <span class="value">${format(
+                checkOutDate,
+                "EEEE, MMMM dd, yyyy"
+              )}</span>
             </div>
             <div class="detail-row">
               <span class="label">Room</span>
@@ -154,7 +162,9 @@ export async function sendReservationConfirmation({
             </div>
             <div class="detail-row">
               <span class="label">Total Price</span>
-              <span class="value" style="color: #B8860B; font-size: 18px;">${formatCurrency(totalPrice)}</span>
+              <span class="value" style="color: #B8860B; font-size: 18px;">${formatCurrency(
+                totalPrice
+              )}</span>
             </div>
           </div>
 
@@ -176,9 +186,9 @@ export async function sendReservationConfirmation({
         </div>
 
         <div class="footer">
-          <p style="margin: 0 0 10px 0;"><strong>Debredamo Hotel</strong></p>
+          <p style="margin: 0 0 10px 0;"><strong>DEBREDAMO HOTEL</strong></p>
           <p style="margin: 5px 0;">Addis Ababa, Ethiopia</p>
-          <p style="margin: 5px 0;">Phone: +251-11-123-4567</p>
+          <p style="margin: 5px 0;">Phone: +251116612630</p>
           <p style="margin: 5px 0;">Email: reservations@debredamohotel.com</p>
         </div>
       </body>
@@ -186,17 +196,17 @@ export async function sendReservationConfirmation({
   `;
 
   const textContent = `
-Debredamo Hotel - Reservation Confirmation
+DEBREDAMO HOTEL - Reservation Confirmation
 
 Dear ${guestName},
 
-Thank you for choosing Debredamo Hotel! We have received your reservation request.
+Thank you for choosing DEBREDAMO HOTEL! We have received your reservation request.
 
 Confirmation ID: ${confirmationId}
 
 Reservation Details:
-- Check-in: ${format(checkInDate, 'EEEE, MMMM dd, yyyy')}
-- Check-out: ${format(checkOutDate, 'EEEE, MMMM dd, yyyy')}
+- Check-in: ${format(checkInDate, "EEEE, MMMM dd, yyyy")}
+- Check-out: ${format(checkOutDate, "EEEE, MMMM dd, yyyy")}
 - Room: ${roomName}
 - Total Price: ${formatCurrency(totalPrice)}
 
@@ -208,30 +218,30 @@ What Happens Next?
 Important: This is a reservation request, not a confirmed booking. We will contact you shortly to finalize your reservation.
 
 Contact Us:
-Phone: +251-11-123-4567
+Phone: +251116612630
 Email: reservations@debredamohotel.com
 
-Debredamo Hotel
+DEBREDAMO HOTEL
 Addis Ababa, Ethiopia
   `;
 
   // Skip email sending if Resend is not configured
   if (!resend) {
-    console.log('Resend API key not configured. Skipping confirmation email.');
+    console.log("Resend API key not configured. Skipping confirmation email.");
     console.log(`Would have sent confirmation email to: ${guestEmail}`);
     return;
   }
 
   try {
     await resend.emails.send({
-      from: 'Debredamo Hotel <reservations@debredamohotel.com>',
+      from: "DEBREDAMO HOTEL <reservations@debredamohotel.com>",
       to: guestEmail,
       subject: `Reservation Confirmation - ${confirmationId}`,
       html: htmlContent,
       text: textContent,
     });
   } catch (error) {
-    console.error('Error sending confirmation email:', error);
+    console.error("Error sending confirmation email:", error);
     throw error;
   }
 }
@@ -326,11 +336,11 @@ export async function sendAdminNotification({
             </div>
             <div class="detail-row">
               <span class="label">Check-in:</span>
-              <span>${format(checkInDate, 'EEEE, MMMM dd, yyyy')}</span>
+              <span>${format(checkInDate, "EEEE, MMMM dd, yyyy")}</span>
             </div>
             <div class="detail-row">
               <span class="label">Check-out:</span>
-              <span>${format(checkOutDate, 'EEEE, MMMM dd, yyyy')}</span>
+              <span>${format(checkOutDate, "EEEE, MMMM dd, yyyy")}</span>
             </div>
             <div class="detail-row">
               <span class="label">Room:</span>
@@ -342,7 +352,9 @@ export async function sendAdminNotification({
             </div>
             <div class="detail-row">
               <span class="label">Total Price:</span>
-              <span style="color: #B8860B; font-weight: bold;">${formatCurrency(totalPrice)}</span>
+              <span style="color: #B8860B; font-weight: bold;">${formatCurrency(
+                totalPrice
+              )}</span>
             </div>
             ${
               specialRequests
@@ -354,7 +366,7 @@ export async function sendAdminNotification({
               </div>
             </div>
             `
-                : ''
+                : ""
             }
           </div>
 
@@ -371,20 +383,204 @@ export async function sendAdminNotification({
 
   // Skip email sending if Resend is not configured
   if (!resend) {
-    console.log('Resend API key not configured. Skipping admin notification email.');
-    console.log(`Would have sent admin notification for reservation: ${reservationId}`);
+    console.log(
+      "Resend API key not configured. Skipping admin notification email."
+    );
+    console.log(
+      `Would have sent admin notification for reservation: ${reservationId}`
+    );
     return;
   }
 
   try {
     await resend.emails.send({
-      from: 'Debredamo Hotel System <system@debredamohotel.com>',
-      to: process.env.ADMIN_EMAIL || 'admin@debredamohotel.com',
+      from: "DEBREDAMO HOTEL System <system@debredamohotel.com>",
+      to: process.env.ADMIN_EMAIL || "admin@debredamohotel.com",
       subject: `New Reservation Request - ${reservationId}`,
       html: htmlContent,
     });
   } catch (error) {
-    console.error('Error sending admin notification:', error);
+    console.error("Error sending admin notification:", error);
+    throw error;
+  }
+}
+
+interface ContactNotificationProps {
+  submissionId: string;
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+  submittedAt: string;
+}
+
+export async function sendContactNotification({
+  submissionId,
+  name,
+  email,
+  phone,
+  subject,
+  message,
+  submittedAt,
+}: ContactNotificationProps) {
+  const submittedDate = new Date(submittedAt);
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #1A2332;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+          }
+          .header {
+            background: #2563EB;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+          }
+          .content {
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+          }
+          .details {
+            background: #F9FAFB;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+          }
+          .detail-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+          }
+          .detail-row:last-child {
+            border-bottom: none;
+          }
+          .label {
+            color: #6B7280;
+            font-weight: 600;
+            display: inline-block;
+            width: 120px;
+          }
+          .message-box {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1 style="margin: 0;">📧 New Contact Form Submission</h1>
+        </div>
+
+        <div class="content">
+          <p style="color: #2563EB; font-weight: bold; font-size: 16px;">
+            You have received a new message from your website contact form.
+          </p>
+
+          <h3>Submission ID: ${submissionId}</h3>
+
+          <div class="details">
+            <div class="detail-row">
+              <span class="label">Name:</span>
+              <span>${name}</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Email:</span>
+              <span><a href="mailto:${email}">${email}</a></span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Phone:</span>
+              <span>${phone}</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Subject:</span>
+              <span><strong>${subject}</strong></span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Submitted:</span>
+              <span>${format(submittedDate, "EEEE, MMMM dd, yyyy 'at' hh:mm a")}</span>
+            </div>
+          </div>
+
+          <h3>Message:</h3>
+          <div class="message-box">
+${message}
+          </div>
+
+          <p style="background: #EFF6FF; border-left: 4px solid #2563EB; padding: 15px; margin: 20px 0;">
+            <strong>Action Required:</strong><br>
+            Please respond to this inquiry within 24 hours to ensure excellent customer service.
+          </p>
+
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="mailto:${email}?subject=Re: ${encodeURIComponent(subject)}"
+               style="display: inline-block; background: #2563EB; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px;">
+              Reply to Customer
+            </a>
+          </div>
+        </div>
+
+        <div style="background: #F9FAFB; padding: 20px; text-align: center; border-radius: 0 0 8px 8px; color: #6B7280; font-size: 14px;">
+          <p style="margin: 0;"><strong>DEBREDAMO HOTEL</strong> - Contact Form Notification</p>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const textContent = `
+DEBREDAMO HOTEL - New Contact Form Submission
+
+Submission ID: ${submissionId}
+
+Contact Details:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Subject: ${subject}
+Submitted: ${format(submittedDate, "EEEE, MMMM dd, yyyy 'at' hh:mm a")}
+
+Message:
+${message}
+
+---
+Please respond to this inquiry within 24 hours.
+Reply to: ${email}
+  `;
+
+  // Skip email sending if Resend is not configured
+  if (!resend) {
+    console.log("Resend API key not configured. Skipping contact notification email.");
+    console.log(`Would have sent contact notification for submission: ${submissionId}`);
+    return;
+  }
+
+  try {
+    await resend.emails.send({
+      from: "DEBREDAMO HOTEL System <system@debredamohotel.com>",
+      to: process.env.ADMIN_EMAIL || "info@debredamohotel.com",
+      subject: `New Contact Form: ${subject}`,
+      html: htmlContent,
+      text: textContent,
+      replyTo: email,
+    });
+  } catch (error) {
+    console.error("Error sending contact notification:", error);
     throw error;
   }
 }

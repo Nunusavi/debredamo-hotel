@@ -1,53 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db/neon';
-import { contactSubmissions } from '@/lib/db/schema';
+import { prisma } from '@/lib/db/prisma';
+import { contactSchema } from '@/lib/validations';
+import { sendContactNotification } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    const { name, email, phone, subject, message } = body;
+    // Validate using Zod schema
+    const validation = contactSchema.safeParse(body);
 
-    // Validation
-    if (!name || !email || !subject || !message) {
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        {
+          error: 'Validation failed',
+          details: validation.error.issues
+        },
         { status: 400 }
       );
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email address' },
-        { status: 400 }
-      );
-    }
+    const { name, email, phone, subject, message } = validation.data;
 
-    // Insert contact submission into database
-    const [submission] = await db
-      .insert(contactSubmissions)
-      .values({
+    // Insert contact submission into database using Prisma
+    const submission = await prisma.contactSubmission.create({
+      data: {
         name,
         email,
         phone: phone || null,
         subject,
         message,
         status: 'new',
-      })
-      .returning();
+      },
+    });
 
-    if (!submission) {
-      console.error('Database error: Failed to insert contact submission');
-      return NextResponse.json(
-        { error: 'Failed to submit message' },
-        { status: 500 }
-      );
+    // Send email notification to admin
+    try {
+      await sendContactNotification({
+        submissionId: submission.id,
+        name,
+        email,
+        phone: phone || 'Not provided',
+        subject,
+        message,
+        submittedAt: submission.createdAt.toISOString(),
+      });
+    } catch (emailError) {
+      console.error('Failed to send contact notification email:', emailError);
+      // Don't fail the request if email fails
     }
-
-    // TODO: Send email notification to admin
-    // You can integrate this with the existing email service
 
     return NextResponse.json(
       {

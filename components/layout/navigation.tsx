@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { mainNavigation } from '@/config/navigation';
-import { cn } from '@/lib/utils';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { mainNavigation } from "@/config/navigation";
+import { cn } from "@/lib/utils";
 
 interface NavigationProps {
   isScrolled?: boolean;
@@ -13,8 +13,8 @@ export default function Navigation({ isScrolled = false }: NavigationProps) {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === "/") {
+      return pathname === "/";
     }
     return pathname.startsWith(href);
   };
@@ -29,16 +29,16 @@ export default function Navigation({ isScrolled = false }: NavigationProps) {
             key={link.href}
             href={link.href}
             className={cn(
-              'relative text-sm font-medium transition-colors duration-200',
-              'hover:text-gold-500',
+              "relative text-sm font-medium transition-colors duration-200",
+              "hover:text-gold-500",
               active
-                ? 'text-gold-500'
+                ? "text-gold-500"
                 : isScrolled
-                  ? 'text-navy-600'
-                  : 'text-black',
-              'after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300',
-              active && 'after:w-full',
-              'hover:after:w-full'
+                ? "text-gray-800"
+                : "text-black",
+              "after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300",
+              active && "after:w-full",
+              "hover:after:w-full"
             )}
           >
             {link.label}

@@ -21,7 +21,7 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-20 md:py-32",
+        "relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white py-20 md:py-32",
         backgroundImage && "bg-cover bg-center",
         className
       )}

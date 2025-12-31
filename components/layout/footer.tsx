@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { siteConfig } from '@/config/site';
-import { footerNavigation } from '@/config/navigation';
+import Link from "next/link";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  MapPin,
+  Phone,
+  Mail,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { footerNavigation } from "@/config/navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: Implement newsletter subscription
-    console.log('Newsletter subscription');
-  };
-
   return (
-    <footer className="bg-navy-600 text-white">
+    <footer className="bg-green-800 text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -31,7 +31,7 @@ export default function Footer() {
                 {siteConfig.name.am}
               </p>
             </div>
-            <p className="text-navy-200 text-sm leading-relaxed">
+            <p className="text-green-200 text-sm leading-relaxed">
               Experience luxury and comfort in the heart of Addis Ababa. Your
               home away from home.
             </p>
@@ -43,7 +43,7 @@ export default function Footer() {
                   href={siteConfig.links.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-green-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
@@ -54,7 +54,7 @@ export default function Footer() {
                   href={siteConfig.links.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-green-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
@@ -65,7 +65,7 @@ export default function Footer() {
                   href={siteConfig.links.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-green-500 hover:bg-gold-500 flex items-center justify-center transition-colors"
                   aria-label="Twitter"
                 >
                   <Twitter className="w-5 h-5" />
@@ -84,7 +84,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-navy-200 hover:text-gold-400 transition-colors text-sm"
+                    className="text-green-200 hover:text-gold-400 transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-navy-200 hover:text-gold-400 transition-colors text-sm"
+                    className="text-green-200 hover:text-gold-400 transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -121,8 +121,8 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3 text-sm">
                   <MapPin className="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-navy-200">
-                    {siteConfig.contact.address.street},{' '}
+                  <span className="text-green-200">
+                    {siteConfig.contact.address.street},{" "}
                     {siteConfig.contact.address.city}
                   </span>
                 </li>
@@ -130,7 +130,7 @@ export default function Footer() {
                   <Phone className="w-5 h-5 text-gold-400 flex-shrink-0" />
                   <a
                     href={`tel:${siteConfig.contact.phone}`}
-                    className="text-navy-200 hover:text-gold-400 transition-colors"
+                    className="text-green-200 hover:text-gold-400 transition-colors"
                   >
                     {siteConfig.contact.phone}
                   </a>
@@ -139,7 +139,7 @@ export default function Footer() {
                   <Mail className="w-5 h-5 text-gold-400 flex-shrink-0" />
                   <a
                     href={`mailto:${siteConfig.contact.email}`}
-                    className="text-navy-200 hover:text-gold-400 transition-colors"
+                    className="text-green-200 hover:text-gold-400 transition-colors"
                   >
                     {siteConfig.contact.email}
                   </a>
@@ -147,37 +147,16 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Newsletter Signup */}
-            <div>
-              <h4 className="text-sm font-semibold mb-2 text-gold-400">
-                Newsletter
-              </h4>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-2">
-                <Input
-                  type="email"
-                  placeholder="Your email"
-                  className="bg-navy-500 border-navy-400 text-white placeholder:text-navy-300"
-                  required
-                />
-                <Button
-                  type="submit"
-                  size="sm"
-                  className="w-full bg-gold-500 hover:bg-gold-600 text-white"
-                >
-                  Subscribe
-                </Button>
-              </form>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-navy-500">
+      <div className="border-t border-green-500">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <p className="text-navy-300 text-sm text-center md:text-left">
+            <p className="text-green-300 text-sm text-center md:text-left">
               © {currentYear} {siteConfig.name.en}. All rights reserved.
             </p>
 
@@ -187,7 +166,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-navy-300 hover:text-gold-400 transition-colors text-sm"
+                  className="text-green-300 hover:text-gold-400 transition-colors text-sm"
                 >
                   {link.label}
                 </Link>

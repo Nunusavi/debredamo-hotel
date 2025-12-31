@@ -1,15 +1,16 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Navigation from './navigation';
-import MobileMenu from './mobile-menu';
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navigation from "./navigation";
+import MobileMenu from "./mobile-menu";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { generateGenericReservationEmail } from "@/lib/mailto";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,8 +22,8 @@ export default function Header() {
       setIsScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu when route changes
@@ -32,43 +33,43 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   return (
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          "fixed top-0 left-0 right-0 z-50 transition-all text-black duration-300",
           isScrolled || !isHomePage
-            ? 'bg-white/95 backdrop-blur-md shadow-md'
-            : 'bg-transparent'
+            ? "bg-white/95 backdrop-blur-md shadow-md"
+            : "bg-transparent"
         )}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center space-x-2 group"
-            >
-              <Image src="/images/Debredamo.webp" alt="Debredamo hotel logo" width={50} height={50} />
+            <Link href="/" className="flex items-center space-x-2 group">
+              <Image
+                src="/images/Debredamo.webp"
+                alt="DEBREDAMO HOTEL logo"
+                width={50}
+                height={50}
+              />
               <div className="flex flex-col">
                 <span
                   className={cn(
-                    'text-2xl md:text-3xl font-serif font-bold transition-colors',
-                    isScrolled || !isHomePage
-                      ? 'text-navy-600'
-                      : 'text-black'
+                    "text-2xl md:text-3xl font-serif font-bold transition-colors",
+                    isScrolled || !isHomePage ? "" : "text-green-600"
                   )}
                 >
                   {siteConfig.name.en}
                 </span>
                 <span
                   className={cn(
-                    'text-sm font-ethiopic transition-colors',
+                    "text-sm font-ethiopic transition-colors",
                     isScrolled || !isHomePage
-                      ? 'text-navy-400'
-                      : 'text-black/90'
+                      ? "text-gray-500"
+                      : "text-black/90"
                   )}
                 >
                   {siteConfig.name.am}
@@ -83,24 +84,24 @@ export default function Header() {
 
             {/* CTA Button - Desktop */}
             <div className="hidden lg:block">
-              <Link href="/reservation">
+              <a href={generateGenericReservationEmail()}>
                 <Button
                   size="lg"
-                  className="bg-gold-500 hover:bg-gold-600 text-white font-semibold"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold"
                 >
                   Book Now
                 </Button>
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
-                'lg:hidden p-2 rounded-md transition-colors',
+                "lg:hidden p-2 rounded-md transition-colors",
                 isScrolled || !isHomePage
-                  ? 'text-navy-600 hover:bg-navy-50'
-                  : 'text-black hover:bg-white/10'
+                  ? "text-gray-800 hover:bg-green-50"
+                  : "text-black hover:bg-white/10"
               )}
               aria-label="Toggle menu"
               type="button"

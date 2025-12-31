@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X, Maximize2 } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { cn } from '@/lib/utils';
-import type { RoomImage } from '@/types';
+import { useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+import type { RoomImage } from "@/types";
 
 interface ImageGalleryProps {
   images: RoomImage[];
@@ -37,10 +37,10 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
 
   if (!hasImages) {
     return (
-      <div className="w-full h-[500px] bg-navy-100 rounded-lg flex items-center justify-center">
+      <div className="w-full h-[500px] bg-green-100 rounded-lg flex items-center justify-center">
         <div className="text-center">
-          <Maximize2 className="w-16 h-16 text-navy-300 mx-auto mb-4" />
-          <p className="text-navy-500">No images available</p>
+          <Maximize2 className="w-16 h-16 text-green-300 mx-auto mb-4" />
+          <p className="text-gray-600">No images available</p>
         </div>
       </div>
     );
@@ -51,7 +51,7 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-navy-100 group">
+      <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-green-100 group">
         {!imageError[selectedIndex] ? (
           <>
             <Image
@@ -75,8 +75,8 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
-              <Maximize2 className="w-16 h-16 text-navy-300 mx-auto mb-2" />
-              <p className="text-navy-400">Image unavailable</p>
+              <Maximize2 className="w-16 h-16 text-green-300 mx-auto mb-2" />
+              <p className="text-gray-500">Image unavailable</p>
             </div>
           </div>
         )}
@@ -115,10 +115,10 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
               key={index}
               onClick={() => handleThumbnailClick(index)}
               className={cn(
-                'relative aspect-video rounded-lg overflow-hidden transition-all',
+                "relative aspect-video rounded-lg overflow-hidden transition-all",
                 selectedIndex === index
-                  ? 'ring-2 ring-gold-500 ring-offset-2'
-                  : 'hover:ring-2 hover:ring-navy-300 hover:ring-offset-2 opacity-70 hover:opacity-100'
+                  ? "ring-2 ring-gold-500 ring-offset-2"
+                  : "hover:ring-2 hover:ring-green-300 hover:ring-offset-2 opacity-70 hover:opacity-100"
               )}
             >
               {!imageError[index] ? (
@@ -130,8 +130,8 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
                   onError={() => handleImageError(index)}
                 />
               ) : (
-                <div className="w-full h-full bg-navy-100 flex items-center justify-center">
-                  <Maximize2 className="w-4 h-4 text-navy-300" />
+                <div className="w-full h-full bg-green-100 flex items-center justify-center">
+                  <Maximize2 className="w-4 h-4 text-green-300" />
                 </div>
               )}
             </button>

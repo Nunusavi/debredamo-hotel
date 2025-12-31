@@ -29,7 +29,7 @@ export default function Error({
 
         {/* Content */}
         <div>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy-900 mb-4">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Something Went Wrong
           </h1>
 

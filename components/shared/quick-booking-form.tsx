@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Users, CalendarIcon } from "lucide-react";
+import { Users, CalendarIcon, Mail } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -14,21 +13,33 @@ import {
 import { cn } from "@/lib/utils";
 
 export function QuickBookingForm() {
-  const router = useRouter();
-
   const [checkIn, setCheckIn] = useState<Date | undefined>(new Date());
   const [checkOut, setCheckOut] = useState<Date | undefined>(undefined);
   const [guests, setGuests] = useState(2);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to reservation page with pre-filled data
-    const checkInStr = checkIn ? format(checkIn, "yyyy-MM-dd") : "";
-    const checkOutStr = checkOut ? format(checkOut, "yyyy-MM-dd") : "";
 
-    router.push(
-      `/reservation?checkin=${checkInStr}&checkout=${checkOutStr}&guests=${guests}`
-    );
+    // Create email with booking details
+    const checkInStr = checkIn ? format(checkIn, "PPP") : "Not selected";
+    const checkOutStr = checkOut ? format(checkOut, "PPP") : "Not selected";
+
+    const subject = "Room Booking Inquiry - DEBREDAMO HOTEL";
+    const body = `Hello,
+
+I would like to inquire about booking a room at DEBREDAMO HOTEL.
+
+Booking Details:
+- Check-in Date: ${checkInStr}
+- Check-out Date: ${checkOutStr}
+- Number of Guests: ${guests}
+
+Please let me know about availability and pricing.
+
+Thank you!`;
+
+    const mailtoUrl = `mailto:reservation@debredamohotel.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
   };
 
   const today = new Date();
@@ -39,7 +50,7 @@ export function QuickBookingForm() {
       onSubmit={handleSubmit}
       className="bg-white rounded-lg shadow-2xl p-6 md:p-8 w-full  mx-auto"
     >
-      <h3 className="text-2xl font-serif font-bold text-navy-900 mb-6 text-center">
+      <h3 className="text-2xl font-serif font-bold text-gray-900 mb-6 text-center">
         Find Your Perfect Stay
       </h3>
       <div className="grid md:grid-cols-3 gap-4">
@@ -116,7 +127,7 @@ export function QuickBookingForm() {
             id="guests"
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 h-[50px] bg-white"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 h-[50px] bg-white text-black"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <option key={num} value={num}>
@@ -132,7 +143,8 @@ export function QuickBookingForm() {
         size="lg"
         className="w-full mt-6 bg-gold-500 hover:bg-gold-600 text-white font-semibold text-lg py-6"
       >
-        Check Availability
+        <Mail className="w-5 h-5 mr-2" />
+        Send Booking Inquiry
       </Button>
     </form>
   );

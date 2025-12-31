@@ -6,29 +6,41 @@
 :root {
   /* Color Palette */
 
-  /* Gold Colors */
-  --gold-50: #F4EDD4;
-  --gold-100: #EFE5C1;
-  --gold-200: #E5D49B;
-  --gold-300: #DBC375;
-  --gold-400: #D1B24F;
-  --gold-500: #B8860B;
-  --gold-600: #8E6808;
-  --gold-700: #644A06;
-  --gold-800: #3A2C04;
-  --gold-900: #100E01;
+  /* Brand Green Colors */
+  --green-50: #E8F5ED;
+  --green-100: #C7E6D3;
+  --green-200: #A3D7B8;
+  --green-300: #7FC89D;
+  --green-400: #5BB982;
+  --green-500: #119344;
+  --green-600: #0E7A38;
+  --green-700: #0B612C;
+  --green-800: #084820;
+  --green-900: #052F14;
 
-  /* Navy Colors */
-  --navy-50: #E8E9EC;
-  --navy-100: #D1D4D9;
-  --navy-200: #A3A9B3;
-  --navy-300: #757E8D;
-  --navy-400: #475367;
-  --navy-500: #1A2332;
-  --navy-600: #151C28;
-  --navy-700: #10151E;
-  --navy-800: #0B0E14;
-  --navy-900: #06070A;
+  /* Accent Gold Colors */
+  --gold-50: #FEF7E7;
+  --gold-100: #FCECC0;
+  --gold-200: #FAE099;
+  --gold-300: #F8D472;
+  --gold-400: #F6C84B;
+  --gold-500: #D4A017;
+  --gold-600: #B08614;
+  --gold-700: #8C6C10;
+  --gold-800: #68520C;
+  --gold-900: #443808;
+
+  /* Neutral Dark Colors */
+  --dark-50: #F5F5F6;
+  --dark-100: #E5E6E8;
+  --dark-200: #CBCDD1;
+  --dark-300: #B1B4BA;
+  --dark-400: #979BA3;
+  --dark-500: #2D3748;
+  --dark-600: #252E3D;
+  --dark-700: #1D2532;
+  --dark-800: #151C27;
+  --dark-900: #0D131C;
 
   /* Warm white */
   --warm-white: #FAF9F6;
@@ -72,6 +84,24 @@
   --color-foreground: var(--foreground);
   --color-warm-white: var(--warm-white);
 
+  /* Text colors - dark by default */
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #2d3748;
+  --color-text-muted: #4a5568;
+
+  /* Green shades */
+  --color-green-50: var(--green-50);
+  --color-green-100: var(--green-100);
+  --color-green-200: var(--green-200);
+  --color-green-300: var(--green-300);
+  --color-green-400: var(--green-400);
+  --color-green-500: var(--green-500);
+  --color-green-600: var(--green-600);
+  --color-green-700: var(--green-700);
+  --color-green-800: var(--green-800);
+  --color-green-900: var(--green-900);
+  --color-green: var(--green-500);
+
   /* Gold shades */
   --color-gold-50: var(--gold-50);
   --color-gold-100: var(--gold-100);
@@ -85,23 +115,23 @@
   --color-gold-900: var(--gold-900);
   --color-gold: var(--gold-500);
 
-  /* Navy shades */
-  --color-navy-50: var(--navy-50);
-  --color-navy-100: var(--navy-100);
-  --color-navy-200: var(--navy-200);
-  --color-navy-300: var(--navy-300);
-  --color-navy-400: var(--navy-400);
-  --color-navy-500: var(--navy-500);
-  --color-navy-600: var(--navy-600);
-  --color-navy-700: var(--navy-700);
-  --color-navy-800: var(--navy-800);
-  --color-navy-900: var(--navy-900);
-  --color-navy: var(--navy-500);
+  /* Dark shades */
+  --color-dark-50: var(--dark-50);
+  --color-dark-100: var(--dark-100);
+  --color-dark-200: var(--dark-200);
+  --color-dark-300: var(--dark-300);
+  --color-dark-400: var(--dark-400);
+  --color-dark-500: var(--dark-500);
+  --color-dark-600: var(--dark-600);
+  --color-dark-700: var(--dark-700);
+  --color-dark-800: var(--dark-800);
+  --color-dark-900: var(--dark-900);
+  --color-dark: var(--dark-500);
 
   /* Primary & Secondary */
-  --color-primary: var(--gold-500);
+  --color-primary: var(--green-500);
   --color-primary-foreground: white;
-  --color-secondary: var(--navy-500);
+  --color-secondary: var(--gold-500);
   --color-secondary-foreground: white;
 
   /* Typography */
@@ -224,14 +254,14 @@ html {
 
 /* Focus visible styles */
 *:focus-visible {
-  outline: 2px solid var(--gold-500);
+  outline: 2px solid var(--green-500);
   outline-offset: 2px;
 }
 
 /* Selection styles */
 ::selection {
-  background-color: var(--gold-200);
-  color: var(--navy-900);
+  background-color: var(--green-200);
+  color: var(--dark-900);
 }
 
 .dark {

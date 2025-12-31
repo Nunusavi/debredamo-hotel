@@ -1,4 +1,4 @@
-// Debredamo Hotel - Prisma Schema
+// DEBREDAMO HOTEL - Prisma Schema
 // PostgreSQL database with Neon
 
 generator client {
@@ -34,10 +34,6 @@ model Room {
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
-  // Relations
-  availability       Availability[]
-  reservationRequests ReservationRequest[]
-
   @@index([slug])
   @@index([isActive])
   @@index([roomType])
@@ -50,80 +46,6 @@ enum RoomType {
   deluxe
   executive
   presidential
-}
-
-// =============================================
-// AVAILABILITY
-// =============================================
-model Availability {
-  id               String   @id @default(uuid())
-  roomId           String   @map("room_id")
-  date             DateTime @db.Date
-  availableCount   Int      @default(0) @map("available_count")
-  priceOverrideEtb Decimal? @map("price_override_etb") @db.Decimal(10, 2)
-  minStayNights    Int      @default(1) @map("min_stay_nights")
-
-  createdAt        DateTime @default(now()) @map("created_at")
-
-  // Relations
-  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
-
-  @@unique([roomId, date])
-  @@index([date])
-  @@index([roomId, date])
-  @@map("availability")
-}
-
-// =============================================
-// RESERVATION REQUESTS
-// =============================================
-model ReservationRequest {
-  id                String            @id @default(uuid())
-  requestNumber     String            @unique @map("request_number")
-  roomId            String?           @map("room_id")
-  roomName          String            @map("room_name")
-
-  // Guest details
-  guestName         String            @map("guest_name")
-  guestEmail        String            @map("guest_email")
-  guestPhone        String            @map("guest_phone")
-
-  // Booking details
-  checkIn           DateTime          @db.Date @map("check_in")
-  checkOut          DateTime          @db.Date @map("check_out")
-  numGuests         Int               @map("num_guests")
-  numNights         Int               @map("num_nights")
-
-  // Pricing
-  estimatedPriceEtb Decimal?          @map("estimated_price_etb") @db.Decimal(10, 2)
-
-  // Additional info
-  specialRequests   String?           @map("special_requests")
-  adminNotes        String?           @map("admin_notes")
-
-  // Status management
-  status            ReservationStatus @default(pending)
-
-  createdAt         DateTime          @default(now()) @map("created_at")
-  updatedAt         DateTime          @updatedAt @map("updated_at")
-
-  // Relations
-  room Room? @relation(fields: [roomId], references: [id], onDelete: SetNull)
-
-  @@index([checkIn, checkOut])
-  @@index([status])
-  @@index([guestEmail])
-  @@index([requestNumber])
-  @@index([createdAt(sort: Desc)])
-  @@map("reservation_requests")
-}
-
-enum ReservationStatus {
-  pending
-  contacted
-  confirmed
-  declined
-  cancelled
 }
 
 // =============================================

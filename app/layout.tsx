@@ -22,21 +22,48 @@ const notoEthiopic = Noto_Sans_Ethiopic({
 });
 
 export const metadata: Metadata = {
-  title: "Debredamo Hotel | Luxury Accommodation in Addis Ababa",
-  description: "Experience luxury and comfort in the heart of Addis Ababa. Debredamo Hotel offers premium accommodation, exceptional service, and authentic Ethiopian hospitality.",
-  keywords: ["hotel", "Addis Ababa", "Ethiopia", "luxury accommodation", "business hotel", "city center"],
-  authors: [{ name: "Debredamo Hotel" }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  title: "DEBREDAMO HOTEL | Luxury Accommodation in Addis Ababa",
+  description:
+    "Experience luxury and comfort in the heart of Addis Ababa. DEBREDAMO HOTEL offers premium accommodation, exceptional service, and authentic Ethiopian hospitality.",
+  keywords: [
+    "hotel",
+    "Addis Ababa",
+    "Ethiopia",
+    "luxury accommodation",
+    "business hotel",
+    "city center",
+  ],
+  authors: [{ name: "DEBREDAMO HOTEL" }],
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.png",
+  },
   openGraph: {
-    title: "Debredamo Hotel | Luxury Accommodation in Addis Ababa",
-    description: "Experience luxury and comfort in the heart of Addis Ababa. Premium accommodation with exceptional service.",
+    title: "DEBREDAMO HOTEL | Luxury Accommodation in Addis Ababa",
+    description:
+      "Experience luxury and comfort in the heart of Addis Ababa. Premium accommodation with exceptional service.",
     url: process.env.NEXT_PUBLIC_SITE_URL,
-    siteName: "Debredamo Hotel",
+    siteName: "DEBREDAMO HOTEL",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/Debredamo.webp",
+        width: 1200,
+        height: 630,
+        alt: "DEBREDAMO HOTEL",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Debredamo Hotel | Luxury Accommodation in Addis Ababa",
+    title: "DEBREDAMO HOTEL | Luxury Accommodation in Addis Ababa",
     description: "Experience luxury and comfort in the heart of Addis Ababa.",
   },
   robots: {
@@ -58,7 +85,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${notoEthiopic.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} ${notoEthiopic.variable}`}
+    >
       <body className="antialiased min-h-screen flex flex-col">
         {children}
         <Toaster position="top-center" richColors />

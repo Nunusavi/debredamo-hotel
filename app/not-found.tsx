@@ -8,12 +8,12 @@ export default function NotFound() {
       {/* Background Pattern/Decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-gold-50/30 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-navy-50/30 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-green-50/30 via-transparent to-transparent" />
       </div>
 
       {/* Large Background 404 */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="font-serif text-[30vw] font-bold text-navy-900/[0.03] leading-none tracking-tighter">
+        <span className="font-serif text-[30vw] font-bold text-gray-900/[0.03] leading-none tracking-tighter">
           404
         </span>
       </div>
@@ -24,7 +24,7 @@ export default function NotFound() {
           <span className="font-serif text-3xl font-bold text-gold-600">!</span>
         </div>
 
-        <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy-900 mb-4">
+        <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Page Not Found
         </h1>
 
@@ -37,7 +37,7 @@ export default function NotFound() {
           <Link href="/">
             <Button
               size="lg"
-              className="bg-navy-900 hover:bg-navy-800 text-white min-w-[200px]"
+              className="bg-green-900 hover:bg-green-800 text-white min-w-[200px]"
             >
               <Home className="w-4 h-4 mr-2" />
               Return Home
@@ -47,7 +47,7 @@ export default function NotFound() {
             <Button
               size="lg"
               variant="outline"
-              className="border-navy-200 hover:bg-navy-50 text-navy-900 min-w-[200px]"
+              className="border-green-200 hover:bg-green-50 text-gray-900 min-w-[200px]"
             >
               <Search className="w-4 h-4 mr-2" />
               Browse Rooms
@@ -63,28 +63,28 @@ export default function NotFound() {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
             <Link
               href="/about"
-              className="text-navy-600 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-gold-600 transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/services"
-              className="text-navy-600 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-gold-600 transition-colors"
             >
               Our Services
             </Link>
             <Link
               href="/contact"
-              className="text-navy-600 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-gold-600 transition-colors"
             >
               Contact
             </Link>
-            <Link
-              href="/reservation"
-              className="text-navy-600 hover:text-gold-600 transition-colors"
+            <a
+              href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"
+              className="text-gray-800 hover:text-gold-600 transition-colors"
             >
               Book a Stay
-            </Link>
+            </a>
           </div>
         </div>
       </div>
