@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Home, RefreshCcw } from "lucide-react";
+import { logError } from "@/lib/errors";
 
 export default function Error({
   error,
@@ -13,8 +14,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
-    console.error("Application error:", error);
+    logError("Application error", error);
   }, [error]);
 
   return (
@@ -37,14 +37,6 @@ export default function Error({
             We apologize for the inconvenience. An error occurred while loading
             this page.
           </p>
-
-          {process.env.NODE_ENV === "development" && error.message && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
-              <p className="text-sm font-mono text-red-800 break-all">
-                {error.message}
-              </p>
-            </div>
-          )}
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">

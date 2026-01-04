@@ -1,13 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Star, Sparkles } from "lucide-react";
 import AccommodationClient from "./accommodation-client";
 import { getAllRooms } from "@/lib/data";
 
-export default function AccommodationPage() {
-  // Get rooms from config
-  const rooms = getAllRooms();
+export default async function AccommodationPage() {
+  // Get rooms from database
+  const rooms = await getAllRooms();
 
   return (
     <div className="min-h-screen bg-green-50">
@@ -63,13 +61,14 @@ export default function AccommodationPage() {
               Our dedicated team is here to help you find the perfect room for your stay.
               Contact us for personalized recommendations and special requests.
             </p>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-lg px-12 py-7 rounded-full shadow-2xl hover:shadow-gold-500/50 transition-all duration-300 hover:scale-105"
-              onClick={() => (window.location.href = "/contact")}
-            >
-              Contact Our Team
-            </Button>
+            <a href="/contact">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-lg px-12 py-7 rounded-full shadow-2xl hover:shadow-gold-500/50 transition-all duration-300 hover:scale-105"
+              >
+                Contact Our Team
+              </Button>
+            </a>
           </div>
         </div>
       </section>

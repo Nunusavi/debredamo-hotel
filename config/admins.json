@@ -1,0 +1,10 @@
+{
+  "admins": [
+    {
+      "id": "admin-1",
+      "email": "admin@debredamohotel.com",
+      "password": "$2b$10$WSmfMOTpDzRspQSBA0a0C.TM9ZSVXJnO2zWN3cBh0gDzvBgCMnd0O",
+      "name": "Admin User"
+    }
+  ]
+}

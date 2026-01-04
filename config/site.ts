@@ -146,7 +146,7 @@ export const rooms = [
     max_guests: 1,
     base_price_etb: 1800,
     images: [
-      { url: "/images/Standard Room/612A7200.JPG", alt: "Single room with seating area" },
+      { url: "/images/Standard Room/image.png", alt: "Standard room with queen bed" },
       { url: "/images/Standard Room/612A7208.JPG", alt: "Single room workspace" },
       { url: "/images/Standard Room/612A7220.JPG", alt: "Single room" },
     ],
@@ -178,7 +178,6 @@ export const rooms = [
     max_guests: 2,
     base_price_etb: 2500,
     images: [
-      { url: "/images/Standard Room/612A7194.JPG", alt: "Standard room with queen bed" },
       { url: "/images/Standard Room/612A7200.JPG", alt: "Standard room seating area" },
       { url: "/images/Standard Room/612A7208.JPG", alt: "Standard room workspace" },
       { url: "/images/Standard Room/612A7220.JPG", alt: "Standard room bathroom" },

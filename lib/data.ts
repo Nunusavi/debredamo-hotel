@@ -1,90 +1,158 @@
-// Data access layer - reads from config/site.ts
-import { rooms, amenitiesIcons } from "@/config/site";
-import type { Room } from "@/types";
+// Data access layer - provides access to room data from database
+import { prisma } from '@/lib/db/prisma';
+import { amenitiesIcons } from '@/config/site';
+import type { Room } from '@/types';
 
 /**
  * Get amenity icon name
  */
 export function getAmenityIcon(amenity: string): string {
-  return amenitiesIcons[amenity] || "check";
+  return amenitiesIcons[amenity] || 'check';
+}
+
+/**
+ * Transform Prisma Room to app Room format
+ */
+function transformRoom(prismaRoom: any): Room {
+  return {
+    id: prismaRoom.id,
+    name: prismaRoom.name,
+    name_am: prismaRoom.nameAm,
+    slug: prismaRoom.slug,
+    description: prismaRoom.description,
+    description_am: prismaRoom.descriptionAm,
+    room_type: prismaRoom.roomType,
+    size_sqm: prismaRoom.sizeM2,
+    max_guests: prismaRoom.maxGuests,
+    base_price_etb: Number(prismaRoom.basePriceEtb),
+    images: Array.isArray(prismaRoom.images)
+      ? prismaRoom.images.map((img: any) =>
+          typeof img === 'string' ? { url: img, alt: `${prismaRoom.name} - Room Photo` } : img
+        )
+      : [],
+    amenities: Array.isArray(prismaRoom.amenities) ? prismaRoom.amenities : [],
+    is_active: prismaRoom.isActive,
+    display_order: prismaRoom.displayOrder,
+    created_at: prismaRoom.createdAt.toISOString(),
+    updated_at: prismaRoom.updatedAt.toISOString(),
+  };
 }
 
 /**
  * Get all active rooms
  */
-export function getAllRooms(): Room[] {
-  return rooms.filter((room) => room.is_active) as unknown as Room[];
+export async function getAllRooms(): Promise<Room[]> {
+  const rooms = await prisma.room.findMany({
+    where: { isActive: true },
+    orderBy: { displayOrder: 'asc' },
+  });
+
+  return rooms.map(transformRoom);
 }
 
 /**
  * Get a single room by slug
  */
-export function getRoomBySlug(slug: string): Room | null {
-  const room = rooms.find((r) => r.slug === slug && r.is_active);
-  return room ? (room as unknown as Room) : null;
+export async function getRoomBySlug(slug: string): Promise<Room | null> {
+  const room = await prisma.room.findUnique({
+    where: { slug, isActive: true },
+  });
+
+  return room ? transformRoom(room) : null;
 }
 
 /**
  * Get a single room by ID
  */
-export function getRoomById(id: string): Room | null {
-  const room = rooms.find((r) => r.id === id && r.is_active);
-  return room ? (room as unknown as Room) : null;
+export async function getRoomById(id: string): Promise<Room | null> {
+  const room = await prisma.room.findUnique({
+    where: { id, isActive: true },
+  });
+
+  return room ? transformRoom(room) : null;
 }
 
 /**
  * Get rooms by type
  */
-export function getRoomsByType(roomType: string): Room[] {
-  return rooms.filter(
-    (room) => room.room_type === roomType && room.is_active
-  ) as unknown as Room[];
+export async function getRoomsByType(roomType: string): Promise<Room[]> {
+  const rooms = await prisma.room.findMany({
+    where: {
+      roomType: roomType as any,
+      isActive: true,
+    },
+    orderBy: { displayOrder: 'asc' },
+  });
+
+  return rooms.map(transformRoom);
 }
 
 /**
  * Get featured rooms (first 3 by display order)
  */
-export function getFeaturedRooms(): Room[] {
-  return rooms
-    .filter((room) => room.is_active)
-    .slice(0, 3) as unknown as Room[];
+export async function getFeaturedRooms(): Promise<Room[]> {
+  const rooms = await prisma.room.findMany({
+    where: { isActive: true },
+    orderBy: { displayOrder: 'asc' },
+    take: 3,
+  });
+
+  return rooms.map(transformRoom);
 }
 
 /**
  * Search rooms by name or description
  */
-export function searchRooms(query: string): Room[] {
+export async function searchRooms(query: string): Promise<Room[]> {
   const lowerQuery = query.toLowerCase();
-  return rooms.filter(
-    (room) =>
-      room.is_active &&
-      (room.name.toLowerCase().includes(lowerQuery) ||
-        room.description.toLowerCase().includes(lowerQuery) ||
-        room.name_am?.includes(query) ||
-        room.description_am?.includes(query))
-  ) as unknown as Room[];
+
+  const rooms = await prisma.room.findMany({
+    where: {
+      isActive: true,
+      OR: [
+        { name: { contains: lowerQuery, mode: 'insensitive' } },
+        { description: { contains: lowerQuery, mode: 'insensitive' } },
+        { nameAm: { contains: query } },
+        { descriptionAm: { contains: query } },
+      ],
+    },
+    orderBy: { displayOrder: 'asc' },
+  });
+
+  return rooms.map(transformRoom);
 }
 
 /**
  * Get rooms within a price range
  */
-export function getRoomsByPriceRange(
-  minPrice: number,
-  maxPrice: number
-): Room[] {
-  return rooms.filter(
-    (room) =>
-      room.is_active &&
-      room.base_price_etb >= minPrice &&
-      room.base_price_etb <= maxPrice
-  ) as unknown as Room[];
+export async function getRoomsByPriceRange(minPrice: number, maxPrice: number): Promise<Room[]> {
+  const rooms = await prisma.room.findMany({
+    where: {
+      isActive: true,
+      basePriceEtb: {
+        gte: minPrice,
+        lte: maxPrice,
+      },
+    },
+    orderBy: { displayOrder: 'asc' },
+  });
+
+  return rooms.map(transformRoom);
 }
 
 /**
  * Get rooms that can accommodate a certain number of guests
  */
-export function getRoomsByGuestCount(guestCount: number): Room[] {
-  return rooms.filter(
-    (room) => room.is_active && room.max_guests >= guestCount
-  ) as unknown as Room[];
+export async function getRoomsByGuestCount(guestCount: number): Promise<Room[]> {
+  const rooms = await prisma.room.findMany({
+    where: {
+      isActive: true,
+      maxGuests: {
+        gte: guestCount,
+      },
+    },
+    orderBy: { displayOrder: 'asc' },
+  });
+
+  return rooms.map(transformRoom);
 }

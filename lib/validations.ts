@@ -54,8 +54,8 @@ export const roomSchema = z.object({
     ),
   description: z
     .string()
-    .max(1000, "Description must not exceed 1000 characters")
-    .optional(),
+    .min(10, "Description must be at least 10 characters")
+    .max(1000, "Description must not exceed 1000 characters"),
   description_am: z
     .string()
     .max(1000, "Amharic description must not exceed 1000 characters")
@@ -68,6 +68,7 @@ export const roomSchema = z.object({
     .int("Size must be a whole number")
     .min(15, "Room size must be at least 15 sqm")
     .max(200, "Room size must not exceed 200 sqm")
+    .nullable()
     .optional(),
   max_guests: z
     .number()
@@ -78,6 +79,7 @@ export const roomSchema = z.object({
     .number()
     .min(500, "Price must be at least 500 ETB")
     .max(100000, "Price must not exceed 100,000 ETB"),
+  images: z.array(z.string().min(1, "Image path cannot be empty")).min(1, "At least one image is required"),
   amenities: z.array(z.string()).min(1, "At least one amenity is required"),
   is_active: z.boolean().default(true),
   display_order: z.number().int().default(0),

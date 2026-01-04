@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { logError } from "@/lib/errors";
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -12,8 +13,7 @@ interface ErrorProps {
 
 export default function AccommodationError({ error, reset }: ErrorProps) {
   useEffect(() => {
-    // Log error to error reporting service
-    console.error("Accommodation page error:", error);
+    logError("Accommodation page error", error);
   }, [error]);
 
   return (
@@ -66,14 +66,6 @@ export default function AccommodationError({ error, reset }: ErrorProps) {
                 </Button>
               </Link>
             </div>
-
-            {process.env.NODE_ENV === "development" && error.message && (
-              <div className="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
-                <p className="text-sm font-mono text-red-800 break-all">
-                  {error.message}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </section>

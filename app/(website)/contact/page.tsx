@@ -20,7 +20,9 @@ import {
   Send,
   CheckCircle2,
   AlertCircle,
+  WifiOff,
 } from "lucide-react";
+import { getUserError, logError } from "@/lib/errors";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -34,6 +36,8 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isNetworkError, setIsNetworkError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,9 +62,17 @@ export default function ContactPage() {
         });
       } else {
         setSubmitStatus("error");
+        const error = getUserError(new Error(`HTTP ${response.status}`));
+        setErrorMessage(error.message);
+        setIsNetworkError(error.type === "network");
+        logError("Contact form submission failed", response.status);
       }
-    } catch {
+    } catch (error) {
       setSubmitStatus("error");
+      const userError = getUserError(error);
+      setErrorMessage(userError.message);
+      setIsNetworkError(userError.type === "network");
+      logError("Contact form error", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -104,14 +116,16 @@ export default function ContactPage() {
 
             {submitStatus === "error" && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                {isNetworkError ? (
+                  <WifiOff className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                ) : (
+                  <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                )}
                 <div>
                   <p className="font-medium text-red-900">
-                    Failed to send message
+                    {isNetworkError ? "Connection Error" : "Failed to send message"}
                   </p>
-                  <p className="text-sm text-red-700">
-                    Please try again or contact us directly via phone or email.
-                  </p>
+                  <p className="text-sm text-red-700">{errorMessage}</p>
                 </div>
               </div>
             )}

@@ -57,8 +57,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  const featuredRooms = getFeaturedRooms().slice(0, 4);
+export default async function HomePage() {
+  const featuredRooms = (await getFeaturedRooms()).slice(0, 4);
 
   return (
     <>
@@ -84,18 +84,13 @@ export default function HomePage() {
               <div className="mx-auto">
                 {/* Top Badge and Stars */}
                 <div className="flex flex-col items-center text-center mb-1 animate-in fade-in slide-in-from-top duration-1000">
-                  <div className="inline-flex flex-col items-center bg-gradient-to-r from-gold-500 to-gold-600 text-white px-8 py-3 rounded-full shadow-2xl mb-6">
                     <div>
                       <div className="flex gap-2">
                       {[...Array(4)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-white text-white" />
+                        <Star key={i} className="w-10 h-10 fill-gold-500 text-gold-500" />
                       ))}
                     </div>
                     </div>
-                    <div className="gap-2">
-                      <span className="font-bold text-lg">4-STAR LUXURY HOTEL</span>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Main Heading - Centered and Large */}

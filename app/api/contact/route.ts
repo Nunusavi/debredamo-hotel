@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { contactSchema } from '@/lib/validations';
 import { sendContactNotification } from '@/lib/email';
+import { logError } from '@/lib/errors';
 
 export async function POST(request: NextRequest) {
   try {
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
         submittedAt: submission.createdAt.toISOString(),
       });
     } catch (emailError) {
-      console.error('Failed to send contact notification email:', emailError);
+      logError('Failed to send contact notification email', emailError);
       // Don't fail the request if email fails
     }
 
@@ -59,7 +60,7 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Unexpected error:', error);
+    logError('Contact API error', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

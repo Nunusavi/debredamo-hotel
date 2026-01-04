@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { format } from "date-fns";
 import { formatCurrency } from "./utils";
+import { logError } from "./errors";
 
 // Initialize Resend only if API key is available
 const resend = process.env.RESEND_API_KEY
@@ -241,7 +242,7 @@ Addis Ababa, Ethiopia
       text: textContent,
     });
   } catch (error) {
-    console.error("Error sending confirmation email:", error);
+    logError("Error sending confirmation email", error);
     throw error;
   }
 }
@@ -400,7 +401,7 @@ export async function sendAdminNotification({
       html: htmlContent,
     });
   } catch (error) {
-    console.error("Error sending admin notification:", error);
+    logError("Error sending admin notification", error);
     throw error;
   }
 }
@@ -580,7 +581,7 @@ Reply to: ${email}
       replyTo: email,
     });
   } catch (error) {
-    console.error("Error sending contact notification:", error);
+    logError("Error sending contact notification", error);
     throw error;
   }
 }

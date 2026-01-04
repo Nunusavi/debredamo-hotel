@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { logError } from "@/lib/errors";
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -12,8 +13,7 @@ interface ErrorProps {
 
 export default function RoomDetailError({ error, reset }: ErrorProps) {
   useEffect(() => {
-    // Log error to error reporting service
-    console.error("Room detail page error:", error);
+    logError("Room detail page error", error);
   }, [error]);
 
   return (
@@ -73,14 +73,6 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
                 </Button>
               </Link>
             </div>
-
-            {process.env.NODE_ENV === "development" && error.message && (
-              <div className="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
-                <p className="text-sm font-mono text-red-800 break-all">
-                  {error.message}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </section>
