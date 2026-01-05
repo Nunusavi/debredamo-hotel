@@ -103,37 +103,37 @@ export default function RoomDetailClient({
   ] as const;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warm-white via-white to-green-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-warm-white via-white to-green-50/30 overflow-x-hidden">
       {/* Breadcrumb */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40"
       >
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center space-x-2 text-sm">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
+          <nav className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm overflow-x-auto">
             <Link
               href="/"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-gray-600 hover:text-gray-900 transition-colors whitespace-nowrap"
             >
               Home
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
             <Link
               href="/accommodation"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-gray-600 hover:text-gray-900 transition-colors whitespace-nowrap"
             >
               Accommodation
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
-            <span className="text-gray-900 font-medium">{roomName}</span>
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" />
+            <span className="text-gray-900 font-medium truncate">{roomName}</span>
           </nav>
         </div>
       </motion.div>
 
       {/* Hero Section */}
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
+      <section className="py-4 sm:py-6 md:py-8 lg:py-12">
+        <div className="container mx-auto px-3 sm:px-4">
           <div className="grid lg:grid-cols-[1fr_380px] gap-8">
             {/* Main Content */}
             <div>
@@ -142,15 +142,18 @@ export default function RoomDetailClient({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-8 group"
+                className="relative h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 group"
               >
                 <Image
                   src={room.images[0]?.url || "/images/rooms/placeholder.jpg"}
                   alt={roomName}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw"
                   priority
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
@@ -159,45 +162,45 @@ export default function RoomDetailClient({
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
-                  className="absolute bottom-0 left-0 right-0 p-8 text-white"
+                  className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white"
                 >
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <Badge className="bg-green-600 text-white border-none px-4 py-2">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <Badge className="bg-green-600 text-white border-none px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
                       {getRoomTypeLabel(room.room_type)}
                     </Badge>
                     {room.is_active && (
-                      <Badge className="bg-gold-500 text-white border-none px-4 py-2">
-                        <Star className="w-4 h-4 mr-1 fill-current" />
+                      <Badge className="bg-gold-500 text-white border-none px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
+                        <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 fill-current" />
                         Available
                       </Badge>
                     )}
                   </div>
 
-                  <h1 className="text-4xl md:text-6xl font-serif font-bold mb-3 leading-tight">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 leading-tight break-words">
                     {roomName}
                   </h1>
 
                   {room.name_am && (
-                    <p className="text-xl md:text-2xl font-ethiopic text-gold-400 font-semibold mb-4">
+                    <p className="text-lg sm:text-xl md:text-2xl font-ethiopic text-gold-400 font-semibold mb-4 break-words">
                       {room.name_am}
                     </p>
                   )}
 
-                  <div className="flex flex-wrap items-center gap-6">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-base">
                     {room.size_sqm && (
                       <div className="flex items-center gap-2">
-                        <Maximize2 className="w-5 h-5" />
+                        <Maximize2 className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span className="font-semibold">{room.size_sqm} m²</span>
                       </div>
                     )}
                     <div className="flex items-center gap-2">
-                      <Users className="w-5 h-5" />
+                      <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span className="font-semibold">
                         Up to {room.max_guests} Guests
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-5 h-5" />
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                       <span className="font-semibold">Addis Ababa</span>
                     </div>
                   </div>
@@ -218,7 +221,7 @@ export default function RoomDetailClient({
                       <motion.button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id as TabType)}
-                        className={`flex-1 min-w-[120px] px-4 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                        className={`flex-1 min-w-[80px] sm:min-w-[120px] px-2 sm:px-4 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm ${
                           activeTab === tab.id
                             ? "bg-gradient-to-r from-green-600 to-green-700 text-white shadow-md"
                             : "text-gray-600 hover:bg-gray-100"
@@ -227,7 +230,7 @@ export default function RoomDetailClient({
                         whileTap={{ scale: 0.98 }}
                       >
                         <Icon className="w-4 h-4" />
-                        <span className="hidden sm:inline">{tab.label}</span>
+                        <span className="hidden xs:inline sm:inline">{tab.label}</span>
                       </motion.button>
                     );
                   })}
@@ -395,26 +398,26 @@ export default function RoomDetailClient({
 
       {/* Related Rooms */}
       {relatedRooms.length > 0 && (
-        <section className="py-16 bg-white border-t-2 border-gray-100">
-          <div className="container mx-auto px-4">
+        <section className="py-8 sm:py-12 md:py-16 bg-white border-t-2 border-gray-100">
+          <div className="container mx-auto px-3 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-10 md:mb-12"
             >
-              <p className="text-green-600 font-medium text-sm tracking-wide uppercase mb-2">
+              <p className="text-green-600 font-medium text-xs sm:text-sm tracking-wide uppercase mb-2">
                 More Options
               </p>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-3 sm:mb-4">
                 Explore Other Rooms
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600">
                 Find the perfect match for your stay
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {relatedRooms.map((relatedRoom, index) => (
                 <motion.div
                   key={relatedRoom.id}
@@ -437,7 +440,11 @@ export default function RoomDetailClient({
                           alt={relatedRoom.name}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, 33vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                          loading="lazy"
+                          quality={80}
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                         />
                         <div className="absolute top-4 right-4">
                           <Badge className="bg-white/90 backdrop-blur-sm text-gray-900 border-none">
@@ -446,12 +453,12 @@ export default function RoomDetailClient({
                         </div>
                       </div>
 
-                      <div className="p-6">
-                        <h3 className="font-serif text-2xl font-bold text-gray-900 group-hover:text-gold-600 transition-colors mb-3">
+                      <div className="p-4 sm:p-6">
+                        <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gold-600 transition-colors mb-2 sm:mb-3 break-words">
                           {relatedRoom.name}
                         </h3>
 
-                        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
                           {relatedRoom.description}
                         </p>
 
@@ -518,12 +525,12 @@ function OverviewTab({ room }: { room: Room }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-2 border-green-100"
+      className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl border-2 border-green-100"
     >
-      <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4 sm:mb-6">
         Room Overview
       </h2>
-      <p className="text-lg text-gray-700 leading-relaxed mb-8">
+      <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
         {room.description}
       </p>
 
@@ -583,28 +590,28 @@ function GalleryTab({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-2 border-green-100"
+      className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl border-2 border-green-100"
     >
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6 sm:mb-8">
         <div>
-          <h2 className="text-4xl font-serif font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900">
             Photo Gallery
           </h2>
-          <p className="text-gray-600 mt-2">Click any image to view full size</p>
+          <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Click any image to view full size</p>
         </div>
-        <Badge className="bg-green-100 text-green-800 px-4 py-2">
+        <Badge className="bg-green-100 text-green-800 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm self-start sm:self-auto">
           {room.images.length} Photos
         </Badge>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {room.images.map((image, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.05 }}
-            className={`relative group overflow-hidden rounded-2xl cursor-pointer ${
+            className={`relative group overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer ${
               index === 0 ? "col-span-2 row-span-2" : ""
             }`}
             onClick={() => onImageClick(index)}
@@ -617,7 +624,11 @@ function GalleryTab({
                 alt={image.alt || `${room.name} - Photo ${index + 1}`}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="(max-width: 768px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                loading="lazy"
+                quality={80}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -678,13 +689,13 @@ function AmenitiesTab({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-2 border-green-100"
+      className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl border-2 border-green-100"
     >
-      <h2 className="text-4xl font-serif font-bold text-gray-900 mb-8">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 sm:mb-8">
         Room Amenities
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {categories.map((category, index) => {
           if (category.items.length === 0) return null;
           const Icon = category.icon;
@@ -788,13 +799,13 @@ function PoliciesTab() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-2 border-green-100"
+      className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl border-2 border-green-100"
     >
-      <h2 className="text-4xl font-serif font-bold text-gray-900 mb-8">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 sm:mb-8">
         Booking Policies
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {policies.map((policy, index) => {
           const Icon = policy.icon;
           const bgColor =
@@ -862,17 +873,17 @@ function CompareTab({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border-2 border-green-100"
+      className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl border-2 border-green-100"
     >
-      <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4 sm:mb-6">
         Compare Rooms
       </h2>
-      <p className="text-gray-600 mb-8">
+      <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
         Select another room to compare features and pricing
       </p>
 
       {!compareRoom ? (
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {relatedRooms.map((relatedRoom, index) => (
             <motion.button
               key={relatedRoom.id}
@@ -880,7 +891,7 @@ function CompareTab({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
               onClick={() => setCompareRoom(relatedRoom)}
-              className="text-left group"
+              className="text-left group w-full"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -894,10 +905,15 @@ function CompareTab({
                     alt={relatedRoom.name}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                    quality={80}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-serif text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors mb-2">
+                  <h3 className="font-serif text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors mb-2 break-words">
                     {relatedRoom.name}
                   </h3>
                   <p className="text-lg font-bold text-green-700">
@@ -914,22 +930,22 @@ function CompareTab({
         </div>
       ) : (
         <div>
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 break-words">
               Comparing: {room.name} vs {compareRoom.name}
             </h3>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setCompareRoom(null)}
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 self-start sm:self-auto"
             >
               <X className="w-4 h-4 mr-1" />
               Clear
             </Button>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Current Room */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -945,9 +961,14 @@ function CompareTab({
                   alt={room.name}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  quality={80}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
-              <h4 className="font-serif text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="font-serif text-xl sm:text-2xl font-bold text-gray-900 mb-4 break-words">
                 {room.name}
               </h4>
               <div className="space-y-3 text-sm">
@@ -998,9 +1019,14 @@ function CompareTab({
                   alt={compareRoom.name}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  quality={80}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDARUXFx0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
-              <h4 className="font-serif text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="font-serif text-xl sm:text-2xl font-bold text-gray-900 mb-4 break-words">
                 {compareRoom.name}
               </h4>
               <div className="space-y-3 text-sm">
