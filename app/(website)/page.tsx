@@ -72,10 +72,10 @@ export default async function HomePage() {
           <HeroCarousel />
 
           {/* Decorative Background Elements */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {/* Animated Gradient Orbs */}
-            <div className="absolute top-20 right-20 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+            <div className="absolute top-10 -right-10 sm:top-20 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-gold-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 -left-10 sm:bottom-20 sm:left-20 w-64 h-64 sm:w-96 sm:h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
 
           {/* Main Hero Content */}
@@ -95,7 +95,7 @@ export default async function HomePage() {
 
                 {/* Main Heading - Centered and Large */}
                 <div className="text-center mb-8 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
-                  <h1 className="text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white mb-2 leading-tight">
+                  <h1 className="text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white mb-2 leading-tight">
                     <span className="block">DEBREDAMO</span>
                     <span className="block text-gold-400">HOTEL</span>
                   </h1>

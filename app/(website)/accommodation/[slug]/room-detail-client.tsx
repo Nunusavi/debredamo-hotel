@@ -110,8 +110,8 @@ export default function RoomDetailClient({
         animate={{ opacity: 1, y: 0 }}
         className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40"
       >
-        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
-          <nav className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm overflow-x-auto">
+        <div className="container mx-auto px-4 sm:px-4 py-3 sm:py-4">
+          <nav className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm overflow-x-auto scrollbar-hide">
             <Link
               href="/"
               className="text-gray-600 hover:text-gray-900 transition-colors whitespace-nowrap"
@@ -133,8 +133,8 @@ export default function RoomDetailClient({
 
       {/* Hero Section */}
       <section className="py-4 sm:py-6 md:py-8 lg:py-12">
-        <div className="container mx-auto px-3 sm:px-4">
-          <div className="grid lg:grid-cols-[1fr_380px] gap-8">
+        <div className="container mx-auto px-4 sm:px-4">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-4 sm:gap-6 lg:gap-8">
             {/* Main Content */}
             <div>
               {/* Room Header with Hero Image */}
@@ -212,16 +212,16 @@ export default function RoomDetailClient({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-white rounded-2xl shadow-lg p-2 mb-8 sticky top-20 z-30"
+                className="bg-white rounded-2xl shadow-lg p-1 sm:p-2 mb-6 sm:mb-8 sticky top-20 z-30"
               >
-                <div className="flex overflow-x-auto gap-2 scrollbar-hide">
+                <div className="flex overflow-x-auto gap-1 sm:gap-2 scrollbar-hide">
                   {tabs.map((tab) => {
                     const Icon = tab.icon;
                     return (
                       <motion.button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id as TabType)}
-                        className={`flex-1 min-w-[80px] sm:min-w-[120px] px-2 sm:px-4 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm ${
+                        className={`flex-shrink-0 min-w-[70px] sm:min-w-[120px] px-2 sm:px-4 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm ${
                           activeTab === tab.id
                             ? "bg-gradient-to-r from-green-600 to-green-700 text-white shadow-md"
                             : "text-gray-600 hover:bg-gray-100"
@@ -230,7 +230,7 @@ export default function RoomDetailClient({
                         whileTap={{ scale: 0.98 }}
                       >
                         <Icon className="w-4 h-4" />
-                        <span className="hidden xs:inline sm:inline">{tab.label}</span>
+                        <span className="hidden sm:inline">{tab.label}</span>
                       </motion.button>
                     );
                   })}
@@ -278,7 +278,7 @@ export default function RoomDetailClient({
               transition={{ delay: 0.5 }}
               className="lg:sticky lg:top-32 h-fit"
             >
-              <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-green-100">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl border-2 border-green-100">
                 <div className="text-center mb-6">
                   <p className="text-xs text-gray-500 mb-2 uppercase tracking-wide">
                     Starting from
@@ -374,7 +374,7 @@ export default function RoomDetailClient({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
-                className="mt-6 bg-gradient-to-br from-green-50 to-gold-50 rounded-2xl p-6 border border-green-200"
+                className="mt-6 bg-gradient-to-br from-green-50 to-gold-50 rounded-2xl p-4 sm:p-6 border border-green-200"
               >
                 <h3 className="font-semibold text-gray-900 mb-3">
                   Need assistance?
@@ -399,7 +399,7 @@ export default function RoomDetailClient({
       {/* Related Rooms */}
       {relatedRooms.length > 0 && (
         <section className="py-8 sm:py-12 md:py-16 bg-white border-t-2 border-gray-100">
-          <div className="container mx-auto px-3 sm:px-4">
+          <div className="container mx-auto px-4 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
