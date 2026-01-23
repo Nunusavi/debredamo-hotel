@@ -3,6 +3,10 @@ import { Star, Sparkles } from "lucide-react";
 import AccommodationClient from "./accommodation-client";
 import { getAllRooms } from "@/lib/data";
 
+// Revalidate this page every 60 seconds (ISR - Incremental Static Regeneration)
+// This ensures data updates appear within 60 seconds even if revalidatePath fails
+export const revalidate = 60;
+
 export default async function AccommodationPage() {
   // Get rooms from database
   const rooms = await getAllRooms();

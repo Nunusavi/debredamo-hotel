@@ -26,6 +26,10 @@ import {
 import { generateGenericReservationEmail } from "@/lib/mailto";
 import { HeroCarousel } from "@/components/shared/hero-carousel";
 
+// Revalidate this page every 60 seconds (ISR - Incremental Static Regeneration)
+// This ensures featured rooms data updates appear within 60 seconds
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "DEBREDAMO HOTEL - Luxury Hotel in Addis Ababa, Ethiopia",
   description:

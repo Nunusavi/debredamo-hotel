@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getSession } from '@/lib/auth/session';
 import { getAllRooms, createRoom, type Room } from '@/lib/cms/rooms';
 import { roomSchema } from '@/lib/validations';
@@ -54,6 +55,11 @@ export async function POST(request: NextRequest) {
     } as any;
 
     const newRoom = await createRoom(normalizedData);
+
+    // Revalidate all room-related pages so changes appear immediately
+    revalidatePath('/accommodation', 'page');
+    revalidatePath('/accommodation/[slug]', 'page');
+    revalidatePath('/', 'page'); // Homepage might show featured rooms
 
     return NextResponse.json(
       {

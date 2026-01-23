@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getSession } from '@/lib/auth/session';
 import { getRoomById, updateRoom, deleteRoom, type Room } from '@/lib/cms/rooms';
 import { roomSchema } from '@/lib/validations';
@@ -72,6 +73,11 @@ export async function PUT(
       return NextResponse.json({ error: 'Room not found' }, { status: 404 });
     }
 
+    // Revalidate all room-related pages so changes appear immediately
+    revalidatePath('/accommodation', 'page');
+    revalidatePath(`/accommodation/${updatedRoom.slug}`, 'page');
+    revalidatePath('/', 'page'); // Homepage might show featured rooms
+
     return NextResponse.json({
       success: true,
       data: updatedRoom,
@@ -98,11 +104,21 @@ export async function DELETE(
     }
 
     const { id } = await params;
+
+    // Get room before deleting to revalidate its specific page
+    const room = await getRoomById(id);
     const deleted = await deleteRoom(id);
 
     if (!deleted) {
       return NextResponse.json({ error: 'Room not found' }, { status: 404 });
     }
+
+    // Revalidate all room-related pages so changes appear immediately
+    revalidatePath('/accommodation', 'page');
+    if (room) {
+      revalidatePath(`/accommodation/${room.slug}`, 'page');
+    }
+    revalidatePath('/', 'page'); // Homepage might show featured rooms
 
     return NextResponse.json({
       success: true,

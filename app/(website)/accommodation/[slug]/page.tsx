@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { getRoomBySlug, getAllRooms } from "@/lib/data";
 import RoomDetailClient from "./room-detail-client";
 
+// Revalidate this page every 60 seconds (ISR - Incremental Static Regeneration)
+// This ensures data updates appear within 60 seconds even if revalidatePath fails
+export const revalidate = 60;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
