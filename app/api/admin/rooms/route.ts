@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { getAllRooms, createRoom } from '@/lib/cms/rooms';
+import { getAllRooms, createRoom, type Room } from '@/lib/cms/rooms';
 import { roomSchema } from '@/lib/validations';
 import { logError } from '@/lib/errors';
 
@@ -45,7 +45,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const newRoom = await createRoom(validationResult.data);
+    // Normalize images to RoomImage format
+    const normalizedData: Omit<Room, 'id' | 'created_at' | 'updated_at'> = {
+      ...validationResult.data,
+      images: validationResult.data.images.map((img) =>
+        typeof img === 'string' ? { url: img, alt: '' } : img
+      ),
+    } as any;
+
+    const newRoom = await createRoom(normalizedData);
 
     return NextResponse.json(
       {

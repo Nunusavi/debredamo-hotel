@@ -130,7 +130,19 @@ export const services = [
   },
 ];
 
-// Room Data
+// =============================================
+// LEGACY STATIC ROOM DATA - DEPRECATED
+// =============================================
+// WARNING: This static data is DEPRECATED and NOT used by the application.
+// Rooms are now managed in the PostgreSQL database via Prisma ORM.
+//
+// For room management:
+//   - Frontend: Use functions from lib/data.ts (getAllRooms, getRoomBySlug, etc.)
+//   - Admin: Use functions from lib/cms/rooms.ts (createRoom, updateRoom, deleteRoom, etc.)
+//   - Database: Prisma schema in prisma/schema.prisma
+//
+// This data is kept for historical reference only and may be removed in future versions.
+// =============================================
 export const rooms = [
   {
     id: "1",

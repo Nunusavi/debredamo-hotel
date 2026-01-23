@@ -1,21 +1,8 @@
 import { prisma } from '@/lib/db/prisma';
+import type { Room, RoomImage } from '@/types';
 
-export interface Room {
-  id: string;
-  name: string;
-  name_am?: string;
-  slug: string;
-  description: string;
-  description_am?: string;
-  room_type: 'standard' | 'deluxe' | 'executive' | 'presidential';
-  size_sqm?: number | null;
-  max_guests: number;
-  base_price_etb: number;
-  images: string[];
-  amenities: string[];
-  is_active: boolean;
-  display_order: number;
-}
+// Re-export types for backward compatibility
+export type { Room, RoomImage } from '@/types';
 
 /**
  * Transform Prisma Room to app Room format
@@ -32,10 +19,18 @@ function transformRoom(prismaRoom: any): Room {
     size_sqm: prismaRoom.sizeM2,
     max_guests: prismaRoom.maxGuests,
     base_price_etb: Number(prismaRoom.basePriceEtb),
-    images: Array.isArray(prismaRoom.images) ? prismaRoom.images : [],
+    images: Array.isArray(prismaRoom.images)
+      ? prismaRoom.images.map((img: any) =>
+          typeof img === 'string'
+            ? { url: img, alt: `${prismaRoom.name} - Room Photo` }
+            : img
+        )
+      : [],
     amenities: Array.isArray(prismaRoom.amenities) ? prismaRoom.amenities : [],
     is_active: prismaRoom.isActive,
     display_order: prismaRoom.displayOrder,
+    created_at: prismaRoom.createdAt.toISOString(),
+    updated_at: prismaRoom.updatedAt.toISOString(),
   };
 }
 
@@ -75,7 +70,7 @@ export async function getRoomBySlug(slug: string): Promise<Room | null> {
 /**
  * Create a new room
  */
-export async function createRoom(roomData: Omit<Room, 'id'>): Promise<Room> {
+export async function createRoom(roomData: Omit<Room, 'id' | 'created_at' | 'updated_at'>): Promise<Room> {
   const room = await prisma.room.create({
     data: {
       slug: roomData.slug,
@@ -87,8 +82,8 @@ export async function createRoom(roomData: Omit<Room, 'id'>): Promise<Room> {
       sizeM2: roomData.size_sqm,
       maxGuests: roomData.max_guests,
       basePriceEtb: roomData.base_price_etb,
-      images: roomData.images,
-      amenities: roomData.amenities,
+      images: roomData.images as any, // Cast to any for JSON field
+      amenities: roomData.amenities as any, // Cast to any for JSON field
       isActive: roomData.is_active,
       displayOrder: roomData.display_order,
     },
@@ -102,7 +97,7 @@ export async function createRoom(roomData: Omit<Room, 'id'>): Promise<Room> {
  */
 export async function updateRoom(
   id: string,
-  roomData: Partial<Omit<Room, 'id'>>
+  roomData: Partial<Omit<Room, 'id' | 'created_at' | 'updated_at'>>
 ): Promise<Room | null> {
   try {
     const room = await prisma.room.update({
@@ -117,8 +112,8 @@ export async function updateRoom(
         ...(roomData.size_sqm !== undefined && { sizeM2: roomData.size_sqm }),
         ...(roomData.max_guests && { maxGuests: roomData.max_guests }),
         ...(roomData.base_price_etb && { basePriceEtb: roomData.base_price_etb }),
-        ...(roomData.images && { images: roomData.images }),
-        ...(roomData.amenities && { amenities: roomData.amenities }),
+        ...(roomData.images && { images: roomData.images as any }), // Cast to any for JSON field
+        ...(roomData.amenities && { amenities: roomData.amenities as any }), // Cast to any for JSON field
         ...(roomData.is_active !== undefined && { isActive: roomData.is_active }),
         ...(roomData.display_order !== undefined && { displayOrder: roomData.display_order }),
       },

@@ -79,7 +79,15 @@ export const roomSchema = z.object({
     .number()
     .min(500, "Price must be at least 500 ETB")
     .max(100000, "Price must not exceed 100,000 ETB"),
-  images: z.array(z.string().min(1, "Image path cannot be empty")).min(1, "At least one image is required"),
+  images: z.array(
+    z.union([
+      z.string().min(1, "Image path cannot be empty"),
+      z.object({
+        url: z.string().min(1, "Image URL cannot be empty"),
+        alt: z.string(),
+      })
+    ])
+  ).min(1, "At least one image is required"),
   amenities: z.array(z.string()).min(1, "At least one amenity is required"),
   is_active: z.boolean().default(true),
   display_order: z.number().int().default(0),

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { getRoomById, updateRoom, deleteRoom } from '@/lib/cms/rooms';
+import { getRoomById, updateRoom, deleteRoom, type Room } from '@/lib/cms/rooms';
 import { roomSchema } from '@/lib/validations';
 import { logError } from '@/lib/errors';
 
@@ -58,7 +58,15 @@ export async function PUT(
       );
     }
 
-    const updatedRoom = await updateRoom(id, validationResult.data);
+    // Normalize images to RoomImage format
+    const normalizedData: Partial<Omit<Room, 'id' | 'created_at' | 'updated_at'>> = {
+      ...validationResult.data,
+      images: validationResult.data.images.map((img) =>
+        typeof img === 'string' ? { url: img, alt: '' } : img
+      ),
+    } as any;
+
+    const updatedRoom = await updateRoom(id, normalizedData);
 
     if (!updatedRoom) {
       return NextResponse.json({ error: 'Room not found' }, { status: 404 });

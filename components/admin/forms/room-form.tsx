@@ -63,7 +63,8 @@ export default function RoomForm({ room, isEdit = false }: RoomFormProps) {
     max_guests: room?.max_guests || 1,
     base_price_etb: room?.base_price_etb || 0,
     amenities: room?.amenities || [],
-    images: room?.images || [],
+    // Convert RoomImage[] to string[] for ImageUpload component
+    images: room?.images ? room.images.map(img => typeof img === 'string' ? img : img.url) : [],
     is_active: room?.is_active ?? true,
     display_order: room?.display_order || 1,
   });
@@ -74,9 +75,11 @@ export default function RoomForm({ room, isEdit = false }: RoomFormProps) {
     setLoading(true);
 
     try {
+      // Convert string[] images to RoomImage[] format for API
       const payload = {
         ...formData,
         size_sqm: formData.size_sqm || null,
+        images: formData.images.map(url => ({ url, alt: '' })),
       };
 
       console.log('Submitting room data:', payload);
