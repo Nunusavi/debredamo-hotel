@@ -65,7 +65,7 @@ export default function RestaurantPage() {
         subtitle={restaurantData.subtitle}
         title={restaurantData.title}
         description={restaurantData.description}
-        image={restaurantData.image}
+        backgroundImage={restaurantData.image}
       />
 
       <PageSection>
