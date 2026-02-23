@@ -21,8 +21,11 @@ import {
   CheckCircle2,
   AlertCircle,
   WifiOff,
+  Linkedin,
 } from "lucide-react";
 import { getUserError, logError } from "@/lib/errors";
+
+import { siteConfig } from "@/config/site";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -123,7 +126,9 @@ export default function ContactPage() {
                 )}
                 <div>
                   <p className="font-medium text-red-900">
-                    {isNetworkError ? "Connection Error" : "Failed to send message"}
+                    {isNetworkError
+                      ? "Connection Error"
+                      : "Failed to send message"}
                   </p>
                   <p className="text-sm text-red-700">{errorMessage}</p>
                 </div>
@@ -271,7 +276,12 @@ export default function ContactPage() {
                     <h4 className="font-semibold text-lg text-gray-900 mb-1">
                       Phone
                     </h4>
-                    <p className="text-gray-600">+2511166126307</p>
+                    <p className="text-gray-600">{siteConfig.contact.phone}</p>
+                    {siteConfig.contact.phone2 && (
+                      <p className="text-gray-600">
+                        {siteConfig.contact.phone2}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-500 mt-1">Available 24/7</p>
                   </div>
                 </div>
@@ -344,12 +354,46 @@ export default function ContactPage() {
                   <Twitter className="w-5 h-5 text-gray-900" />
                 </a>
                 <a
-                  href="https://wa.me/251911123456"
+                  href={
+                    siteConfig.links.whatsapp
+                      ? `https://wa.me/${siteConfig.links.whatsapp}`
+                      : "#"
+                  }
                   className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
                   aria-label="WhatsApp"
                 >
                   <MessageSquare className="w-5 h-5 text-gray-900" />
                 </a>
+                {siteConfig.links.linkedin && (
+                  <a
+                    href={siteConfig.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5 text-gray-900" />
+                  </a>
+                )}
+                {siteConfig.links.tripadvisor && (
+                  <a
+                    href={siteConfig.links.tripadvisor}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
+                    aria-label="TripAdvisor"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 2304 1408"
+                      width="24"
+                      height="24"
+                      fill="#000000"
+                    >
+                      <path d="M651 805q0 39-27.5 66.5T558 899q-39 0-66.5-27.5T464 805q0-38 27.5-65.5T558 712q38 0 65.5 27.5T651 805m1154-1q0 39-27.5 66.5T1711 898t-66.5-27.5T1617 804t27.5-66t66.5-27t66.5 27t27.5 66m-1040 1q0-79-56.5-136T572 612t-136.5 56.5T379 805t56.5 136.5T572 998t136.5-56.5T765 805m1153-1q0-80-56.5-136.5T1725 611q-79 0-136 56.5T1532 804t56.5 136.5T1725 997t136.5-56.5T1918 804m-1068 1q0 116-81.5 197.5T572 1084q-116 0-197.5-82T293 805t82-196.5T572 527t196.5 81.5T850 805m1154-1q0 115-81.5 196.5T1725 1082q-115 0-196.5-81.5T1447 804t81.5-196.5T1725 526q116 0 197.5 81.5T2004 804m-964 3q0-191-135.5-326.5T578 345q-125 0-231 62T179 575.5T117 807t62 231.5T347 1207t231 62q191 0 326.5-135.5T1040 807m668-573q-254-111-556-111q-319 0-573 110q117 0 223 45.5T984.5 401t122 183t45.5 223q0-115 43.5-219.5t118-180.5T1491 284t217-50m479 573q0-191-135-326.5T1726 345t-326.5 135.5T1264 807t135.5 326.5T1726 1269t326-135.5T2187 807m-266-566h383q-44 51-75 114.5T2189 470q110 151 110 337q0 156-77 288t-209 208.5t-287 76.5q-133 0-249-56t-196-155q-47 56-129 179q-11-22-53.5-82.5T1024 1168q-80 99-196.5 155.5T578 1380q-155 0-287-76.5T82 1095T5 807q0-186 110-337q-9-51-40-114.5T0 241h365Q514 141 720 84.5T1152 28q224 0 421 56t348 157" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </div>

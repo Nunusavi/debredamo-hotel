@@ -105,7 +105,7 @@ export default function RoomNotFound() {
                 className="group p-6 bg-warm-white rounded-lg border hover:border-gold-500 transition-all hover:shadow-lg"
               >
                 <h3 className="text-xl font-serif font-bold text-gray-800 group-hover:text-gold-600 transition-colors mb-2">
-                  Executive Suites
+                  Executive Apartments
                 </h3>
                 <p className="text-gray-800 mb-4">
                   Perfect for business travelers with separate living areas and

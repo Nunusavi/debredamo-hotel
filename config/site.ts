@@ -17,11 +17,14 @@ export const siteConfig = {
     facebook: "",
     instagram: "",
     twitter: "",
+    linkedin: "https://www.linkedin.com/company/debredamo-hotel",
+    tripadvisor: "https://www.tripadvisor.com/Hotel_Review-g293791-d2050854-Reviews-Debredamo_Hotel-Addis_Ababa.html",
     whatsapp: "+251911123456",
   },
   contact: {
     email: "reservation@debredamohotel.com",
     phone: "+251116612630",
+    phone2: "+251930106076",
     address: {
       street: "Haile Gebre Silase St",
       city: "Addis Ababa",

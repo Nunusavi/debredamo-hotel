@@ -86,29 +86,28 @@ export default async function HomePage() {
           <div className="relative z-10 min-h-screen flex items-center">
             <div className="container mx-auto">
               <div className="mx-auto">
-                {/* Top Badge and Stars */}
-                <div className="flex flex-col items-center text-center mb-1 animate-in fade-in slide-in-from-top duration-1000">
-                    <div>
-                      <div className="flex gap-2">
-                      {[...Array(4)].map((_, i) => (
-                        <Star key={i} className="w-10 h-10 fill-gold-500 text-gold-500" />
-                      ))}
-                    </div>
-                    </div>
-                </div>
-
                 {/* Main Heading - Centered and Large */}
                 <div className="text-center mb-8 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
                   <h1 className="text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white mb-2 leading-tight">
                     <span className="block">DEBREDAMO</span>
-                    <span className="block text-gold-400">HOTEL</span>
+                    <span className="block ">HOTEL</span>
                   </h1>
-                  <p className="text-3xl md:text-4xl lg:text-5xl font-ethiopic font-bold text-gold-300 mb-8">
-                    ደብረዳሞ ሆቴል
-                  </p>
+                  {/* Top Badge and Stars */}
+                  <div className="flex flex-col items-center text-center mb-1 animate-in fade-in slide-in-from-top duration-1000">
+                    <div>
+                      <div className="flex gap-2">
+                        {[...Array(4)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-10 h-10 fill-gold-500 text-gold-500"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                   <div className="mx-auto">
                     <p className="text-xl md:text-2xl text-gray-100 leading-relaxed mb-4">
-                      Where Ethiopian Hospitality Meets Modern Luxury
+                      Your Home Away From Home
                     </p>
                     <p className="text-lg text-gray-300">
                       In the Heart of Addis Ababa
@@ -117,7 +116,10 @@ export default async function HomePage() {
                 </div>
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-in fade-in slide-in-from-bottom duration-1000 delay-700">
-                  <a href={generateGenericReservationEmail()} className="w-full sm:w-auto">
+                  <a
+                    href={generateGenericReservationEmail()}
+                    className="w-full sm:w-auto"
+                  >
                     <Button
                       size="lg"
                       className="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-lg px-12 py-7 rounded-full shadow-2xl hover:shadow-gold-500/50 transition-all duration-300 hover:scale-105"
@@ -139,20 +141,34 @@ export default async function HomePage() {
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mx-auto animate-in fade-in slide-in-from-bottom duration-1000 delay-1000">
                   <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    <div className="text-4xl font-bold text-gold-400 mb-1">100+</div>
-                    <div className="text-gray-300 text-sm font-medium">Luxury Rooms</div>
+                    <div className="text-4xl font-bold text-white mb-1">
+                      100+
+                    </div>
+                    <div className="text-gray-300 text-sm font-medium">
+                      Luxury Rooms
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    <div className="text-4xl font-bold text-gold-400 mb-1">10K+</div>
-                    <div className="text-gray-300 text-sm font-medium">Happy Guests</div>
+                    <div className="text-4xl font-bold text-white mb-1">
+                      10K+
+                    </div>
+                    <div className="text-gray-300 text-sm font-medium">
+                      Happy Guests
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    <div className="text-4xl font-bold text-gold-400 mb-1">24/7</div>
-                    <div className="text-gray-300 text-sm font-medium">Room Service</div>
+                    <div className="text-4xl font-bold text-white mb-1">
+                      24/7
+                    </div>
+                    <div className="text-gray-300 text-sm font-medium">
+                      Room Service
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    <div className="text-4xl font-bold text-gold-400 mb-1">4★</div>
-                    <div className="text-gray-300 text-sm font-medium">Rating</div>
+                    <div className="text-4xl font-bold text-white mb-1">4★</div>
+                    <div className="text-gray-300 text-sm font-medium">
+                      Rating
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,18 +180,17 @@ export default async function HomePage() {
         <section className="py-16 md:py-24 bg-green-50">
           <div className="container mx-auto px-4">
             <div className=" mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-                Your Home Away From Home
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <h3 className="text-lg text-gray-600 leading-relaxed">
                 {siteConfig.description.en}
-              </p>
+              </h3>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               <div className="text-center p-6 bg-white rounded-lg shadow-sm border-2 border-green-100 hover:border-green-500 transition-colors">
-                <div className="text-5xl font-bold text-green-600 mb-2">50+</div>
+                <div className="text-5xl font-bold text-green-600 mb-2">
+                  100+
+                </div>
                 <div className="text-gray-900 font-medium">Luxury Rooms</div>
               </div>
               <div className="text-center p-6 bg-white rounded-lg shadow-sm border-2 border-green-100 hover:border-green-500 transition-colors">
@@ -190,10 +205,6 @@ export default async function HomePage() {
                 </div>
                 <div className="text-gray-900 font-medium">Room Service</div>
               </div>
-              <div className="text-center p-6 bg-white rounded-lg shadow-sm border-2 border-gold-100 hover:border-gold-500 transition-colors">
-                <div className="text-5xl font-bold text-gold-600 mb-2">4★</div>
-                <div className="text-gray-900 font-medium">Experience</div>
-              </div>
             </div>
           </div>
         </section>
@@ -206,11 +217,11 @@ export default async function HomePage() {
                 Accommodation
               </p>
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                Featured Rooms & Suites
+                Featured Rooms & Apartments
               </h2>
               <p className="text-lg text-gray-600  mx-auto">
-                Discover our collection of elegantly designed rooms and suites,
-                each offering comfort and luxury
+                Discover our collection of elegantly designed rooms and
+                Apartments, each offering comfort and luxury
               </p>
             </div>
 
@@ -255,7 +266,12 @@ export default async function HomePage() {
                         </div>
                       </div>
                       <Link href={`/accommodation/${room.slug}`}>
-                        <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">View Details</Button>
+                        <Button
+                          variant="outline"
+                          className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                        >
+                          View Details
+                        </Button>
                       </Link>
                     </div>
                   </div>
@@ -265,7 +281,10 @@ export default async function HomePage() {
 
             <div className="text-center">
               <Link href="/accommodation">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+                <Button
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700 text-white"
+                >
                   View All Rooms
                 </Button>
               </Link>
@@ -366,7 +385,11 @@ export default async function HomePage() {
 
             <div className="text-center mt-12">
               <Link href="/services">
-                <Button size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                >
                   View All Services
                 </Button>
               </Link>
@@ -411,7 +434,10 @@ export default async function HomePage() {
                   text: "The attention to detail and genuine hospitality made our stay unforgettable. From the moment we arrived until checkout, every interaction was warm and professional. Highly recommended!",
                 },
               ].map((review, index) => (
-                <Card key={index} className="p-6 border-2 border-green-100 hover:border-green-500 transition-colors">
+                <Card
+                  key={index}
+                  className="p-6 border-2 border-green-100 hover:border-green-500 transition-colors"
+                >
                   <Quote className="w-10 h-10 text-green-500 mb-4" />
                   <div className="flex gap-1 mb-4">
                     {[...Array(review.rating)].map((_, i) => (
@@ -425,9 +451,7 @@ export default async function HomePage() {
                     &quot;{review.text}&quot;
                   </p>
                   <div className="border-t border-green-100 pt-4">
-                    <p className="font-semibold text-gray-900">
-                      {review.name}
-                    </p>
+                    <p className="font-semibold text-gray-900">{review.name}</p>
                     <p className="text-sm text-gray-500">{review.country}</p>
                   </div>
                 </Card>
@@ -492,7 +516,12 @@ export default async function HomePage() {
                   rel="noopener noreferrer"
                   className="inline-block mt-6"
                 >
-                  <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">Get Directions</Button>
+                  <Button
+                    variant="outline"
+                    className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                  >
+                    Get Directions
+                  </Button>
                 </a>
               </div>
 

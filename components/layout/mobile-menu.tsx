@@ -34,7 +34,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="p-6 pb-4">
             <div className="flex items-center space-x-3 mb-2">
               <Image
-                src="/images/Debredamo.webp"
+                src="/images/Debredamo_new.webp"
                 alt="DEBREDAMO HOTEL logo"
                 width={45}
                 height={45}

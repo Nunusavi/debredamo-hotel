@@ -19,11 +19,7 @@ const heroImages = [
   {
     src: "/images/612A0450.JPG",
     alt: "DEBREDAMO HOTEL Luxury Amenities",
-  },
-  {
-    src: "/images/Bar_1.jpg",
-    alt: "DEBREDAMO HOTEL Bar & Lounge",
-  },
+  }
 ];
 
 export function HeroCarousel() {

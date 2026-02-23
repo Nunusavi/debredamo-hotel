@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+
+import { siteConfig } from "@/config/site";
 
 export function StickyHeader() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,12 +31,24 @@ export function StickyHeader() {
             </span>
             <span className="hidden md:inline text-gray-600">|</span>
             <a
-              href="tel:+251111234567"
+              href={`tel:${siteConfig.contact.phone}`}
               className="hidden md:flex items-center gap-2 text-gray-600 hover:text-gold-600"
             >
               <Phone className="w-4 h-4" />
-              +251116612630
+              {siteConfig.contact.phone}
             </a>
+            {siteConfig.contact.phone2 && (
+              <>
+                <span className="hidden md:inline text-gray-600">|</span>
+                <a
+                  href={`tel:${siteConfig.contact.phone2}`}
+                  className="hidden md:flex items-center gap-2 text-gray-600 hover:text-gold-600"
+                >
+                  <Phone className="w-4 h-4" />
+                  {siteConfig.contact.phone2}
+                </a>
+              </>
+            )}
           </div>
           <a
             href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"

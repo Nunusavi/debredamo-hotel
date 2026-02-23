@@ -50,10 +50,10 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
               <Image
-                src="/images/Debredamo.webp"
+                src="/images/Debredamo_new.webp"
                 alt="DEBREDAMO HOTEL logo"
-                width={50}
-                height={50}
+                width={100}
+                height={70}
               />
               <div className="flex flex-col">
                 <span
@@ -63,16 +63,6 @@ export default function Header() {
                   )}
                 >
                   {siteConfig.name.en}
-                </span>
-                <span
-                  className={cn(
-                    "text-sm font-ethiopic transition-colors",
-                    isScrolled || !isHomePage
-                      ? "text-gray-500"
-                      : "text-black/90"
-                  )}
-                >
-                  {siteConfig.name.am}
                 </span>
               </div>
             </Link>

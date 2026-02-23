@@ -1,11 +1,11 @@
-import 'dotenv/config';
-import { PrismaClient } from '@prisma/client';
-import { PrismaNeon } from '@prisma/adapter-neon';
+import "dotenv/config";
+import { PrismaClient } from "@prisma/client";
+import { PrismaNeon } from "@prisma/adapter-neon";
 
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  throw new Error('DATABASE_URL environment variable is not set');
+  throw new Error("DATABASE_URL environment variable is not set");
 }
 
 const adapter = new PrismaNeon({ connectionString });
@@ -95,7 +95,7 @@ const rooms = [
     nameAm: "ስራ አስፈፃሚ ስዊት",
     slug: "executive-suite",
     description:
-      "Our Executive Suites combine elegance with functionality. Perfect for business travelers, these suites feature a separate living area, executive workspace, and premium amenities. The spacious layout includes a dedicated work area with ergonomic seating and high-speed connectivity. The living room is ideal for private meetings or relaxation. Enjoy access to our executive lounge with complimentary refreshments. The luxurious bathroom features a jacuzzi tub and premium bath products.",
+      "Our Executive Apartments combine elegance with functionality. Perfect for business travelers, these Apartments feature a separate living area, executive workspace, and premium amenities. The spacious layout includes a dedicated work area with ergonomic seating and high-speed connectivity. The living room is ideal for private meetings or relaxation. Enjoy access to our executive lounge with complimentary refreshments. The luxurious bathroom features a jacuzzi tub and premium bath products.",
     descriptionAm:
       "ስራ አስፈፃሚ ስዊቶቻችን ውበትን ከተግባራዊነት ጋር ያዋህዳሉ። ለንግድ ተጓዦች ፍጹም፣ እነዚህ ስዊቶች የተለየ የመኖሪያ ቦታ፣ የስራ አስፈፃሚ የስራ ቦታ እና ከፍተኛ መገልገያዎች አሏቸው።",
     roomType: "executive",

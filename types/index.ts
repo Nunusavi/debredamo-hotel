@@ -117,6 +117,8 @@ export interface SocialMedia {
   instagram?: string;
   twitter?: string;
   whatsapp?: string;
+  linkedin?: string;
+  tripadvisor?: string;
 }
 
 export interface BusinessHours {

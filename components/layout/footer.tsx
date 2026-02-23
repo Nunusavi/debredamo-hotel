@@ -9,7 +9,6 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { footerNavigation } from "@/config/navigation";
 
@@ -128,12 +127,22 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center space-x-3 text-sm">
                   <Phone className="w-5 h-5 text-gold-400 flex-shrink-0" />
-                  <a
-                    href={`tel:${siteConfig.contact.phone}`}
-                    className="text-green-200 hover:text-gold-400 transition-colors"
-                  >
-                    {siteConfig.contact.phone}
-                  </a>
+                  <div className="flex flex-col">
+                    <a
+                      href={`tel:${siteConfig.contact.phone}`}
+                      className="text-green-200 hover:text-gold-400 transition-colors"
+                    >
+                      {siteConfig.contact.phone}
+                    </a>
+                    {siteConfig.contact.phone2 && (
+                      <a
+                        href={`tel:${siteConfig.contact.phone2}`}
+                        className="text-green-200 hover:text-gold-400 transition-colors"
+                      >
+                        {siteConfig.contact.phone2}
+                      </a>
+                    )}
+                  </div>
                 </li>
                 <li className="flex items-center space-x-3 text-sm">
                   <Mail className="w-5 h-5 text-gold-400 flex-shrink-0" />

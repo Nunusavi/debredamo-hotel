@@ -29,17 +29,21 @@ export default async function AccommodationPage() {
               <span className="font-semibold">Luxury Accommodation</span>
               <div className="flex gap-1 ml-2">
                 {[...Array(4)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-gold-400 text-gold-400" />
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-gold-400 text-gold-400"
+                  />
                 ))}
               </div>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-              Our Rooms & <span className="text-gold-400">Suites</span>
+              Our Rooms & <span className="text-gold-400">Apartments</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mx-auto">
-              Discover the perfect room for your stay. From elegant standard rooms
-              to luxurious presidential suites, we offer comfort and sophistication for every guest.
+              Discover the perfect room for your stay. From elegant standard
+              rooms to luxurious presidential Apartments, we offer comfort and
+              sophistication for every guest.
             </p>
           </div>
         </div>
@@ -62,8 +66,9 @@ export default async function AccommodationPage() {
               Need Help Choosing?
             </h2>
             <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              Our dedicated team is here to help you find the perfect room for your stay.
-              Contact us for personalized recommendations and special requests.
+              Our dedicated team is here to help you find the perfect room for
+              your stay. Contact us for personalized recommendations and special
+              requests.
             </p>
             <a href="/contact">
               <Button

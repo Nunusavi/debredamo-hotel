@@ -14,6 +14,11 @@ export const mainNavigation: NavLink[] = [
     href: "/accommodation",
   },
   {
+    label: "Restaurant",
+    label_am: "ምግብ ቤት",
+    href: "/restaurant",
+  },
+  {
     label: "Services",
     label_am: "አገልግሎቶች",
     href: "/services",
@@ -63,7 +68,7 @@ export const footerNavigation = {
   services: {
     title: { en: "Services", am: "አገልግሎቶች" },
     links: [
-      { label: "Restaurant", label_am: "ምግብ ቤት", href: "/services#restaurant" },
+      { label: "Restaurant", label_am: "ምግብ ቤት", href: "/restaurant" },
       { label: "Bar & Lounge", label_am: "ባር", href: "/services#bar" },
       {
         label: "Business Center",

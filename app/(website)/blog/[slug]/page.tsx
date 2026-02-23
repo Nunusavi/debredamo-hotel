@@ -24,7 +24,7 @@ const mockBlogPosts = {
       <p>From the moment you step into our lobby, you'll experience the difference that attention to detail and genuine care can make. Every element of DEBREDAMO HOTEL has been carefully designed to provide you with an unforgettable stay.</p>
 
       <h2>World-Class Amenities</h2>
-      <p>Our 50+ luxury rooms and suites feature state-of-the-art amenities, premium bedding, and stunning views of Addis Ababa. Whether you're here for business or leisure, you'll find everything you need for a comfortable stay.</p>
+      <p>Our 50+ luxury rooms and Apartments feature state-of-the-art amenities, premium bedding, and stunning views of Addis Ababa. Whether you're here for business or leisure, you'll find everything you need for a comfortable stay.</p>
 
       <h2>Exceptional Dining</h2>
       <p>Our on-site restaurant offers a culinary journey through Ethiopian and international cuisine. Start your day with our lavish breakfast buffet, enjoy lunch by the pool, or experience fine dining at our signature restaurant.</p>
@@ -248,9 +248,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <p className="text-lg text-gray-300 mb-8">
             Book your stay and discover the luxury and comfort that awaits you
           </p>
-          <a
-            href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"
-          >
+          <a href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!">
             <Button size="lg" className="bg-gold-500 hover:bg-gold-600">
               Book Now
             </Button>
