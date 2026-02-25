@@ -29,7 +29,7 @@ export default function Navigation({ isScrolled = false }: NavigationProps) {
             key={link.href}
             href={link.href}
             className={cn(
-              "relative text-sm font-medium transition-colors duration-200",
+              "relative text-lg font-medium transition-colors duration-200",
               "hover:text-gold-500",
               active
                 ? "text-gold-500"

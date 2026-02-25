@@ -56,14 +56,6 @@ export default function Header() {
                 height={70}
               />
               <div className="flex flex-col">
-                <span
-                  className={cn(
-                    "text-2xl md:text-3xl font-serif font-bold transition-colors",
-                    isScrolled || !isHomePage ? "" : "text-green-600"
-                  )}
-                >
-                  {siteConfig.name.en}
-                </span>
               </div>
             </Link>
 

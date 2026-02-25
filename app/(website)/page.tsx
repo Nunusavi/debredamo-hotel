@@ -213,7 +213,7 @@ export default async function HomePage() {
               <p className="text-green-600 font-medium text-sm tracking-wide uppercase mb-2">
                 Accommodation
               </p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-green-600 mb-4">
                 Featured Rooms & Apartments
               </h2>
               <p className="text-lg text-gray-600  mx-auto">
