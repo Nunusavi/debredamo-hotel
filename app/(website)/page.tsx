@@ -107,10 +107,7 @@ export default async function HomePage() {
                   </div>
                   <div className="mx-auto">
                     <p className="text-xl md:text-2xl text-gray-100 leading-relaxed mb-4">
-                      Your Home Away From Home
-                    </p>
-                    <p className="text-lg text-gray-300">
-                      In the Heart of Addis Ababa
+                      Unforgettable Experiance
                     </p>
                   </div>
                 </div>
