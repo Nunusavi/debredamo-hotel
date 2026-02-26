@@ -103,7 +103,7 @@ export interface ContactFormData {
 
 export interface SiteName {
   en: string;
-  am: string;
+  am?: string;
 }
 
 export interface Address {
@@ -141,7 +141,7 @@ export interface SiteSettings {
 
 export interface NavLink {
   label: string;
-  label_am: string;
+  label_am?: string;
   href: string;
   children?: NavLink[];
 }

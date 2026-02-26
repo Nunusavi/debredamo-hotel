@@ -165,12 +165,6 @@ export default function AccommodationClient({
                     {featuredRoom.name}
                   </h2>
 
-                  {featuredRoom.name_am && (
-                    <p className="text-lg font-ethiopic text-gold-600 font-semibold mb-4">
-                      {featuredRoom.name_am}
-                    </p>
-                  )}
-
                   <p className="text-gray-700 leading-relaxed mb-6 line-clamp-2">
                     {featuredRoom.description}
                   </p>
@@ -463,12 +457,6 @@ function MagazineRoomCard({
             </h3>
           </Link>
 
-          {room.name_am && (
-            <p className="text-sm font-ethiopic text-gold-600 mb-3">
-              {room.name_am}
-            </p>
-          )}
-
           <p className="text-gray-600 leading-relaxed mb-4 line-clamp-2">
             {room.description}
           </p>
@@ -597,12 +585,6 @@ function QuickViewModal({
                 <h2 className="font-serif text-3xl font-bold text-gray-900 mb-2">
                   {room.name}
                 </h2>
-
-                {room.name_am && (
-                  <p className="text-lg font-ethiopic text-gold-600 mb-4">
-                    {room.name_am}
-                  </p>
-                )}
 
                 <p className="text-gray-700 leading-relaxed mb-6">
                   {room.description}

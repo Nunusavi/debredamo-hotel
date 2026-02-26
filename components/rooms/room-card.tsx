@@ -18,22 +18,17 @@ import { generateRoomSpecificEmail } from "@/lib/mailto";
 
 interface RoomCardProps {
   room: Room;
-  locale?: "en" | "am";
   featured?: boolean;
 }
 
 export default function RoomCard({
   room,
-  locale = "en",
   featured = false,
 }: RoomCardProps) {
   const [imageError, setImageError] = useState(false);
 
-  const roomName = locale === "am" && room.name_am ? room.name_am : room.name;
-  const description =
-    locale === "am" && room.description_am
-      ? room.description_am
-      : room.description;
+  const roomName = room.name;
+  const description = room.description;
 
   // Get primary image or use placeholder
   const primaryImage =
@@ -91,7 +86,7 @@ export default function RoomCard({
         {/* Room Type Badge */}
         <div className="absolute top-4 right-4">
           <Badge variant="secondary" className="bg-white/90 text-gray-800">
-            {getRoomTypeLabel(room.room_type, locale)}
+            {getRoomTypeLabel(room.room_type)}
           </Badge>
         </div>
 
@@ -100,7 +95,7 @@ export default function RoomCard({
           <div className="text-white">
             <p className="text-sm">Starting from</p>
             <p className="text-2xl font-bold">
-              {formatCurrency(room.base_price_etb, locale)}
+              {formatCurrency(room.base_price_etb)}
             </p>
             <p className="text-xs opacity-90">per night</p>
           </div>

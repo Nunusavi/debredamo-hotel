@@ -10,9 +10,7 @@ export function cn(...inputs: ClassValue[]) {
  * Format currency in Ethiopian Birr
  */
 export function formatCurrency(amount: number, locale: string = 'en'): string {
-  if (locale === 'am') {
-    return `ብር ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-  }
+  // Always use ETB regardless of locale
   return `ETB ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
@@ -144,13 +142,13 @@ export function isPastDate(date: string | Date): boolean {
  */
 export function getRoomTypeLabel(type: string, locale: string = 'en'): string {
   const labels: Record<string, Record<string, string>> = {
-    standard: { en: 'Standard Room', am: 'መደበኛ ክፍል' },
-    deluxe: { en: 'Deluxe Room', am: 'ልዩ ክፍል' },
-    executive: { en: 'Executive Suite', am: 'ስራ አስፈፃሚ ስዊት' },
-    presidential: { en: 'Presidential Suite', am: 'የፕሬዚዳንት ስዊት' },
+    standard: { en: 'Standard Room' },
+    deluxe: { en: 'Deluxe Room' },
+    executive: { en: 'Executive Suite' },
+    presidential: { en: 'Presidential Suite' },
   };
 
-  return labels[type]?.[locale] || type;
+  return labels[type]?.en || type;
 }
 
 /**

@@ -136,26 +136,15 @@ export default function RoomForm({ room, isEdit = false }: RoomFormProps) {
 
       {/* Name Fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
+        <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Name (English) *
+            Name *
           </label>
           <input
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Name (Amharic)
-          </label>
-          <input
-            type="text"
-            value={formData.name_am}
-            onChange={(e) => setFormData({ ...formData, name_am: e.target.value })}
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
@@ -178,9 +167,9 @@ export default function RoomForm({ room, isEdit = false }: RoomFormProps) {
 
       {/* Description Fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
+        <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Description (English) *
+            Description *
           </label>
           <textarea
             value={formData.description}
@@ -188,19 +177,6 @@ export default function RoomForm({ room, isEdit = false }: RoomFormProps) {
               setFormData({ ...formData, description: e.target.value })
             }
             required
-            rows={5}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Description (Amharic)
-          </label>
-          <textarea
-            value={formData.description_am}
-            onChange={(e) =>
-              setFormData({ ...formData, description_am: e.target.value })
-            }
             rows={5}
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />

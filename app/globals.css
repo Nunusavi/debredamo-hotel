@@ -264,6 +264,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100vw;
+  font-size: 106.25%; /* Increase base font size (16px -> ~17px) */
 }
 
 /* Focus visible styles */

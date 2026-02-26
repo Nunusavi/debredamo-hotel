@@ -180,12 +180,6 @@ export default function RoomDetailClient({
                     {roomName}
                   </h1>
 
-                  {room.name_am && (
-                    <p className="text-lg sm:text-xl md:text-2xl font-ethiopic text-gold-400 font-semibold mb-4 break-words">
-                      {room.name_am}
-                    </p>
-                  )}
-
                   <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-base">
                     {room.size_sqm && (
                       <div className="flex items-center gap-2">
@@ -533,14 +527,6 @@ function OverviewTab({ room }: { room: Room }) {
       <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
         {room.description}
       </p>
-
-      {room.description_am && (
-        <div className="bg-gold-50 rounded-2xl p-6 border-2 border-gold-100">
-          <p className="text-lg font-ethiopic text-gray-800 leading-relaxed">
-            {room.description_am}
-          </p>
-        </div>
-      )}
 
       <div className="grid md:grid-cols-2 gap-6 mt-8">
         <motion.div

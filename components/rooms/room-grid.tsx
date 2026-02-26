@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 
 interface RoomGridProps {
   rooms: Room[];
-  locale?: "en" | "am";
   initialLimit?: number;
 }
 
 export default function RoomGrid({
   rooms,
-  locale = "en",
   initialLimit,
 }: RoomGridProps) {
   const [displayLimit, setDisplayLimit] = useState(
@@ -58,7 +56,6 @@ export default function RoomGrid({
           <RoomCard
             key={room.id}
             room={room}
-            locale={locale}
             featured={index === 0} // First room is featured
           />
         ))}

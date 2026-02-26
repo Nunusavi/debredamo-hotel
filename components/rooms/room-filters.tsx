@@ -28,13 +28,11 @@ export type RoomFilters = FilterState;
 interface RoomFiltersProps {
   filters: RoomFilters;
   onFiltersChange: (filters: RoomFilters) => void;
-  locale?: "en" | "am";
 }
 
 export default function RoomFiltersComponent({
   filters,
   onFiltersChange,
-  locale = "en",
 }: RoomFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -244,7 +242,7 @@ export default function RoomFiltersComponent({
                 <SelectItem value="all">All rooms</SelectItem>
                 {roomTypes.map((type) => (
                   <SelectItem key={type.value} value={type.value}>
-                    {type.label[locale]}
+                    {type.label.en}
                   </SelectItem>
                 ))}
               </SelectContent>

@@ -5,11 +5,9 @@ import type { Locale } from "@/types";
 export const siteConfig = {
   name: {
     en: "DEBREDAMO HOTEL",
-    am: "ደብረዳሞ ሆቴል",
   },
   description: {
     en: "Experience luxury and comfort in the heart of Addis Ababa. DEBREDAMO HOTEL offers premium accommodation, exceptional service, and authentic Ethiopian hospitality.",
-    am: "በአዲስ አበባ ልብ ውስጥ ቅንጦትና ምቾትን ይለማመዱ። ደብረዳሞ ሆቴል ከፍተኛ መኖሪያ፣ ልዩ አገልግሎት እና ትክክለኛ የኢትዮጵያ እንግዳ መስተንግዶን ይሰጣል።",
   },
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/images/og-image.jpg",
@@ -32,16 +30,16 @@ export const siteConfig = {
     },
   },
   defaultLocale: "en" as Locale,
-  locales: ["en", "am"] as Locale[],
+  locales: ["en"] as Locale[],
 };
 
 export const roomTypes = [
-  { value: "standard", label: { en: "Standard Room", am: "መደበኛ ክፍል" } },
-  { value: "deluxe", label: { en: "Deluxe Room", am: "ልዩ ክፍል" } },
-  { value: "executive", label: { en: "Executive Suite", am: "ስራ አስፈፃሚ ስዊት" } },
+  { value: "standard", label: { en: "Standard Room" } },
+  { value: "deluxe", label: { en: "Deluxe Room" } },
+  { value: "executive", label: { en: "Executive Suite" } },
   {
     value: "presidential",
-    label: { en: "Presidential Suite", am: "የፕሬዚዳንት ስዊት" },
+    label: { en: "Presidential Suite" },
   },
 ] as const;
 
@@ -85,50 +83,44 @@ export const amenitiesIcons: Record<string, string> = {
 export const services = [
   {
     icon: "utensils",
-    title: { en: "Restaurant & Dining", am: "ምግብ ቤት" },
+    title: { en: "Restaurant & Dining" },
     description: {
       en: "Enjoy authentic Ethiopian and international cuisine",
-      am: "ትክክለኛ የኢትዮጵያ እና ዓለም አቀፍ ምግብ ይደሰቱ",
     },
   },
   {
     icon: "wine",
-    title: { en: "Bar & Lounge", am: "ባር እና መዝናኛ" },
+    title: { en: "Bar & Lounge" },
     description: {
       en: "Relax with premium drinks and cocktails",
-      am: "ከፍተኛ መጠጦችና ኮክቴሎች ይዝናኑ",
     },
   },
   {
     icon: "briefcase",
-    title: { en: "Business Center", am: "የንግድ ማእከል" },
+    title: { en: "Business Center" },
     description: {
       en: "Fully equipped meeting rooms and facilities",
-      am: "ሙሉ በሙሉ የተዘጋጁ የስብሰባ ክፍሎች",
     },
   },
   {
     icon: "concierge",
-    title: { en: "Concierge Service", am: "የኮንሲየርጅ አገልግሎት" },
+    title: { en: "Concierge Service" },
     description: {
       en: "Personal assistance for all your needs",
-      am: "ለሁሉም ፍላጎቶችዎ ግላዊ እርዳታ",
     },
   },
   {
     icon: "wifi",
-    title: { en: "Free WiFi", am: "ነፃ ዋይፋይ" },
+    title: { en: "Free WiFi" },
     description: {
       en: "High-speed internet throughout the hotel",
-      am: "በሆቴል ውስጥ ፈጣን ኢንተርኔት",
     },
   },
   {
     icon: "car",
-    title: { en: "Parking", am: "የመኪና ማቆሚያ" },
+    title: { en: "Parking" },
     description: {
       en: "Secure parking for hotel guests",
-      am: "ለሆቴል እንግዶች ደህንነቱ የተጠበቀ ማቆሚያ",
     },
   },
 ];
