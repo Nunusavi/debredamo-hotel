@@ -95,8 +95,8 @@ export default function RestaurantPage() {
               className="space-y-8"
             >
               <div>
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gold-100 rounded-xl mb-4">
-                  <Utensils className="w-7 h-7 text-gold-600" />
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-green-100 rounded-xl mb-4">
+                  <Utensils className="w-7 h-7 text-green-600" />
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-gray-900 mb-4">
                   A Taste of Excellence
@@ -112,13 +112,13 @@ export default function RestaurantPage() {
                   return (
                     <motion.div
                       key={idx}
-                      className="bg-gray-50 p-4 rounded-lg hover:bg-gold-50 transition-colors duration-300"
+                      className="bg-gray-50 p-4 rounded-lg hover:bg-green-50 transition-colors duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
                     >
-                      <FeatureIcon className="w-6 h-6 text-gold-600 mb-2" />
+                      <FeatureIcon className="w-6 h-6 text-green-600 mb-2" />
                       <h3 className="font-medium text-gray-900 mb-1">
                         {feature.title}
                       </h3>

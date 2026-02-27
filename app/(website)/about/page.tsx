@@ -61,7 +61,7 @@ export default function AboutPage() {
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/accommodation">
-                <Button size="lg" className="bg-gold-500 hover:bg-gold-600">
+                <Button size="lg" className="bg-green-500 hover:bg-green-600">
                   Explore Rooms
                 </Button>
               </Link>
@@ -92,8 +92,8 @@ export default function AboutPage() {
       <PageSection background="warm">
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="p-8 bg-white">
-            <div className="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center mb-4">
-              <Heart className="w-6 h-6 text-gold-600" />
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <Heart className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4">
               Our Mission
@@ -107,8 +107,8 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-8 bg-white">
-            <div className="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center mb-4">
-              <Sparkles className="w-6 h-6 text-gold-600" />
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <Sparkles className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4">
               Our Vision
@@ -132,8 +132,8 @@ export default function AboutPage() {
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <div className="text-center">
-            <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Award className="w-8 h-8 text-gold-600" />
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award className="w-8 h-8 text-green-600" />
             </div>
             <h4 className="font-semibold text-lg text-gray-900 mb-2">
               Excellence
@@ -143,8 +143,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Heart className="w-8 h-8 text-gold-600" />
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Heart className="w-8 h-8 text-green-600" />
             </div>
             <h4 className="font-semibold text-lg text-gray-900 mb-2">
               Hospitality
@@ -154,8 +154,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-gold-600" />
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-green-600" />
             </div>
             <h4 className="font-semibold text-lg text-gray-900 mb-2">
               Integrity
@@ -165,8 +165,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-8 h-8 text-gold-600" />
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-8 h-8 text-green-600" />
             </div>
             <h4 className="font-semibold text-lg text-gray-900 mb-2">
               Innovation
@@ -182,25 +182,25 @@ export default function AboutPage() {
       <PageSection background="warm">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="font-serif text-5xl md:text-6xl font-bold text-gold-600 mb-2">
+            <div className="font-serif text-5xl md:text-6xl font-bold text-green-600 mb-2">
               50+
             </div>
             <p className="text-gray-600 font-medium">Luxury Rooms</p>
           </div>
           <div>
-            <div className="font-serif text-5xl md:text-6xl font-bold text-gold-600 mb-2">
+            <div className="font-serif text-5xl md:text-6xl font-bold text-green-600 mb-2">
               10K+
             </div>
             <p className="text-gray-600 font-medium">Happy Guests</p>
           </div>
           <div>
-            <div className="font-serif text-5xl md:text-6xl font-bold text-gold-600 mb-2">
+            <div className="font-serif text-5xl md:text-6xl font-bold text-green-600 mb-2">
               15+
             </div>
             <p className="text-gray-600 font-medium">Years Experience</p>
           </div>
           <div>
-            <div className="font-serif text-5xl md:text-6xl font-bold text-gold-600 mb-2">
+            <div className="font-serif text-5xl md:text-6xl font-bold text-green-600 mb-2">
               24/7
             </div>
             <p className="text-gray-600 font-medium">Concierge Service</p>
@@ -217,7 +217,7 @@ export default function AboutPage() {
         />
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="p-6">
-            <MapPin className="w-10 h-10 text-gold-600 mb-4" />
+            <MapPin className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Prime Location
             </h4>
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Star className="w-10 h-10 text-gold-600 mb-4" />
+            <Star className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Four-Star Service
             </h4>
@@ -237,7 +237,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Users className="w-10 h-10 text-gold-600 mb-4" />
+            <Users className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Cultural Experience
             </h4>
@@ -247,7 +247,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Clock className="w-10 h-10 text-gold-600 mb-4" />
+            <Clock className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               24/7 Availability
             </h4>
@@ -257,7 +257,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Sparkles className="w-10 h-10 text-gold-600 mb-4" />
+            <Sparkles className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Luxury Amenities
             </h4>
@@ -267,7 +267,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Shield className="w-10 h-10 text-gold-600 mb-4" />
+            <Shield className="w-10 h-10 text-green-600 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Safety & Security
             </h4>
@@ -294,7 +294,7 @@ export default function AboutPage() {
             >
               <Button
                 size="lg"
-                className="bg-gold-500 hover:bg-gold-600 w-full sm:w-auto"
+                className="bg-green-500 hover:bg-green-600 w-full sm:w-auto"
               >
                 Book Now
               </Button>

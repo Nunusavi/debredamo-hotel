@@ -66,7 +66,7 @@ export default function RoomsTable({ rooms }: RoomsTableProps) {
           {rooms.map((room) => (
             <tr key={room.id}>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">
+                <div className="text-sm font-medium text-green-700">
                   {room.name}
                 </div>
                 {room.name_am && (

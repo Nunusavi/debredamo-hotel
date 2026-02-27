@@ -18,17 +18,17 @@
   --green-800: #084820;
   --green-900: #052F14;
 
-  /* Accent Gold Colors */
-  --gold-50: #FEF7E7;
-  --gold-100: #FCECC0;
-  --gold-200: #FAE099;
-  --gold-300: #F8D472;
-  --gold-400: #F6C84B;
-  --gold-500: #D4A017;
-  --gold-600: #B08614;
-  --gold-700: #8C6C10;
-  --gold-800: #68520C;
-  --gold-900: #443808;
+  /* Accent Gold Colors (Replaced with Green) */
+  --gold-50: #E8F5ED;
+  --gold-100: #C7E6D3;
+  --gold-200: #A3D7B8;
+  --gold-300: #7FC89D;
+  --gold-400: #5BB982;
+  --gold-500: #119344;
+  --gold-600: #0E7A38;
+  --gold-700: #0B612C;
+  --gold-800: #084820;
+  --gold-900: #052F14;
 
   /* Neutral Dark Colors */
   --dark-50: #F5F5F6;
@@ -131,7 +131,7 @@
   /* Primary & Secondary */
   --color-primary: var(--green-500);
   --color-primary-foreground: white;
-  --color-secondary: var(--gold-500);
+  --color-secondary: var(--green-500);
   --color-secondary-foreground: white;
 
   /* Typography */

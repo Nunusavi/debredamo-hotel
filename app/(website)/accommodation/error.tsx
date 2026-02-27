@@ -51,7 +51,7 @@ export default function AccommodationError({ error, reset }: ErrorProps) {
               <Button
                 onClick={reset}
                 size="lg"
-                className="bg-gold-500 hover:bg-gold-600 text-white"
+                className="bg-green-500 hover:bg-green-600 text-white"
               >
                 Try Again
               </Button>

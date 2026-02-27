@@ -36,7 +36,7 @@ export function PageHeader({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center  mx-auto">
           {subtitle && (
-            <p className="text-gold-400 font-medium text-sm sm:text-base tracking-wide uppercase mb-2 sm:mb-4">
+            <p className="text-green-400 font-medium text-sm sm:text-base tracking-wide uppercase mb-2 sm:mb-4">
               {subtitle}
             </p>
           )}

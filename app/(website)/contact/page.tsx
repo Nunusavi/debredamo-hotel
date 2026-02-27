@@ -148,7 +148,7 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  placeholder="John Doe"
+                  placeholder=""
                   className="mt-1.5"
                 />
               </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    placeholder="john@example.com"
+                    placeholder=""
                     className="mt-1.5"
                   />
                 </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    placeholder="+251 911 234 567"
+                    placeholder=""
                     className="mt-1.5"
                   />
                 </div>
@@ -289,8 +289,8 @@ export default function ContactPage() {
 
               <Card className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-gold-600" />
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg text-gray-900 mb-1">

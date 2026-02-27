@@ -68,7 +68,7 @@ export function HeroCarousel() {
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? "bg-gold-500 w-8"
+                ? "bg-green-500 w-8"
                 : "bg-white/50 hover:bg-white/75"
             }`}
             aria-label={`Go to slide ${index + 1}`}

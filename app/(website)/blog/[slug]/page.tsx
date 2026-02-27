@@ -111,7 +111,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8  text-center text-white">
-            <Badge className="bg-gold-500 mb-4">{post.category}</Badge>
+            <Badge className="bg-green-500 mb-4">{post.category}</Badge>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {post.title}
             </h1>
@@ -183,8 +183,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {/* Author Bio */}
           <Card className="p-6 mt-12">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <User className="w-8 h-8 text-gold-600" />
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="w-8 h-8 text-green-600" />
               </div>
               <div>
                 <h4 className="font-semibold text-lg text-gray-900 mb-1">
@@ -228,7 +228,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                     <Badge variant="outline" className="text-xs mb-2">
                       {relatedPost.category}
                     </Badge>
-                    <h3 className="font-serif text-lg font-bold text-gray-900 group-hover:text-gold-600 transition-colors">
+                    <h3 className="font-serif text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors">
                       {relatedPost.title}
                     </h3>
                   </div>
@@ -249,7 +249,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             Book your stay and discover the luxury and comfort that awaits you
           </p>
           <a href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!">
-            <Button size="lg" className="bg-gold-500 hover:bg-gold-600">
+            <Button size="lg" className="bg-green-500 hover:bg-green-600">
               Book Now
             </Button>
           </a>

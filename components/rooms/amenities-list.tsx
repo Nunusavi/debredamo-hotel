@@ -171,8 +171,8 @@ export default function AmenitiesList({
                     key={index}
                     className="flex items-center gap-3 p-2 rounded-lg hover:bg-warm-white transition-colors"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-gold-600" />
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-green-600" />
                     </div>
                     <span className="text-gray-900">{amenity}</span>
                   </div>

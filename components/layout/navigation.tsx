@@ -30,13 +30,13 @@ export default function Navigation({ isScrolled = false }: NavigationProps) {
             href={link.href}
             className={cn(
               "relative text-lg font-medium transition-colors duration-200",
-              "hover:text-gold-500",
+              "hover:text-green-500",
               active
-                ? "text-gold-500"
+                ? "text-green-500"
                 : isScrolled
                 ? "text-gray-800"
                 : "text-black",
-              "after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:bg-gold-500 after:transition-all after:duration-300",
+              "after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:bg-green-500 after:transition-all after:duration-300",
               active && "after:w-full",
               "hover:after:w-full"
             )}

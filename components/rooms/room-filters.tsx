@@ -87,10 +87,10 @@ export default function RoomFiltersComponent({
           className="w-full justify-between py-6 px-4 hover:bg-green-50 rounded-lg"
         >
           <span className="flex items-center gap-2 text-gray-900 font-medium">
-            <Filter className="w-5 h-5 text-gold-500" />
+            <Filter className="w-5 h-5 text-green-500" />
             Filters & Sort
             {hasActiveFilters && (
-              <Badge className="bg-gold-500 text-white hover:bg-gold-600 ml-1">
+              <Badge className="bg-green-500 text-white hover:bg-green-600 ml-1">
                 {
                   Object.values(filters).filter(
                     (v) => v !== undefined && v !== "popularity"
@@ -111,12 +111,12 @@ export default function RoomFiltersComponent({
       {/* Desktop Header */}
       <div className="hidden lg:flex items-center justify-between px-6 py-4 border-b border-green-100">
         <div className="flex items-center gap-2">
-          <Filter className="w-5 h-5 text-gold-500" />
+          <Filter className="w-5 h-5 text-green-500" />
           <h3 className="text-lg font-semibold text-gray-900">
             Filters & Sort
           </h3>
           {hasActiveFilters && (
-            <Badge className="bg-gold-500 text-white hover:bg-gold-600">
+            <Badge className="bg-green-500 text-white hover:bg-green-600">
               {
                 Object.values(filters).filter(
                   (v) => v !== undefined && v !== "popularity"
@@ -130,7 +130,7 @@ export default function RoomFiltersComponent({
             variant="ghost"
             size="sm"
             onClick={handleClearFilters}
-            className="text-gold-600 hover:text-gold-700 hover:bg-gold-50"
+            className="text-green-600 hover:text-green-700 hover:bg-green-50"
           >
             <X className="w-4 h-4 mr-1" />
             Clear all
@@ -164,7 +164,7 @@ export default function RoomFiltersComponent({
                       const { roomType, ...rest } = filters;
                       onFiltersChange(rest);
                     }}
-                    className="ml-1 hover:text-gold-600 transition-colors"
+                    className="ml-1 hover:text-green-600 transition-colors"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -183,7 +183,7 @@ export default function RoomFiltersComponent({
                       const { priceRange, ...rest } = filters;
                       onFiltersChange(rest);
                     }}
-                    className="ml-1 hover:text-gold-600 transition-colors"
+                    className="ml-1 hover:text-green-600 transition-colors"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -201,7 +201,7 @@ export default function RoomFiltersComponent({
                       const { guests, ...rest } = filters;
                       onFiltersChange(rest);
                     }}
-                    className="ml-1 hover:text-gold-600 transition-colors"
+                    className="ml-1 hover:text-green-600 transition-colors"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -211,7 +211,7 @@ export default function RoomFiltersComponent({
                 variant="ghost"
                 size="sm"
                 onClick={handleClearFilters}
-                className="text-gold-600 hover:text-gold-700 hover:bg-gold-50 lg:hidden h-7"
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 lg:hidden h-7"
               >
                 Clear all
               </Button>
@@ -235,7 +235,7 @@ export default function RoomFiltersComponent({
                 )
               }
             >
-              <SelectTrigger className="bg-white border-green-200 hover:border-gold-400 focus:border-gold-500 transition-colors">
+              <SelectTrigger className="bg-white border-green-200 hover:border-green-400 focus:border-green-500 transition-colors">
                 <SelectValue placeholder="All rooms" />
               </SelectTrigger>
               <SelectContent>
@@ -258,7 +258,7 @@ export default function RoomFiltersComponent({
               value={getPriceRangeValue()}
               onValueChange={handlePriceRangeChange}
             >
-              <SelectTrigger className="bg-white border-green-200 hover:border-gold-400 focus:border-gold-500 transition-colors">
+              <SelectTrigger className="bg-white border-green-200 hover:border-green-400 focus:border-green-500 transition-colors">
                 <SelectValue placeholder="Any price" />
               </SelectTrigger>
               <SelectContent>
@@ -286,7 +286,7 @@ export default function RoomFiltersComponent({
                 )
               }
             >
-              <SelectTrigger className="bg-white border-green-200 hover:border-gold-400 focus:border-gold-500 transition-colors">
+              <SelectTrigger className="bg-white border-green-200 hover:border-green-400 focus:border-green-500 transition-colors">
                 <SelectValue placeholder="Any number" />
               </SelectTrigger>
               <SelectContent>
@@ -309,7 +309,7 @@ export default function RoomFiltersComponent({
               value={filters.sortBy || "popularity"}
               onValueChange={(value) => handleFilterChange("sortBy", value)}
             >
-              <SelectTrigger className="bg-white border-green-200 hover:border-gold-400 focus:border-gold-500 transition-colors">
+              <SelectTrigger className="bg-white border-green-200 hover:border-green-400 focus:border-green-500 transition-colors">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>

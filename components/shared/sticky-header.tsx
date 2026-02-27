@@ -32,7 +32,7 @@ export function StickyHeader() {
             <span className="hidden md:inline text-gray-600">|</span>
             <a
               href={`tel:${siteConfig.contact.phone}`}
-              className="hidden md:flex items-center gap-2 text-gray-600 hover:text-gold-600"
+              className="hidden md:flex items-center gap-2 text-gray-600 hover:text-green-600"
             >
               <Phone className="w-4 h-4" />
               {siteConfig.contact.phone}
@@ -42,7 +42,7 @@ export function StickyHeader() {
                 <span className="hidden md:inline text-gray-600">|</span>
                 <a
                   href={`tel:${siteConfig.contact.phone2}`}
-                  className="hidden md:flex items-center gap-2 text-gray-600 hover:text-gold-600"
+                  className="hidden md:flex items-center gap-2 text-gray-600 hover:text-green-600"
                 >
                   <Phone className="w-4 h-4" />
                   {siteConfig.contact.phone2}
@@ -53,7 +53,7 @@ export function StickyHeader() {
           <a
             href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"
           >
-            <Button className="bg-gold-500 hover:bg-gold-600">Book Now</Button>
+            <Button className="bg-green-500 hover:bg-green-600">Book Now</Button>
           </a>
         </div>
       </div>

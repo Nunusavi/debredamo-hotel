@@ -117,7 +117,7 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
               className={cn(
                 "relative aspect-video rounded-lg overflow-hidden transition-all",
                 selectedIndex === index
-                  ? "ring-2 ring-gold-500 ring-offset-2"
+                  ? "ring-2 ring-green-500 ring-offset-2"
                   : "hover:ring-2 hover:ring-green-300 hover:ring-offset-2 opacity-70 hover:opacity-100"
               )}
             >

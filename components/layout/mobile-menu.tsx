@@ -62,8 +62,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       className={cn(
                         "block px-4 py-4 rounded-lg font-medium text-lg transition-all duration-200",
                         active
-                          ? "bg-gold-50 text-gold-600 border-l-4 border-gold-500"
-                          : "text-gray-800 hover:bg-warm-white hover:text-gold-500 border-l-4 border-transparent"
+                          ? "bg-green-50 text-green-600 border-l-4 border-green-500"
+                          : "text-gray-800 hover:bg-warm-white hover:text-green-500 border-l-4 border-transparent"
                       )}
                     >
                       {link.label}

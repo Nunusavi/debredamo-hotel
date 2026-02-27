@@ -16,7 +16,7 @@ export const siteConfig = {
     instagram: "",
     twitter: "",
     linkedin: "https://www.linkedin.com/company/debredamo-hotel",
-    tripadvisor: "https://www.tripadvisor.com/Hotel_Review-g293791-d2050854-Reviews-Debredamo_Hotel-Addis_Ababa.html",
+    tripadvisor: "https://www.tripadvisor.com/Hotel_Review-g293791-d4925201-Reviews-Debre_Damo_Hotel-Addis_Ababa.html",
     whatsapp: "+251911123456",
   },
   contact: {

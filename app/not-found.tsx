@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="min-h-screen bg-warm-white flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Pattern/Decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-gold-50/30 via-transparent to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-green-50/30 via-transparent to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-green-50/30 via-transparent to-transparent" />
       </div>
 
@@ -19,9 +19,9 @@ export default function NotFound() {
       </div>
 
       {/* Content Card */}
-      <div className="relative  w-full bg-white/10 backdrop-blur-sm border border-gold-100 rounded-2xl shadow-xl p-8 md:p-12 text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gold-50 rounded-full mb-8 ring-1 ring-gold-100">
-          <span className="font-serif text-3xl font-bold text-gold-600">!</span>
+      <div className="relative  w-full bg-white/10 backdrop-blur-sm border border-green-100 rounded-2xl shadow-xl p-8 md:p-12 text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-green-50 rounded-full mb-8 ring-1 ring-green-100">
+          <span className="font-serif text-3xl font-bold text-green-600">!</span>
         </div>
 
         <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -63,25 +63,25 @@ export default function NotFound() {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
             <Link
               href="/about"
-              className="text-gray-800 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-green-600 transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/services"
-              className="text-gray-800 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-green-600 transition-colors"
             >
               Our Services
             </Link>
             <Link
               href="/contact"
-              className="text-gray-800 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-green-600 transition-colors"
             >
               Contact
             </Link>
             <a
               href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"
-              className="text-gray-800 hover:text-gold-600 transition-colors"
+              className="text-gray-800 hover:text-green-600 transition-colors"
             >
               Book a Stay
             </a>

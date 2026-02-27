@@ -169,14 +169,14 @@ export default function RoomDetailClient({
                       {getRoomTypeLabel(room.room_type)}
                     </Badge>
                     {room.is_active && (
-                      <Badge className="bg-gold-500 text-white border-none px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
+                      <Badge className="bg-green-500 text-white border-none px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
                         <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 fill-current" />
                         Available
                       </Badge>
                     )}
                   </div>
 
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 leading-tight break-words">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 leading-tight break-words text-white">
                     {roomName}
                   </h1>
 
@@ -319,7 +319,7 @@ export default function RoomDetailClient({
                 >
                   <Button
                     size="lg"
-                    className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Mail className="w-5 h-5 mr-2" />
                     Book This Room
@@ -368,7 +368,7 @@ export default function RoomDetailClient({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
-                className="mt-6 bg-gradient-to-br from-green-50 to-gold-50 rounded-2xl p-4 sm:p-6 border border-green-200"
+                className="mt-6 bg-gradient-to-br from-green-50 to-green-50 rounded-2xl p-4 sm:p-6 border border-green-200"
               >
                 <h3 className="font-semibold text-gray-900 mb-3">
                   Need assistance?
@@ -448,7 +448,7 @@ export default function RoomDetailClient({
                       </div>
 
                       <div className="p-4 sm:p-6">
-                        <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gold-600 transition-colors mb-2 sm:mb-3 break-words">
+                        <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:text-green-600 transition-colors mb-2 sm:mb-3 break-words">
                           {relatedRoom.name}
                         </h3>
 
@@ -485,7 +485,7 @@ export default function RoomDetailClient({
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="text-gold-600 hover:text-gold-700 hover:bg-gold-50 font-semibold group-hover:translate-x-1 transition-transform"
+                            className="text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold group-hover:translate-x-1 transition-transform"
                           >
                             View
                             <ArrowRight className="w-4 h-4 ml-1" />
@@ -546,11 +546,11 @@ function OverviewTab({ room }: { room: Room }) {
         </motion.div>
 
         <motion.div
-          className="bg-gradient-to-br from-gold-50 to-white rounded-2xl p-6 border-2 border-gold-100"
+          className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 border-2 border-green-100"
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 bg-gold-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
               <Users className="w-6 h-6 text-white" />
             </div>
             <h3 className="text-xl font-bold text-gray-900">Capacity</h3>
@@ -652,7 +652,7 @@ function AmenitiesTab({
       key: "technology",
       title: "Technology",
       icon: Wifi,
-      color: "gold",
+      color: "green",
       items: amenityCategories.technology,
     },
     {
@@ -666,7 +666,7 @@ function AmenitiesTab({
       key: "service",
       title: "Services",
       icon: Clock,
-      color: "gold",
+      color: "green",
       items: amenityCategories.service,
     },
   ];
@@ -686,11 +686,11 @@ function AmenitiesTab({
           if (category.items.length === 0) return null;
           const Icon = category.icon;
           const bgColor =
-            category.color === "green" ? "bg-green-100" : "bg-gold-100";
+            category.color === "green" ? "bg-green-100" : "bg-green-100";
           const textColor =
-            category.color === "green" ? "text-green-700" : "text-gold-700";
+            category.color === "green" ? "text-green-700" : "text-green-700";
           const checkColor =
-            category.color === "green" ? "text-green-600" : "text-gold-600";
+            category.color === "green" ? "text-green-600" : "text-green-600";
 
           return (
             <motion.div
@@ -749,7 +749,7 @@ function PoliciesTab() {
     {
       title: "Cancellation Policy",
       icon: Shield,
-      color: "gold",
+      color: "green",
       details: [
         "Free cancellation up to 48 hours before arrival",
         "Cancellations within 48 hours: 50% charge",
@@ -771,7 +771,7 @@ function PoliciesTab() {
     {
       title: "House Rules",
       icon: Shield,
-      color: "gold",
+      color: "green",
       details: [
         "Quiet hours: 10:00 PM - 7:00 AM",
         "No smoking in rooms",
@@ -797,11 +797,11 @@ function PoliciesTab() {
           const bgColor =
             policy.color === "green"
               ? "from-green-50 to-white"
-              : "from-gold-50 to-white";
+              : "from-green-50 to-white";
           const borderColor =
-            policy.color === "green" ? "border-green-100" : "border-gold-100";
+            policy.color === "green" ? "border-green-100" : "border-green-100";
           const iconBg =
-            policy.color === "green" ? "bg-green-600" : "bg-gold-600";
+            policy.color === "green" ? "bg-green-600" : "bg-green-600";
 
           return (
             <motion.div
@@ -993,9 +993,9 @@ function CompareTab({
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-gradient-to-br from-gold-50 to-white rounded-2xl p-6 border-2 border-gold-200"
+              className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 border-2 border-green-200"
             >
-              <Badge className="bg-gold-600 text-white mb-4">Compare With</Badge>
+              <Badge className="bg-green-600 text-white mb-4">Compare With</Badge>
               <div className="relative h-48 rounded-xl overflow-hidden mb-4">
                 <Image
                   src={
@@ -1018,7 +1018,7 @@ function CompareTab({
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Price</span>
-                  <span className="font-bold text-gold-700">
+                  <span className="font-bold text-green-700">
                     {formatCurrency(compareRoom.base_price_etb)}
                   </span>
                 </div>
@@ -1050,7 +1050,7 @@ function CompareTab({
 
           <div className="mt-6 flex gap-4">
             <Link href={`/accommodation/${compareRoom.slug}`} className="flex-1">
-              <Button className="w-full bg-gold-600 hover:bg-gold-700">
+              <Button className="w-full bg-green-600 hover:bg-green-700">
                 View {compareRoom.name}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

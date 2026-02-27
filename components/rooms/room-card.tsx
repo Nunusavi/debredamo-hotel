@@ -54,7 +54,7 @@ export default function RoomCard({
     <Card
       className={cn(
         "group overflow-hidden transition-all duration-300 hover:shadow-xl",
-        featured && "ring-2 ring-gold-500"
+        featured && "ring-2 ring-green-500"
       )}
     >
       {/* Image Section */}
@@ -79,7 +79,7 @@ export default function RoomCard({
         {/* Featured Badge */}
         {featured && (
           <div className="absolute top-4 left-4">
-            <Badge className="bg-gold-500 text-white">Featured</Badge>
+            <Badge className="bg-green-500 text-white">Featured</Badge>
           </div>
         )}
 
@@ -105,7 +105,7 @@ export default function RoomCard({
       {/* Content Section */}
       <CardHeader>
         <div className="space-y-2">
-          <h3 className="text-xl font-serif font-bold text-gray-800 group-hover:text-gold-600 transition-colors">
+          <h3 className="text-xl font-serif font-bold text-green-700 group-hover:text-green-500 transition-colors">
             {roomName}
           </h3>
 
@@ -147,7 +147,7 @@ export default function RoomCard({
                     key={index}
                     className="flex items-center gap-1 text-xs text-gray-800"
                   >
-                    <Icon className="w-3 h-3 text-gold-500 flex-shrink-0" />
+                    <Icon className="w-3 h-3 text-green-500 flex-shrink-0" />
                     <span className="truncate">{amenity}</span>
                   </div>
                 );

@@ -24,7 +24,7 @@ export function SectionHeader({
       )}
     >
       {subtitle && (
-        <p className="text-gold-500 font-medium text-sm tracking-wide uppercase mb-2">
+        <p className="text-green-500 font-medium text-sm tracking-wide uppercase mb-2">
           {subtitle}
         </p>
       )}

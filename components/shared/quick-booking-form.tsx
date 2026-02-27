@@ -127,7 +127,7 @@ Thank you!`;
             id="guests"
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 h-[50px] bg-white text-black"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 h-[50px] bg-white text-black"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <option key={num} value={num}>
@@ -141,7 +141,7 @@ Thank you!`;
       <Button
         type="submit"
         size="lg"
-        className="w-full mt-6 bg-gold-500 hover:bg-gold-600 text-white font-semibold text-lg py-6"
+        className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold text-lg py-6"
       >
         <Mail className="w-5 h-5 mr-2" />
         Send Booking Inquiry

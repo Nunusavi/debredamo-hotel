@@ -120,7 +120,7 @@ export default function BlogPage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <Badge className="absolute top-4 left-4 bg-gold-500">
+                  <Badge className="absolute top-4 left-4 bg-green-500">
                     Featured
                   </Badge>
                 </div>
@@ -149,7 +149,7 @@ export default function BlogPage() {
                     </div>
                     <Button
                       variant="ghost"
-                      className="text-gold-600 hover:text-gold-700"
+                      className="text-green-600 hover:text-green-700"
                     >
                       Read More
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -189,7 +189,7 @@ export default function BlogPage() {
                       {post.readTime} min
                     </span>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-gray-900 mb-3 group-hover:text-gold-600 transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
@@ -227,10 +227,10 @@ export default function BlogPage() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               required
             />
-            <Button type="submit" className="bg-gold-500 hover:bg-gold-600">
+            <Button type="submit" className="bg-green-500 hover:bg-green-600">
               Subscribe
             </Button>
           </form>

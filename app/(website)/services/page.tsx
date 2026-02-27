@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { PageHeader } from "@/components/shared/page-header";
 import { PageSection } from "@/components/shared/page-section";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { LucideIcon } from "lucide-react";
 import {
   Utensils,
   Wine,
@@ -38,7 +38,31 @@ import {
 } from "lucide-react";
 import { generateGenericReservationEmail } from "@/lib/mailto";
 
-const services = [
+interface ServiceFeature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+interface ServiceItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: LucideIcon;
+  image: string;
+  description: string;
+  longDescription: string;
+  features: ServiceFeature[];
+  highlights: string[];
+}
+
+interface AmenityItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const services: ServiceItem[] = [
   {
     id: "restaurant",
     title: "Fine Dining Restaurant",
@@ -57,7 +81,7 @@ const services = [
       },
       {
         icon: UtensilsCrossed,
-        title: "À la Carte Dining",
+        title: "Lunch and Dinner buffets",
         description: "Lunch & Dinner service, 12:00 PM - 10:00 PM",
       },
       {
@@ -85,7 +109,7 @@ const services = [
     title: "Premium Bar & Lounge",
     subtitle: "Sophisticated Ambiance",
     icon: Wine,
-    image: "/images/Bar_1.jpg",
+    image: "/images/Bar_5.JPG",
     description:
       "Relax and socialize in our elegant bar featuring premium spirits, craft cocktails, and an extensive wine collection in a refined atmosphere.",
     longDescription:
@@ -191,7 +215,7 @@ const services = [
       {
         icon: Heart,
         title: "Wellness Packages",
-        description: "Full-day spa experiences and couple's treatments",
+        description: "Full-day spa experiences and couple treatments",
       },
     ],
     highlights: [
@@ -253,7 +277,7 @@ const services = [
     description:
       "Elevate your special occasions with our bespoke catering services, offering customized menus and impeccable service for any event.",
     longDescription:
-      "Our catering division brings the same culinary excellence of our restaurant to your special events. Whether it's a corporate luncheon, wedding reception, or private celebration, our chefs create customized menus that reflect your preferences and cultural traditions. Full-service includes setup, service staff, and cleanup.",
+      "Our catering division brings the same culinary excellence of our restaurant to your special events. Whether it is a corporate luncheon, wedding reception, or private celebration, our chefs create customized menus that reflect your preferences and cultural traditions. Full-service includes setup, service staff, and cleanup.",
     features: [
       {
         icon: PartyPopper,
@@ -287,7 +311,7 @@ const services = [
   },
 ];
 
-const amenities = [
+const amenities: AmenityItem[] = [
   {
     icon: Car,
     title: "Airport Transfer",
@@ -321,158 +345,85 @@ const amenities = [
 ];
 
 export default function ServicesPage() {
-  const [activeService, setActiveService] = useState(0);
-  const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observers = serviceRefs.current.map((ref, index) => {
-      if (!ref) return null;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveService(index);
-          }
-        },
-        { threshold: 0.5 }
-      );
-
-      observer.observe(ref);
-      return observer;
-    });
-
-    return () => {
-      observers.forEach((observer, index) => {
-        if (observer && serviceRefs.current[index]) {
-          observer.unobserve(serviceRefs.current[index]!);
-        }
-      });
-    };
-  }, []);
-
   return (
     <>
       <PageHeader
         subtitle="World-Class Amenities"
         title="Premium Services & Facilities"
-        description="Experience luxury hospitality with our comprehensive range of services designed for your comfort and convenience"
+        description="A redesigned service experience built for every screen size, with clear details and effortless navigation."
       />
 
-      {/* Split Screen Services Section */}
-      <section className="relative bg-white">
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Sticky Image Side */}
-            <div className="lg:sticky lg:top-24 h-fit">
-              <motion.div
-                className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                {services.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    className="absolute inset-0"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: activeService === index ? 1 : 0,
-                      scale: activeService === index ? 1 : 1.1,
-                    }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 100vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    <div className="absolute bottom-8 left-8 right-8 text-white">
-                      <motion.p
-                        className="text-sm font-medium text-gold-400 mb-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        {service.subtitle}
-                      </motion.p>
-                      <motion.h3
-                        className="font-serif text-3xl font-bold"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        {service.title}
-                      </motion.h3>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+      <section className="bg-white">
+        <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-10 md:mb-14"
+          >
+            <p className="text-green-600 font-medium text-center mb-3">
+              Explore Our Signature Experiences
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {services.map((service) => (
+                <a
+                  key={service.id}
+                  href={`#${service.id}`}
+                  className="rounded-full border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-800 hover:bg-green-100 transition-colors"
+                >
+                  {service.title}
+                </a>
+              ))}
             </div>
+          </motion.div>
 
-            {/* Scrollable Content Side */}
-            <div className="space-y-16">
-              {services.map((service, index) => {
-                const ServiceIcon = service.icon;
-                return (
-                  <ServiceSection
-                    key={service.id}
-                    ref={(el: HTMLDivElement | null) => (serviceRefs.current[index] = el)}
-                    service={service}
-                    icon={ServiceIcon}
-                    index={index}
-                  />
-                );
-              })}
-            </div>
+          <div className="space-y-10 md:space-y-14">
+            {services.map((service, index) => (
+              <ServiceShowcase key={service.id} service={service} index={index} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Essential Amenities Grid */}
       <PageSection background="warm">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
         >
-          <p className="text-gold-600 font-medium mb-2">Additional Services</p>
+          <p className="text-green-600 font-medium mb-2">Always Included</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Essential Guest Amenities
           </h2>
-          <p className="text-gray-600 mx-auto">
-            Thoughtful services and facilities designed for your comfort and
-            convenience throughout your stay
+          <p className="text-gray-600 mx-auto ">
+            The details that make every stay smooth, comfortable, and worry-free.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
           {amenities.map((amenity, index) => {
             const AmenityIcon = amenity.icon;
             return (
               <motion.div
-                key={index}
+                key={amenity.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
               >
-                <Card className="p-6 text-center h-full hover:shadow-xl transition-shadow duration-300 border-2 border-transparent hover:border-gold-200">
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <AmenityIcon className="w-12 h-12 text-gold-600 mx-auto mb-4" />
-                  </motion.div>
-                  <h4 className="font-semibold text-lg text-gray-900 mb-2">
-                    {amenity.title}
-                  </h4>
-                  <p className="text-sm text-gray-600">{amenity.description}</p>
+                <Card className="h-full p-5 border-green-100 hover:border-green-200 hover:shadow-lg transition-all">
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-xl bg-green-100 p-3 shrink-0">
+                      <AmenityIcon className="w-5 h-5 text-green-700" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">{amenity.title}</h3>
+                      <p className="text-sm text-gray-600">{amenity.description}</p>
+                    </div>
+                  </div>
                 </Card>
               </motion.div>
             );
@@ -480,71 +431,45 @@ export default function ServicesPage() {
         </div>
       </PageSection>
 
-      {/* CTA Section */}
       <PageSection>
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="bg-gradient-to-br from-green-900 to-green-800 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden"
         >
-          {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl" />
 
           <div className="relative z-10">
-            <motion.h2
-              className="font-serif text-3xl md:text-4xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Experience Luxury & Comfort
-            </motion.h2>
-            <motion.p
-              className="text-lg text-gray-300 mb-8 mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              Book your stay at DEBREDAMO HOTEL and enjoy access to all our
-              world-class facilities and premium services
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.a
-                href={generateGenericReservationEmail()}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
+              Ready to Experience DEBREDAMO HOTEL?
+            </h2>
+            <p className="text-lg text-gray-200 mb-8 mx-auto ">
+              Book your stay and enjoy our full collection of premium services, dining,
+              wellness, and event support.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href={generateGenericReservationEmail()}>
                 <Button
                   size="lg"
-                  className="bg-gold-600 hover:bg-gold-700 text-white w-full sm:w-auto group"
+                  className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto"
                 >
                   Reserve Your Stay
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </motion.a>
+              </a>
               <Link href="/contact">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-black hover:bg-white/10 w-full sm:w-auto"
-                  >
-                    Contact Us
-                  </Button>
-                </motion.div>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-black hover:bg-white/10 w-full sm:w-auto"
+                >
+                  Contact Us
+                </Button>
               </Link>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       </PageSection>
@@ -552,103 +477,91 @@ export default function ServicesPage() {
   );
 }
 
-// Service Section Component
-const ServiceSection = ({
+function ServiceShowcase({
   service,
-  icon: Icon,
   index,
-  ref,
 }: {
-  service: (typeof services)[0];
-  icon: any;
+  service: ServiceItem;
   index: number;
-  ref: any;
-}) => {
-  const sectionRef = useInView(ref, { once: true, amount: 0.3 });
+}) {
+  const ServiceIcon = service.icon;
+  const imageOrderClass = index % 2 === 0 ? "md:order-1" : "md:order-2";
+  const contentOrderClass = index % 2 === 0 ? "md:order-2" : "md:order-1";
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+    <motion.article
+      id={service.id}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="scroll-mt-24"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="scroll-mt-24 rounded-3xl border border-green-100 bg-white shadow-sm overflow-hidden"
     >
-      <div className="mb-6">
-        <motion.div
-          className="inline-flex items-center justify-center w-14 h-14 bg-gold-100 rounded-xl mb-4"
-          whileHover={{ rotate: 360, scale: 1.1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Icon className="w-7 h-7 text-gold-600" />
-        </motion.div>
-        <p className="text-sm font-medium text-gold-600 mb-2">
-          {service.subtitle}
-        </p>
-        <h3 className="font-serif text-3xl font-bold text-gray-900 mb-4">
-          {service.title}
-        </h3>
-        <p className="text-lg text-gray-700 mb-4">{service.description}</p>
-        <p className="text-gray-600 leading-relaxed">{service.longDescription}</p>
-      </div>
+      <div className="grid md:grid-cols-2">
+        <div className={`relative min-h-[280px] md:min-h-[420px] ${imageOrderClass}`}>
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 text-white">
+            <p className="text-sm font-medium text-green-300 mb-1">{service.subtitle}</p>
+            <h3 className="font-serif text-2xl lg:text-3xl font-bold">{service.title}</h3>
+          </div>
+        </div>
 
-      {/* Features Grid */}
-      <div className="grid sm:grid-cols-2 gap-4 mb-6">
-        {service.features.map((feature, idx) => {
-          const FeatureIcon = feature.icon;
-          return (
-            <motion.div
-              key={idx}
-              className="bg-gray-50 p-4 rounded-lg group hover:bg-gold-50 transition-colors duration-300"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ x: 4 }}
-            >
-              <FeatureIcon className="w-6 h-6 text-gold-600 mb-2 group-hover:scale-110 transition-transform" />
-              <p className="font-medium text-gray-900 mb-1">{feature.title}</p>
-              <p className="text-sm text-gray-600">{feature.description}</p>
-            </motion.div>
-          );
-        })}
-      </div>
+        <div className={`p-6 md:p-8 lg:p-10 ${contentOrderClass}`}>
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 mb-4">
+            <ServiceIcon className="w-6 h-6 text-green-700" />
+          </div>
+          <p className="text-gray-700 mb-4">{service.description}</p>
+          <p className="text-gray-600 leading-relaxed mb-6">{service.longDescription}</p>
 
-      {/* Highlights List */}
-      <div className="mb-6">
-        <h4 className="font-semibold text-gray-900 mb-3">Key Highlights:</h4>
-        <div className="grid sm:grid-cols-2 gap-2">
-          {service.highlights.map((highlight, idx) => (
-            <motion.div
-              key={idx}
-              className="flex items-start gap-2"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-            >
-              <Check className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
-              <span className="text-sm text-gray-700">{highlight}</span>
-            </motion.div>
-          ))}
+          <div className="grid sm:grid-cols-2 gap-3 mb-6">
+            {service.features.map((feature) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <div
+                  key={feature.title}
+                  className="rounded-xl border border-gray-100 bg-gray-50 p-3"
+                >
+                  <FeatureIcon className="w-5 h-5 text-green-700 mb-2" />
+                  <p className="font-medium text-gray-900 text-sm">{feature.title}</p>
+                  <p className="text-xs text-gray-600 mt-1">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-x-4 gap-y-2 mb-6">
+            {service.highlights.map((highlight) => (
+              <div key={highlight} className="flex items-start gap-2">
+                <Check className="w-4 h-4 text-green-700 mt-0.5 shrink-0" />
+                <span className="text-sm text-gray-700">{highlight}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/contact">
+              <Button className="bg-green-600 hover:bg-green-700 w-full sm:w-auto">
+                Speak With Our Team
+              </Button>
+            </Link>
+            <a href={generateGenericReservationEmail()}>
+              <Button
+                variant="outline"
+                className="border-green-600 text-green-700 hover:bg-green-50 w-full sm:w-auto"
+              >
+                Send Booking Inquiry
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
-
-      {/* CTA Button */}
-      <Link href="/contact">
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button className="bg-green-600 hover:bg-green-700 group">
-            Learn More
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </motion.div>
-      </Link>
-
-      {/* Divider */}
-      {index < services.length - 1 && (
-        <div className="mt-16 pt-16 border-t border-gray-200" />
-      )}
-    </motion.div>
+    </motion.article>
   );
-};
+}

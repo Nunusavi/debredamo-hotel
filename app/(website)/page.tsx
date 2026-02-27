@@ -78,7 +78,7 @@ export default async function HomePage() {
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {/* Animated Gradient Orbs */}
-            <div className="absolute top-10 -right-10 sm:top-20 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-gold-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute top-10 -right-10 sm:top-20 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-10 -left-10 sm:bottom-20 sm:left-20 w-64 h-64 sm:w-96 sm:h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
 
@@ -99,7 +99,7 @@ export default async function HomePage() {
                         {[...Array(4)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-10 h-10 fill-gold-500 text-gold-500"
+                            className="w-10 h-10 fill-green-500 text-green-500"
                           />
                         ))}
                       </div>
@@ -119,7 +119,7 @@ export default async function HomePage() {
                   >
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-lg px-12 py-7 rounded-full shadow-2xl hover:shadow-gold-500/50 transition-all duration-300 hover:scale-105"
+                      className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg px-12 py-7 rounded-full shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"
                     >
                       Book Your Stay Now
                     </Button>
@@ -244,7 +244,7 @@ export default async function HomePage() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-serif text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="font-serif text-2xl font-bold text-green-700 mb-2">
                       {room.name}
                     </h3>
                     <p className="text-gray-600 mb-4 line-clamp-2">
@@ -318,9 +318,9 @@ export default async function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-6 text-center hover:shadow-lg transition-all border-2 border-gold-100 hover:border-gold-500">
-                <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Wine className="w-8 h-8 text-gold-600" />
+              <Card className="p-6 text-center hover:shadow-lg transition-all border-2 border-green-100 hover:border-green-500">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Wine className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="font-semibold text-xl text-gray-900 mb-2">
                   Bar & Lounge
@@ -440,7 +440,7 @@ export default async function HomePage() {
                     {[...Array(review.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-gold-500 text-gold-500"
+                        className="w-5 h-5 fill-green-500 text-green-500"
                       />
                     ))}
                   </div>
@@ -549,10 +549,10 @@ export default async function HomePage() {
               </p>
 
               <div className="flex items-center justify-center gap-2 mb-8">
-                <CheckCircle className="w-5 h-5 text-gold-300" />
+                <CheckCircle className="w-5 h-5 text-green-300" />
                 <span className="text-white">Best Rate Guarantee</span>
                 <span className="text-green-300">•</span>
-                <CheckCircle className="w-5 h-5 text-gold-300" />
+                <CheckCircle className="w-5 h-5 text-green-300" />
                 <span className="text-white">Free Cancellation</span>
               </div>
 

@@ -135,7 +135,7 @@ export default function AccommodationClient({
                 transition={{ delay: 0.3 }}
                 className="absolute top-8 left-8"
               >
-                <Badge className="bg-gold-600 text-white border-none px-6 py-3 text-sm font-semibold">
+                <Badge className="bg-green-600 text-white border-none px-6 py-3 text-sm font-semibold">
                   <Star className="w-4 h-4 mr-2 fill-current" />
                   Featured Room
                 </Badge>
@@ -154,14 +154,14 @@ export default function AccommodationClient({
                       {getRoomTypeLabel(featuredRoom.room_type)}
                     </Badge>
                     {featuredRoom.is_active && (
-                      <Badge className="bg-gold-100 text-gold-800">
+                      <Badge className="bg-green-100 text-green-800">
                         <Sparkles className="w-3 h-3 mr-1" />
                         Available
                       </Badge>
                     )}
                   </div>
 
-                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-green-700 mb-3">
                     {featuredRoom.name}
                   </h2>
 
@@ -201,7 +201,7 @@ export default function AccommodationClient({
                     <Link href={`/accommodation/${featuredRoom.slug}`}>
                       <Button
                         size="lg"
-                        className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold group"
+                        className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold group"
                       >
                         View Details
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -294,8 +294,8 @@ export default function AccommodationClient({
                     }
                     className={
                       selectedGuests === guests
-                        ? "bg-gold-600 hover:bg-gold-700"
-                        : "hover:bg-gold-50"
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "hover:bg-green-50"
                     }
                   >
                     <Users className="w-4 h-4 mr-1" />
@@ -443,7 +443,7 @@ function MagazineRoomCard({
               e.preventDefault();
               onQuickView();
             }}
-            className="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-gold-500 hover:text-white"
+            className="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-green-500 hover:text-white"
           >
             <Eye className="w-5 h-5" />
           </motion.button>
@@ -452,7 +452,7 @@ function MagazineRoomCard({
         {/* Content */}
         <div className="p-6">
           <Link href={`/accommodation/${room.slug}`}>
-            <h3 className="font-serif text-2xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-1">
+            <h3 className="font-serif text-2xl font-bold text-green-700 mb-2 group-hover:text-green-600 transition-colors line-clamp-1">
               {room.name}
             </h3>
           </Link>
@@ -491,7 +491,7 @@ function MagazineRoomCard({
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gold-600 hover:text-gold-700 hover:bg-gold-50 font-semibold group"
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 font-semibold group"
               >
                 Details
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -575,14 +575,14 @@ function QuickViewModal({
                     {getRoomTypeLabel(room.room_type)}
                   </Badge>
                   {room.is_active && (
-                    <Badge className="bg-gold-100 text-gold-800">
+                    <Badge className="bg-green-100 text-green-800">
                       <Sparkles className="w-3 h-3 mr-1" />
                       Available
                     </Badge>
                   )}
                 </div>
 
-                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="font-serif text-3xl font-bold text-green-700 mb-2">
                   {room.name}
                 </h2>
 
@@ -656,7 +656,7 @@ function QuickViewModal({
                       </Button>
                     </Link>
                     <a href={mailtoLink} className="flex-1">
-                      <Button className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700">
+                      <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700">
                         <Mail className="w-4 h-4 mr-2" />
                         Book Now
                       </Button>

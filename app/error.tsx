@@ -43,7 +43,7 @@ export default function Error({
             <Button
               size="lg"
               onClick={reset}
-              className="bg-gold-500 hover:bg-gold-600 w-full sm:w-auto"
+              className="bg-green-500 hover:bg-green-600 w-full sm:w-auto"
             >
               <RefreshCcw className="w-4 h-4 mr-2" />
               Try Again
@@ -62,7 +62,7 @@ export default function Error({
               If this problem persists, please{" "}
               <Link
                 href="/contact"
-                className="text-gold-600 hover:text-gold-700 underline"
+                className="text-green-600 hover:text-green-700 underline"
               >
                 contact our support team
               </Link>

@@ -23,7 +23,7 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
         <div className="container mx-auto px-4 py-4">
           <Link
             href="/accommodation"
-            className="inline-flex items-center gap-2 text-gray-800 hover:text-gold-600 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-800 hover:text-green-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Accommodation</span>
@@ -52,7 +52,7 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
               <Button
                 onClick={reset}
                 size="lg"
-                className="bg-gold-500 hover:bg-gold-600 text-white"
+                className="bg-green-500 hover:bg-green-600 text-white"
               >
                 Try Again
               </Button>
@@ -87,7 +87,7 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Link
                 href="/accommodation"
-                className="p-6 bg-warm-white rounded-lg border hover:border-gold-500 transition-colors text-center"
+                className="p-6 bg-warm-white rounded-lg border hover:border-green-500 transition-colors text-center"
               >
                 <h3 className="font-semibold text-gray-800 mb-2">All Rooms</h3>
                 <p className="text-sm text-gray-600">
@@ -97,7 +97,7 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
 
               <Link
                 href="/contact"
-                className="p-6 bg-warm-white rounded-lg border hover:border-gold-500 transition-colors text-center"
+                className="p-6 bg-warm-white rounded-lg border hover:border-green-500 transition-colors text-center"
               >
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Contact Us
@@ -109,7 +109,7 @@ export default function RoomDetailError({ error, reset }: ErrorProps) {
 
               <a
                 href="mailto:reservation@debredamohotel.com?subject=Room%20Booking%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20DEBREDAMO%20HOTEL.%0A%0APlease%20let%20me%20know%20about%20availability.%0A%0AThank%20you!"
-                className="p-6 bg-warm-white rounded-lg border hover:border-gold-500 transition-colors text-center"
+                className="p-6 bg-warm-white rounded-lg border hover:border-green-500 transition-colors text-center"
               >
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Make a Reservation
