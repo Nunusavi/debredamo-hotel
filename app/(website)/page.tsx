@@ -99,15 +99,15 @@ export default async function HomePage() {
                         {[...Array(4)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-10 h-10 fill-green-500 text-green-500"
+                            className="w-10 h-10 fill-yellow-400 text-yellow-400"
                           />
                         ))}
                       </div>
                     </div>
                   </div>
                   <div className="mx-auto">
-                    <p className="text-xl md:text-2xl text-gray-100 leading-relaxed mb-4">
-                      Unforgettable Experiance
+                    <p className="text-xl md:text-2xl text-gray-100 leading-relaxed mb-4 italic">
+                      Unforgettable Experiences
                     </p>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ export default async function HomePage() {
               <p className="text-green-600 font-medium text-sm tracking-wide uppercase mb-2">
                 Our Services
               </p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-green-700 mb-4">
                 World-Class Amenities
               </h2>
               <p className="text-lg text-gray-600  mx-auto">
@@ -309,7 +309,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Utensils className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   Restaurant & Dining
                 </h3>
                 <p className="text-gray-600">
@@ -322,7 +322,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Wine className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   Bar & Lounge
                 </h3>
                 <p className="text-gray-600">
@@ -335,7 +335,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Briefcase className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   Business Center
                 </h3>
                 <p className="text-gray-600">
@@ -347,7 +347,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <HeadphonesIcon className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   24/7 Concierge
                 </h3>
                 <p className="text-gray-600">
@@ -359,7 +359,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Wifi className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   Free High-Speed WiFi
                 </h3>
                 <p className="text-gray-600">
@@ -371,7 +371,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Car className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-xl text-gray-900 mb-2">
+                <h3 className="font-semibold text-xl text-green-700 mb-2">
                   Airport Transfer
                 </h3>
                 <p className="text-gray-600">
@@ -401,7 +401,7 @@ export default async function HomePage() {
               <p className="text-green-600 font-medium text-sm tracking-wide uppercase mb-2">
                 Testimonials
               </p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-green-700 mb-4">
                 What Our Guests Say
               </h2>
               <p className="text-lg text-gray-600  mx-auto">
@@ -440,7 +440,7 @@ export default async function HomePage() {
                     {[...Array(review.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-green-500 text-green-500"
+                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
                       />
                     ))}
                   </div>
@@ -465,7 +465,7 @@ export default async function HomePage() {
                 <p className="text-green-600 font-medium text-sm tracking-wide uppercase mb-2">
                   Location
                 </p>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-green-700 mb-6">
                   In the Heart of Addis Ababa
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-6">

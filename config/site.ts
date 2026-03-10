@@ -12,12 +12,13 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/images/og-image.jpg",
   links: {
-    facebook: "",
+    facebook: "https://web.facebook.com/profile.php?id=61551827400279",
     instagram: "",
     twitter: "",
     linkedin: "https://www.linkedin.com/company/debredamo-hotel",
     tripadvisor: "https://www.tripadvisor.com/Hotel_Review-g293791-d4925201-Reviews-Debre_Damo_Hotel-Addis_Ababa.html",
     whatsapp: "+251911123456",
+    google: "https://www.google.com/search?q=debredamo+hotel&oq=debredamo+hotel&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgoIARAAGAoYFhgeMgoIAhAAGAoYFhgeMgoIAxAAGAoYFhgeMggIBBAAGBYYHjIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPdIBCDcyNDFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
   },
   contact: {
     email: "reservation@debredamohotel.com",

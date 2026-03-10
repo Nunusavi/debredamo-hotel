@@ -87,7 +87,90 @@ export default function ContactPage() {
         subtitle="Get in Touch"
         title="Contact Us"
         description="We're here to help and answer any questions you might have"
-      />
+      >
+        <div className="flex gap-3 justify-center mt-6">
+          <a
+            href="#"
+            className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+            aria-label="Facebook"
+          >
+            <Facebook className="w-5 h-5 text-white" />
+          </a>
+          <a
+            href="#"
+            className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+            aria-label="Instagram"
+          >
+            <Instagram className="w-5 h-5 text-white" />
+          </a>
+          <a
+            href="#"
+            className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+            aria-label="Twitter"
+          >
+            <Twitter className="w-5 h-5 text-white" />
+          </a>
+          <a
+            href={
+              siteConfig.links.whatsapp
+                ? `https://wa.me/${siteConfig.links.whatsapp}`
+                : "#"
+            }
+            className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+            aria-label="WhatsApp"
+          >
+            <MessageSquare className="w-5 h-5 text-white" />
+          </a>
+          {siteConfig.links.linkedin && (
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5 text-white" />
+            </a>
+          )}
+          {siteConfig.links.tripadvisor && (
+            <a
+              href={siteConfig.links.tripadvisor}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+              aria-label="TripAdvisor"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 2304 1408"
+                width="24"
+                height="24"
+                fill="#ffffff"
+              >
+                <path d="M651 805q0 39-27.5 66.5T558 899q-39 0-66.5-27.5T464 805q0-38 27.5-65.5T558 712q38 0 65.5 27.5T651 805m1154-1q0 39-27.5 66.5T1711 898t-66.5-27.5T1617 804t27.5-66t66.5-27t66.5 27t27.5 66m-1040 1q0-79-56.5-136T572 612t-136.5 56.5T379 805t56.5 136.5T572 998t136.5-56.5T765 805m1153-1q0-80-56.5-136.5T1725 611q-79 0-136 56.5T1532 804t56.5 136.5T1725 997t136.5-56.5T1918 804m-1068 1q0 116-81.5 197.5T572 1084q-116 0-197.5-82T293 805t82-196.5T572 527t196.5 81.5T850 805m1154-1q0 115-81.5 196.5T1725 1082q-115 0-196.5-81.5T1447 804t81.5-196.5T1725 526q116 0 197.5 81.5T2004 804m-964 3q0-191-135.5-326.5T578 345q-125 0-231 62T179 575.5T117 807t62 231.5T347 1207t231 62q191 0 326.5-135.5T1040 807m668-573q-254-111-556-111q-319 0-573 110q117 0 223 45.5T984.5 401t122 183t45.5 223q0-115 43.5-219.5t118-180.5T1491 284t217-50m479 573q0-191-135-326.5T1726 345t-326.5 135.5T1264 807t135.5 326.5T1726 1269t326-135.5T2187 807m-266-566h383q-44 51-75 114.5T2189 470q110 151 110 337q0 156-77 288t-209 208.5t-287 76.5q-133 0-249-56t-196-155q-47 56-129 179q-11-22-53.5-82.5T1024 1168q-80 99-196.5 155.5T578 1380q-155 0-287-76.5T82 1095T5 807q0-186 110-337q-9-51-40-114.5T0 241h365Q514 141 720 84.5T1152 28q224 0 421 56t348 157" />
+              </svg>
+            </a>
+          )}
+          {siteConfig.links.google && (
+            <a
+              href={siteConfig.links.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm"
+              aria-label="Google"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5 text-white"
+              >
+                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .533 5.333 .533 12S5.867 24 12.48 24c3.44 0 6.147-1.133 7.96-3.027 1.84-1.84 2.4-4.44 2.4-6.573 0-.64-.067-1.267-.187-1.88h-10.173z" />
+              </svg>
+            </a>
+          )}
+        </div>
+      </PageHeader>
 
       <PageSection>
         <div className="grid lg:grid-cols-2 gap-12">
@@ -326,76 +409,7 @@ export default function ContactPage() {
               </Card>
             </div>
 
-            {/* Social Media */}
-            <div>
-              <h4 className="font-semibold text-lg text-gray-900 mb-4">
-                Follow Us
-              </h4>
-              <div className="flex gap-3">
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-5 h-5 text-gray-900" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5 text-gray-900" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="w-5 h-5 text-gray-900" />
-                </a>
-                <a
-                  href={
-                    siteConfig.links.whatsapp
-                      ? `https://wa.me/${siteConfig.links.whatsapp}`
-                      : "#"
-                  }
-                  className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                  aria-label="WhatsApp"
-                >
-                  <MessageSquare className="w-5 h-5 text-gray-900" />
-                </a>
-                {siteConfig.links.linkedin && (
-                  <a
-                    href={siteConfig.links.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-5 h-5 text-gray-900" />
-                  </a>
-                )}
-                {siteConfig.links.tripadvisor && (
-                  <a
-                    href={siteConfig.links.tripadvisor}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-100 hover:bg-green-100 rounded-lg flex items-center justify-center transition-colors"
-                    aria-label="TripAdvisor"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 2304 1408"
-                      width="24"
-                      height="24"
-                      fill="#000000"
-                    >
-                      <path d="M651 805q0 39-27.5 66.5T558 899q-39 0-66.5-27.5T464 805q0-38 27.5-65.5T558 712q38 0 65.5 27.5T651 805m1154-1q0 39-27.5 66.5T1711 898t-66.5-27.5T1617 804t27.5-66t66.5-27t66.5 27t27.5 66m-1040 1q0-79-56.5-136T572 612t-136.5 56.5T379 805t56.5 136.5T572 998t136.5-56.5T765 805m1153-1q0-80-56.5-136.5T1725 611q-79 0-136 56.5T1532 804t56.5 136.5T1725 997t136.5-56.5T1918 804m-1068 1q0 116-81.5 197.5T572 1084q-116 0-197.5-82T293 805t82-196.5T572 527t196.5 81.5T850 805m1154-1q0 115-81.5 196.5T1725 1082q-115 0-196.5-81.5T1447 804t81.5-196.5T1725 526q116 0 197.5 81.5T2004 804m-964 3q0-191-135.5-326.5T578 345q-125 0-231 62T179 575.5T117 807t62 231.5T347 1207t231 62q191 0 326.5-135.5T1040 807m668-573q-254-111-556-111q-319 0-573 110q117 0 223 45.5T984.5 401t122 183t45.5 223q0-115 43.5-219.5t118-180.5T1491 284t217-50m479 573q0-191-135-326.5T1726 345t-326.5 135.5T1264 807t135.5 326.5T1726 1269t326-135.5T2187 807m-266-566h383q-44 51-75 114.5T2189 470q110 151 110 337q0 156-77 288t-209 208.5t-287 76.5q-133 0-249-56t-196-155q-47 56-129 179q-11-22-53.5-82.5T1024 1168q-80 99-196.5 155.5T578 1380q-155 0-287-76.5T82 1095T5 807q0-186 110-337q-9-51-40-114.5T0 241h365Q514 141 720 84.5T1152 28q224 0 421 56t348 157" />
-                    </svg>
-                  </a>
-                )}
-              </div>
-            </div>
+            {/* Social Media removed from here */}
           </div>
         </div>
       </PageSection>
