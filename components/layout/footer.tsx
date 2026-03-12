@@ -30,34 +30,7 @@ export default function Footer() {
               Experience luxury and comfort in the heart of Addis Ababa. Your
               home away from home.
             </p>
-
-            {/* Social Media */}
-            <div className="flex items-center space-x-4 pt-2">
-              {siteConfig.links.facebook && (
-                <a
-                  href={siteConfig.links.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-              )}
-              {siteConfig.links.instagram && (
-                <a
-                  href={siteConfig.links.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-              )}
-            </div>
           </div>
-
           {/* Quick Links - About */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-green-400">
@@ -76,7 +49,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Quick Links - Rooms */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-green-400">

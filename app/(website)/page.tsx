@@ -107,7 +107,7 @@ export default async function HomePage() {
                   </div>
                   <div className="mx-auto">
                     <p className="text-xl md:text-2xl text-gray-100 leading-relaxed mb-4 italic">
-                      Unforgettable Experiences
+                      " Unforgettable Experiences "
                     </p>
                   </div>
                 </div>
