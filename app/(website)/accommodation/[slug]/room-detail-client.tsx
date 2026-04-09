@@ -170,7 +170,7 @@ export default function RoomDetailClient({
                     </Badge>
                     {room.is_active && (
                       <Badge className="bg-green-500 text-white border-none px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">
-                        <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 fill-current" />
+                        <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 fill-amber-400 text-amber-400" />
                         Available
                       </Badge>
                     )}

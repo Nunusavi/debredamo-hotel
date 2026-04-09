@@ -227,7 +227,7 @@ export default function AboutPage() {
             </p>
           </Card>
           <Card className="p-6">
-            <Star className="w-10 h-10 text-green-600 mb-4" />
+            <Star className="w-10 h-10 text-amber-400 fill-amber-400 mb-4" />
             <h4 className="font-semibold text-xl text-gray-900 mb-3">
               Four-Star Service
             </h4>

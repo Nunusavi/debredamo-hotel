@@ -91,14 +91,6 @@ export default function Footer() {
                     >
                       {siteConfig.contact.phone}
                     </a>
-                    {siteConfig.contact.phone2 && (
-                      <a
-                        href={`tel:${siteConfig.contact.phone2}`}
-                        className="text-green-200 hover:text-green-400 transition-colors"
-                      >
-                        {siteConfig.contact.phone2}
-                      </a>
-                    )}
                   </div>
                 </li>
                 <li className="flex items-center space-x-3 text-sm">

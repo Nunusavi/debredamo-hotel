@@ -136,7 +136,7 @@ export default function AccommodationClient({
                 className="absolute top-8 left-8"
               >
                 <Badge className="bg-green-600 text-white border-none px-6 py-3 text-sm font-semibold">
-                  <Star className="w-4 h-4 mr-2 fill-current" />
+                  <Star className="w-4 h-4 mr-2 fill-amber-400 text-amber-400" />
                   Featured Room
                 </Badge>
               </motion.div>

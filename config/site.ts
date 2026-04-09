@@ -22,7 +22,7 @@ export const siteConfig = {
   },
   contact: {
     email: "reservation@debredamohotel.com",
-    phone: "+251116612630",
+    phone: "+251930106076",
     phone2: "+251930106076",
     address: {
       street: "Haile Gebre Silase St",

@@ -99,7 +99,7 @@ export default async function HomePage() {
                         {[...Array(4)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-10 h-10 fill-yellow-400 text-yellow-400"
+                            className="w-10 h-10 fill-amber-400 text-amber-400"
                           />
                         ))}
                       </div>
@@ -162,7 +162,9 @@ export default async function HomePage() {
                     </div>
                   </div>
                   <div className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    <div className="text-4xl font-bold text-white mb-1">4★</div>
+                    <div className="text-4xl font-bold text-white mb-1">
+                      4<span className="text-amber-400">★</span>
+                    </div>
                     <div className="text-gray-300 text-sm font-medium">
                       Rating
                     </div>
@@ -440,7 +442,7 @@ export default async function HomePage() {
                     {[...Array(review.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        className="w-5 h-5 fill-amber-400 text-amber-400"
                       />
                     ))}
                   </div>
@@ -492,7 +494,7 @@ export default async function HomePage() {
                         href="tel:+251111234567"
                         className="text-gray-600 hover:text-green-600"
                       >
-                        +251116612630
+                        +251930106076
                       </a>
                     </div>
                   </div>

@@ -62,6 +62,13 @@ interface AmenityItem {
   description: string;
 }
 
+interface OutletItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  status?: "current" | "future";
+}
+
 const services: ServiceItem[] = [
   {
     id: "restaurant",
@@ -344,6 +351,32 @@ const amenities: AmenityItem[] = [
   },
 ];
 
+const outlets: OutletItem[] = [
+  {
+    icon: Coffee,
+    title: "Our Cafe",
+    description: "A cozy cafe for fresh coffee, pastries, and light meals throughout the day.",
+  },
+  {
+    icon: ChefHat,
+    title: "Our Outside Catering",
+    description:
+      "Professional outside catering for weddings, corporate functions, and private events.",
+  },
+  {
+    icon: Wine,
+    title: "Sky View Bar",
+    description:
+      "An elevated bar experience with signature drinks, premium spirits, and city views.",
+  },
+  {
+    icon: Presentation,
+    title: "Yebahl Adarash",
+    description: "A dedicated venue for cultural events and celebrations.",
+    status: "future",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <>
@@ -387,6 +420,54 @@ export default function ServicesPage() {
       </section>
 
       <PageSection background="warm">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          <p className="text-green-600 font-medium mb-2">Featured Outlets</p>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Dining & Event Outlets
+          </h2>
+          <p className="text-gray-600 mx-auto ">
+            Discover the outlets that shape the DEBREDAMO HOTEL experience.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-6 mb-14">
+          {outlets.map((outlet, index) => {
+            const OutletIcon = outlet.icon;
+            return (
+              <motion.div
+                key={outlet.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+              >
+                <Card className="h-full p-5 border-green-100 hover:border-green-200 hover:shadow-lg transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-xl bg-green-100 p-3 shrink-0">
+                      <OutletIcon className="w-5 h-5 text-green-700" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{outlet.title}</h3>
+                      {outlet.status === "future" && (
+                        <span className="inline-block mt-1 rounded-full bg-amber-100 text-amber-800 text-xs font-medium px-2 py-0.5">
+                          Coming Soon
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600">{outlet.description}</p>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

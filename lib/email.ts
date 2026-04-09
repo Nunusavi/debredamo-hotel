@@ -189,7 +189,7 @@ export async function sendReservationConfirmation({
         <div class="footer">
           <p style="margin: 0 0 10px 0;"><strong>DEBREDAMO HOTEL</strong></p>
           <p style="margin: 5px 0;">Addis Ababa, Ethiopia</p>
-          <p style="margin: 5px 0;">Phone: +251116612630</p>
+          <p style="margin: 5px 0;">Phone: +251930106076</p>
           <p style="margin: 5px 0;">Email: reservations@debredamohotel.com</p>
         </div>
       </body>
@@ -219,7 +219,7 @@ What Happens Next?
 Important: This is a reservation request, not a confirmed booking. We will contact you shortly to finalize your reservation.
 
 Contact Us:
-Phone: +251116612630
+Phone: +251930106076
 Email: reservations@debredamohotel.com
 
 DEBREDAMO HOTEL

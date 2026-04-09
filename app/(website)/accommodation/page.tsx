@@ -31,7 +31,7 @@ export default async function AccommodationPage() {
                 {[...Array(4)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-4 h-4 fill-green-400 text-green-400"
+                    className="w-4 h-4 fill-amber-400 text-amber-400"
                   />
                 ))}
               </div>
